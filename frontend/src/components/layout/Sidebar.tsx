@@ -7,7 +7,6 @@ import {
   MoreHorizontal,
   Pencil,
   Search,
-  Sparkles,
   Trash2
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -48,11 +47,6 @@ import { useAuthStore } from "@/stores/authStore";
 import { useChatStore } from "@/stores/chatStore";
 
 // 侧边栏快捷提问预设
-const QUICK_QUESTIONS = [
-  "帮我总结一份企业知识库的使用文档",
-  "把下面的需求拆解成可执行步骤",
-  "围绕一个主题给多个方案并比较优缺点"
-];
 
 interface SidebarProps {
   isOpen: boolean;
@@ -69,7 +63,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     renameSession,
     selectSession,
     fetchSessions,
-    sendMessage
   } = useChatStore();
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
@@ -114,10 +107,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     }
   };
 
-  const handleQuickQuestion = (question: string) => {
-    void sendMessage(question);
-    onClose();
-  };
 
   React.useEffect(() => {
     if (sessions.length === 0) {
@@ -221,50 +210,19 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </div>
         </div>
         <div className="py-3 space-y-4">
-          <div className="relative overflow-hidden rounded-2xl border border-[#E6EEF6] bg-gradient-to-br from-[#F0F9FF] via-[var(--bg-primary)] to-[#FEF3C7] p-3 shadow-[0_14px_30px_rgba(15,23,42,0.08)]">
-            <span
-              aria-hidden="true"
-              className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#BAE6FD]/70 blur-2xl"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -left-12 -bottom-10 h-28 w-28 rounded-full bg-[#FDE68A]/70 blur-2xl"
-            />
-            <div className="relative">
-              <div className="flex items-center justify-between px-1">
-                <span className="text-[11px] font-semibold text-[#94A3B8]">快捷提问</span>
-                <span className="rounded-full bg-[color-mix(in_srgb,var(--bg-primary)_80%,transparent)] px-2 py-0.5 text-[10px] font-semibold text-[var(--violet-text)]">
-                  试试
-                </span>
-              </div>
-              <div className="mt-2 space-y-1.5">
-                {QUICK_QUESTIONS.map((question, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className="flex w-full items-center gap-2.5 rounded-xl bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] px-3 py-2.5 text-left transition-all hover:-translate-y-[0.5px] hover:bg-[var(--bg-primary)] hover:shadow-[0_8px_16px_rgba(15,23,42,0.08)]"
-                    onClick={() => handleQuickQuestion(question)}
-                  >
-                    <Sparkles className="h-4 w-4 shrink-0 text-[var(--accent-violet)]" />
-                    <span className="min-w-0 flex-1 truncate text-[13px] text-[#1F2937]">{question}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-[#E6EEF6] bg-[var(--bg-primary)] p-3 shadow-[0_12px_26px_rgba(15,23,42,0.06)]">
+          <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-primary)] p-3 shadow-[0_12px_26px_rgba(15,23,42,0.06)]">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-semibold text-[#94A3B8]">搜索对话</span>
+              <span className="text-[11px] font-semibold text-[var(--text-tertiary)]">搜索对话</span>
               <span className="text-[10px] text-[var(--violet-line)]">Ctrl / Cmd + K</span>
             </div>
             <div className="mt-2">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9CA3AF]" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-tertiary)]" />
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="搜索对话..."
-                  className="h-10 w-full rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] pl-9 pr-3 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[var(--violet-line)] focus:outline-none transition-colors"
+                  className="h-10 w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] pl-9 pr-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:border-[var(--violet-line)] focus:outline-none transition-colors"
                 />
               </div>
             </div>
