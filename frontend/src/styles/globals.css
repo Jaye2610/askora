@@ -73,6 +73,26 @@
   --error: #ef4444;
   --info: #3b82f6;
 
+  /* ===== 新设计系统 - 状态色层级 =====
+     状态徽章要的是「浅衬底 + 中描边 + 深文字」的成对关系，只给一个饱和色不行：
+     把 --success 铺到浅底上会变成饱和绿底。故每状态四级，饱和主色沿用上面的 --success 等。 */
+  --success-soft: #ecfdf5;   /* emerald-50  */
+  --success-border: #a7f3d0; /* emerald-200 */
+  --success-bright: #34d399; /* emerald-400 */
+  --success-text: #059669;   /* emerald-600 */
+  --warning-soft: #fffbeb;   /* amber-50    */
+  --warning-border: #fde68a; /* amber-200   */
+  --warning-bright: #fbbf24; /* amber-400   */
+  --warning-text: #d97706;   /* amber-600   */
+  --error-soft: #fef2f2;     /* red-50      */
+  --error-border: #fecaca;   /* red-200     */
+  --error-bright: #f87171;   /* red-400     */
+  --error-text: #dc2626;     /* red-600     */
+  --info-soft: #ecfeff;      /* cyan-50     */
+  --info-border: #cffafe;    /* cyan-100    */
+  --info-bright: #a5f3fc;    /* cyan-200    */
+  --info-text: #0e7490;      /* cyan-700    */
+
   /* ===== 新设计系统 - 圆角 ===== */
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -187,6 +207,24 @@
   --violet-text: #c4b5fd;
   --violet-text-strong: #ddd6fe;
   --violet-muted: #2a2145;
+
+  /* 状态色层级：暗底上衬底转深、文字转亮（与紫色辅助同一方向） */
+  --success-soft: #0b2a20;
+  --success-border: #14532d;
+  --success-bright: #34d399;
+  --success-text: #4ade80;
+  --warning-soft: #2b1f08;
+  --warning-border: #78350f;
+  --warning-bright: #fbbf24;
+  --warning-text: #fbbf24;
+  --error-soft: #2b1114;
+  --error-border: #7f1d1d;
+  --error-bright: #f87171;
+  --error-text: #f87171;
+  --info-soft: #082f36;
+  --info-border: #155e75;
+  --info-bright: #22d3ee;
+  --info-text: #22d3ee;
 
   --border-default: #26324a;
   --border-light: #1b2536;
@@ -511,7 +549,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-sidebar__avatar::after {
-    @apply absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#252d3d] bg-emerald-400 content-[''];
+    @apply absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#252d3d] bg-[var(--success-bright)] content-[''];
   }
 
   .admin-layout .admin-sidebar__role {
@@ -576,7 +614,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-sidebar__logout {
-    @apply w-full justify-start text-red-300 hover:bg-red-500/10 hover:text-red-200;
+    @apply w-full justify-start text-red-300 hover:bg-[color-mix(in_srgb,var(--error)_10%,transparent)] hover:text-[var(--error-border)];
   }
 
   .admin-layout .admin-sidebar__collapse {
@@ -692,7 +730,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-badge[data-variant="destructive"] {
-    @apply border-red-200 bg-red-50 text-red-600;
+    @apply border-[var(--error-border)] bg-[var(--error-soft)] text-[var(--error-text)];
   }
 
   .admin-layout .ui-badge[data-variant="outline"] {
@@ -2081,11 +2119,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-card {
-    @apply relative overflow-hidden rounded-xl border border-cyan-100/80 bg-gradient-to-br from-cyan-50 via-white to-[var(--accent-light)] shadow-[0_8px_30px_rgba(15,23,42,0.06)];
+    @apply relative overflow-hidden rounded-xl border border-[color-mix(in_srgb,var(--info-border)_80%,transparent)] bg-gradient-to-br from-[var(--info-soft)] via-white to-[var(--accent-light)] shadow-[0_8px_30px_rgba(15,23,42,0.06)];
   }
 
   .admin-layout .trace-hero-card::before {
-    @apply pointer-events-none absolute -top-20 -right-16 h-60 w-60 rounded-full bg-cyan-200/35 blur-3xl content-[''];
+    @apply pointer-events-none absolute -top-20 -right-16 h-60 w-60 rounded-full bg-[color-mix(in_srgb,var(--info-bright)_35%,transparent)] blur-3xl content-[''];
   }
 
   .admin-layout .trace-hero-card::after {
@@ -2101,7 +2139,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-tag {
-    @apply mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-700;
+    @apply mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--info-text)];
   }
 
   .admin-layout .trace-hero-title {
@@ -2172,7 +2210,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-run-row-active {
-    @apply bg-cyan-50/60;
+    @apply bg-[color-mix(in_srgb,var(--info-soft)_60%,transparent)];
   }
 
   .admin-layout .trace-run-table-wrap {
@@ -2382,7 +2420,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-error-box {
-    @apply flex items-start gap-2 rounded-xl border border-red-200 bg-red-50/80 px-3 py-2;
+    @apply flex items-start gap-2 rounded-xl border border-[var(--error-border)] bg-[color-mix(in_srgb,var(--error-soft)_80%,transparent)] px-3 py-2;
   }
 
   .admin-layout .trace-node-summary {
@@ -2429,12 +2467,12 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-node-dot.is-running {
-    @apply bg-amber-500;
+    @apply bg-[var(--warning)];
   }
 
   .admin-layout .trace-node-dot.is-failed,
   .admin-layout .trace-node-dot.is-timeout {
-    @apply bg-red-500;
+    @apply bg-[var(--error)];
   }
 
   .admin-layout .trace-waterfall-node-name {
@@ -2463,16 +2501,16 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-bar.is-success {
-    @apply bg-gradient-to-r from-emerald-400 to-emerald-500;
+    @apply bg-gradient-to-r from-[var(--success-bright)] to-[var(--success)];
   }
 
   .admin-layout .trace-waterfall-bar.is-running {
-    @apply bg-gradient-to-r from-amber-400 to-amber-500;
+    @apply bg-gradient-to-r from-[var(--warning-bright)] to-[var(--warning)];
   }
 
   .admin-layout .trace-waterfall-bar.is-failed,
   .admin-layout .trace-waterfall-bar.is-timeout {
-    @apply bg-gradient-to-r from-red-400 to-red-500;
+    @apply bg-gradient-to-r from-[var(--error-bright)] to-[var(--error)];
   }
 
   .admin-layout .trace-waterfall-duration {
@@ -2662,7 +2700,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-rail__flag {
-    @apply shrink-0 rounded-full bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-600;
+    @apply shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--warning-text)];
   }
 
   .admin-layout .agent-prompt-rail__fallback {
@@ -3225,7 +3263,7 @@ textarea {
   }
 
   .admin-layout .settings-tag.is-on {
-    @apply bg-emerald-50 text-emerald-600;
+    @apply bg-[var(--success-soft)] text-[var(--success-text)];
   }
 
   .admin-layout .settings-tag.is-off {
@@ -3237,6 +3275,6 @@ textarea {
   }
 
   .admin-layout .settings-tag.is-violet {
-    @apply bg-violet-50 text-violet-600;
+    @apply bg-[var(--violet-soft)] text-[var(--accent-violet)];
   }
 }
