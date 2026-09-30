@@ -348,9 +348,9 @@ const LoadingBlock = ({ className }: { className?: string }) => (
 // ============================================================================
 
 const HEALTH_CONFIG: Record<HealthStatus, { bg: string; text: string; label: string }> = {
-  healthy: { bg: "bg-emerald-100", text: "text-emerald-700", label: "运行正常" },
-  attention: { bg: "bg-amber-100", text: "text-amber-700", label: "需要关注" },
-  critical: { bg: "bg-red-100", text: "text-red-700", label: "风险偏高" },
+  healthy: { bg: "bg-[var(--success-soft-strong)]", text: "text-[var(--success-text-strong)]", label: "运行正常" },
+  attention: { bg: "bg-[var(--warning-soft-strong)]", text: "text-[var(--warning-text-strong)]", label: "需要关注" },
+  critical: { bg: "bg-[var(--error-soft-strong)]", text: "text-[var(--error-text-strong)]", label: "风险偏高" },
   unknown: { bg: "bg-[var(--bg-tertiary)]", text: "text-[var(--text-tertiary)]", label: "暂无数据" }
 };
 

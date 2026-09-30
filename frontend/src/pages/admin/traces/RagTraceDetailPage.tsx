@@ -298,8 +298,8 @@ function NodeDetailCard({
               <div className="flex items-start gap-2 p-3 bg-[var(--error-soft)] border border-[var(--error-border)] rounded-lg">
                 <AlertTriangle className="h-4 w-4 text-[var(--error)] shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <p className="font-medium text-red-800 mb-1">错误信息</p>
-                  <p className="text-red-700 whitespace-pre-wrap break-all">{node.errorMessage}</p>
+                  <p className="font-medium text-[var(--error-text-deep)] mb-1">错误信息</p>
+                  <p className="text-[var(--error-text-strong)] whitespace-pre-wrap break-all">{node.errorMessage}</p>
                 </div>
               </div>
           )}
@@ -668,7 +668,7 @@ export function RagTraceDetailPage() {
             <div className="flex items-start gap-3 p-3 bg-[var(--error-soft)] border border-[var(--error-border)] rounded-lg">
               <AlertTriangle className="h-4 w-4 text-[var(--error)] shrink-0 mt-0.5" />
               <div className="text-sm">
-                <span className="font-medium text-red-800">执行出错：</span>
+                <span className="font-medium text-[var(--error-text-deep)]">执行出错：</span>
                 <span className="text-[var(--error-text)] ml-1">{selectedRun.errorMessage}</span>
               </div>
             </div>

@@ -93,6 +93,16 @@
   --info-bright: #a5f3fc;    /* cyan-200    */
   --info-text: #0e7490;      /* cyan-700    */
 
+  /* 状态色层级 - 扩展档：页面还用到 100 / 300 / 700 / 800 四档，补齐后无缺口 */
+  --success-soft-strong: #d1fae5; /* emerald-100 */
+  --success-text-strong: #047857; /* emerald-700 */
+  --warning-soft-strong: #fef3c7; /* amber-100   */
+  --warning-text-strong: #b45309; /* amber-700   */
+  --error-soft-strong: #fee2e2;   /* red-100     */
+  --error-faint: #fca5a5;         /* red-300     */
+  --error-text-strong: #b91c1c;   /* red-700     */
+  --error-text-deep: #991b1b;     /* red-800     */
+
   /* ===== 新设计系统 - 危险操作 =====
      与 --error-* 分开：--error-* 是"出错了"的状态色（正红 red 族），
      --danger-* 是"会毁掉东西的按钮"（玫瑰红 rose 族，如退出登录/删除）。
@@ -237,6 +247,16 @@
   --info-border: #155e75;
   --info-bright: #22d3ee;
   --info-text: #22d3ee;
+
+  /* 状态色扩展档：暗底上 100 档转深、700/800 档转亮（与既有方向一致） */
+  --success-soft-strong: #123528;
+  --success-text-strong: #6ee7b7;
+  --warning-soft-strong: #3a2a0a;
+  --warning-text-strong: #fcd34d;
+  --error-soft-strong: #3a1416;
+  --error-faint: #fca5a5;
+  --error-text-strong: #fca5a5;
+  --error-text-deep: #fecaca;
 
   /* 危险操作：与状态色同一方向（衬底转深、文字转亮） */
   --danger-soft: #2b1019;

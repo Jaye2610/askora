@@ -845,7 +845,7 @@ export function KnowledgeDocumentsPage() {
                             </button>
                             {doc.chunksEdited ? (
                               <span
-                                className="shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-px text-[10px] font-medium text-amber-700 ring-1 ring-[var(--warning-border)]"
+                                className="shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-px text-[10px] font-medium text-[var(--warning-text-strong)] ring-1 ring-[var(--warning-border)]"
                                 title="该文档存在被手工编辑过的分块，重新分块会丢失"
                               >
                                 已编辑
@@ -1061,7 +1061,7 @@ export function KnowledgeDocumentsPage() {
                     <div>文档 [{chunkTarget?.docName}] 已有 {chunkTarget.chunkCount} 个分块记录。</div>
                     <div className="font-medium text-[var(--warning-text)]">重新分块会清空原有 Chunk 记录及向量数据。</div>
                     {chunkTarget?.chunksEdited ? (
-                      <div className="rounded-md border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-red-700">
+                      <div className="rounded-md border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-[var(--error-text-strong)]">
                         <span className="font-semibold">注意：</span>
                         该文档存在被手工编辑过的分块，重新分块会从源文件重新生成，
                         <span className="font-semibold">所有手动修改将丢失且无法恢复</span>。
@@ -1302,9 +1302,9 @@ export function KnowledgeDocumentsPage() {
                     <div className="flex items-center gap-3">
                       <span className={cn(
                         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
-                        log.status === "success" ? "bg-[var(--success-soft)] text-emerald-700" :
-                        log.status === "failed" ? "bg-[var(--error-soft)] text-red-700" :
-                        "bg-[var(--warning-soft)] text-amber-700"
+                        log.status === "success" ? "bg-[var(--success-soft)] text-[var(--success-text-strong)]" :
+                        log.status === "failed" ? "bg-[var(--error-soft)] text-[var(--error-text-strong)]" :
+                        "bg-[var(--warning-soft)] text-[var(--warning-text-strong)]"
                       )}>
                         {formatLogStatus(log.status)}
                       </span>
@@ -1405,7 +1405,7 @@ export function KnowledgeDocumentsPage() {
                 type="button"
                 onClick={() => setBatchDeleteOpen(true)}
                 disabled={batchOperating}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[var(--error-bright)] transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-red-300 disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[var(--error-bright)] transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-[var(--error-faint)] disabled:opacity-50"
               >
                 <Trash2 className="h-4 w-4" />
                 删除

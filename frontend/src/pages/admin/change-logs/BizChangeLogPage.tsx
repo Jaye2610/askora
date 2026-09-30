@@ -215,7 +215,7 @@ function JsonScalar({ value }: { value: unknown }) {
     return <span className="italic text-[var(--text-tertiary)]">null</span>;
   }
   if (typeof value === "string") {
-    return <span className="whitespace-pre-wrap break-all text-emerald-700">{value === "" ? '""' : value}</span>;
+    return <span className="whitespace-pre-wrap break-all text-[var(--success-text-strong)]">{value === "" ? '""' : value}</span>;
   }
   if (typeof value === "number") {
     return <span className="text-blue-600">{value}</span>;
@@ -749,7 +749,7 @@ export function BizChangeLogPage() {
           ) : (
             <div className="space-y-4">
               {detail && detail.success === false ? (
-                <div className="flex items-start gap-2 rounded-lg border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-red-700">
+                <div className="flex items-start gap-2 rounded-lg border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-[var(--error-text-strong)]">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
                   <span className="min-w-0 break-words">{detail.errorMessage || "操作失败"}</span>
                 </div>

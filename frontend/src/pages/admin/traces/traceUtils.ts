@@ -95,9 +95,9 @@ export const nodeTypeChipClass = (type?: string | null): string => {
   const normalized = (type || "").trim().toUpperCase();
   if (normalized === "ROOT") return "bg-indigo-100 text-indigo-700";
   if (normalized === "USER_TTFT") return "bg-[var(--danger-soft-hover)] text-[var(--danger-text-strong)]";
-  if (normalized === "LLM_TTFT") return "bg-emerald-100 text-emerald-700";
+  if (normalized === "LLM_TTFT") return "bg-[var(--success-soft-strong)] text-[var(--success-text-strong)]";
   if (normalized === "LLM_PROVIDER") return "bg-orange-100 text-orange-700";
-  if (normalized === "LLM_ROUTING") return "bg-amber-100 text-amber-700";
+  if (normalized === "LLM_ROUTING") return "bg-[var(--warning-soft-strong)] text-[var(--warning-text-strong)]";
   if (normalized === "GUIDANCE") return "bg-violet-100 text-violet-700";
   if (normalized === "INTENT") return "bg-sky-100 text-sky-700";
   if (normalized === "REWRITE") return "bg-teal-100 text-teal-700";
