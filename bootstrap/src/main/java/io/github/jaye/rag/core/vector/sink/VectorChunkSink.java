@@ -1,0 +1,69 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package io.github.jaye.ai.askora.rag.core.vector.sink;
+
+import io.github.jaye.ai.askora.core.chunk.model.EmbeddedChunk;
+import io.github.jaye.ai.askora.core.ingest.DocumentRef;
+import io.github.jaye.ai.askora.core.ingest.VectorTarget;
+import io.github.jaye.ai.askora.core.ingest.sink.ChunkSink;
+import io.github.jaye.ai.askora.rag.core.vector.VectorStoreService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+/**
+ * 向量落点：委托既有的向量写入服务
+ * <p>
+ * 注入的 {@link VectorStoreService} 是一条装饰器链（图谱同步 → 关键词同步 → PG / Milvus），未启用的
+ * 后端不注册装饰器；要把关键词或图谱从向量写入的副作用提升为一等落点，各加一个 {@link ChunkSink}
+ * bean、删掉对应装饰器即可，内核与写入器都不用改
+ */
+@Component
+@RequiredArgsConstructor
+@Order(Ordered.LOWEST_PRECEDENCE)
+public class VectorChunkSink implements ChunkSink {
+
+    private final VectorStoreService vectorStoreService;
+
+    /**
+     * 整篇文档替换式写入：先删旧向量再补新向量
+     * <p>
+     * 「先删后建」的顺序是特意保持的——下游装饰器链的图谱同步正是依赖该顺序来构成 upsert 语义，
+     * 因此这里不对外暴露中间过程，调用方看到的只是「整篇文档的向量被替换」这一个结果。
+     */
+    @Override
+    public void replaceDocument(VectorTarget target, DocumentRef doc, List<EmbeddedChunk> chunks) {
+        // 先删后建：装饰器链的图谱同步正是依赖这个顺序构成 upsert 语义，
+        // 顺序留在实现内部，不暴露给调用方
+        vectorStoreService.deleteDocumentVectors(target.partition(), doc.docId());
+        if (!chunks.isEmpty()) {
+            vectorStoreService.indexDocumentChunks(target.partition(), doc.docId(), chunks);
+        }
+    }
+
+    /**
+     * 删除整篇文档的向量：按分区与文档 ID 清理对应向量，幂等（无残留时无需处理）
+     */
+    @Override
+    public void deleteDocument(VectorTarget target, DocumentRef doc) {
+        vectorStoreService.deleteDocumentVectors(target.partition(), doc.docId());
+    }
+}
