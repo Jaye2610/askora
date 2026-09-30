@@ -65,7 +65,7 @@ const STATUS_COLORS: Record<StatusType, { dot: string; bar: string }> = {
   success: { dot: "bg-emerald-500", bar: "bg-emerald-400" },
   failed: { dot: "bg-red-500", bar: "bg-red-400" },
   running: { dot: "bg-amber-500", bar: "bg-amber-400" },
-  default: { dot: "bg-slate-300", bar: "bg-slate-300" }
+  default: { dot: "bg-[var(--bg-hover)]", bar: "bg-[var(--bg-hover)]" }
 };
 
 const getStatusColors = (status?: string | null) => {
@@ -87,7 +87,7 @@ function MetricItem({
   variant?: "default" | "success" | "error" | "warning" | "primary";
 }) {
   const styles = {
-    default: "text-slate-600",
+    default: "text-[var(--text-secondary)]",
     success: "text-emerald-600",
     error: "text-red-600",
     warning: "text-amber-600",
@@ -98,7 +98,7 @@ function MetricItem({
       <div className="flex items-center gap-2 px-4 py-2">
         <Icon className={cn("h-4 w-4", styles[variant])} />
         <span className={cn("text-lg font-semibold", styles[variant])}>{value}</span>
-        <span className="text-xs text-slate-500">{label}</span>
+        <span className="text-xs text-[var(--text-tertiary)]">{label}</span>
       </div>
   );
 }
@@ -106,15 +106,15 @@ function MetricItem({
 function TimeScale({ totalMs }: { totalMs: number }) {
   const ticks = [0, 25, 50, 75, 100];
   return (
-      <div className="relative h-6 border-b border-slate-200">
+      <div className="relative h-6 border-b border-[var(--border-default)]">
         {ticks.map((percent) => (
             <div
                 key={percent}
                 className="absolute top-0 bottom-0 flex flex-col items-center"
                 style={{ left: `${percent}%`, transform: "translateX(-50%)" }}
             >
-              <div className="w-px h-2 bg-slate-300" />
-              <span className="text-[10px] text-slate-400 mt-0.5">
+              <div className="w-px h-2 bg-[var(--bg-hover)]" />
+              <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">
             {formatDuration((totalMs * percent) / 100)}
           </span>
             </div>
@@ -155,7 +155,7 @@ function WaterfallRow({
           onClick={onSelect}
           className={cn(
               "grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 py-2.5 transition-colors group",
-              clickable && "cursor-pointer hover:bg-slate-50/80",
+              clickable && "cursor-pointer hover:bg-[color-mix(in_srgb,var(--bg-secondary)_80%,transparent)]",
               isRoot && "bg-indigo-50/40 border-b border-indigo-100",
               isTopSlowest && !isSelected && !isRoot && "bg-amber-50/40",
               isSelected && "bg-blue-50/60 ring-1 ring-inset ring-blue-200"
@@ -170,7 +170,7 @@ function WaterfallRow({
                       <span
                           key={idx}
                           className={cn(
-                              "w-4 border-slate-200",
+                              "w-4 border-[var(--border-default)]",
                               "border-l",
                               isLast && "border-b"
                           )}
@@ -187,7 +187,7 @@ function WaterfallRow({
           <span
               className={cn(
                   "truncate",
-                  isRoot ? "text-sm font-semibold text-indigo-900" : "text-sm text-slate-700"
+                  isRoot ? "text-sm font-semibold text-indigo-900" : "text-sm text-[var(--text-secondary)]"
               )}
               title={nodeDisplayName}
           >
@@ -208,11 +208,11 @@ function WaterfallRow({
         </div>
 
         <div className="flex items-center">
-          <div className="relative w-full h-6 bg-slate-50 rounded overflow-hidden">
+          <div className="relative w-full h-6 bg-[var(--bg-secondary)] rounded overflow-hidden">
             {[25, 50, 75].map(p => (
                 <div
                     key={p}
-                    className="absolute top-0 bottom-0 w-px bg-slate-200"
+                    className="absolute top-0 bottom-0 w-px bg-[var(--bg-hover)]"
                     style={{ left: `${p}%` }}
                 />
             ))}
@@ -233,10 +233,10 @@ function WaterfallRow({
         </div>
 
         <div className="text-right">
-          <p className="text-sm font-medium text-slate-700">
+          <p className="text-sm font-medium text-[var(--text-secondary)]">
             {formatDuration(node.resolvedDurationMs)}
           </p>
-          <p className="text-[10px] text-slate-400">
+          <p className="text-[10px] text-[var(--text-tertiary)]">
             @{formatDuration(node.offsetMs)}
           </p>
         </div>
@@ -260,7 +260,7 @@ function NodeDetailCard({
         <CardHeader className="py-3 px-4">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
-              <CardTitle className="text-sm font-medium text-slate-700 truncate" title={displayName}>
+              <CardTitle className="text-sm font-medium text-[var(--text-secondary)] truncate" title={displayName}>
                 {displayName}
               </CardTitle>
               <Badge variant={statusBadgeVariant(node.status)} className="text-xs">
@@ -277,7 +277,7 @@ function NodeDetailCard({
                 variant="ghost"
                 size="sm"
                 onClick={onClose}
-                className="h-7 px-2 text-slate-500 hover:text-slate-800"
+                className="h-7 px-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -305,8 +305,8 @@ function NodeDetailCard({
           )}
           {node.extraData && (
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">额外数据</p>
-                <pre className="text-xs bg-slate-50 border border-slate-200 rounded p-2 overflow-x-auto whitespace-pre-wrap break-all text-slate-700">
+                <p className="text-xs font-medium text-[var(--text-tertiary)] mb-1">额外数据</p>
+                <pre className="text-xs bg-[var(--bg-secondary)] border border-[var(--border-default)] rounded p-2 overflow-x-auto whitespace-pre-wrap break-all text-[var(--text-secondary)]">
                   {tryPrettyJson(node.extraData)}
                 </pre>
               </div>
@@ -333,10 +333,10 @@ function DetailField({
       ? "text-red-600 font-medium"
       : highlight === "primary"
           ? "text-blue-600 font-medium"
-          : "text-slate-700";
+          : "text-[var(--text-secondary)]";
   return (
       <div className="flex items-center gap-2 min-w-0">
-        <span className="text-slate-500 shrink-0">{label}</span>
+        <span className="text-[var(--text-tertiary)] shrink-0">{label}</span>
         <span
             className={cn(
                 "truncate",
@@ -350,7 +350,7 @@ function DetailField({
           {value}
         </span>
         {copyable && (
-            <Copy className="h-3 w-3 text-slate-300 shrink-0" />
+            <Copy className="h-3 w-3 text-[var(--text-muted)] shrink-0" />
         )}
       </div>
   );
@@ -550,7 +550,7 @@ export function RagTraceDetailPage() {
   if (detailLoading) {
     return (
         <div className="min-h-[400px] flex items-center justify-center">
-          <div className="flex flex-col items-center gap-3 text-slate-500">
+          <div className="flex flex-col items-center gap-3 text-[var(--text-tertiary)]">
             <Loader2 className="h-8 w-8 animate-spin" />
             <p>加载链路详情中...</p>
           </div>
@@ -563,17 +563,17 @@ export function RagTraceDetailPage() {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-sm">
-              <Link to="/admin/traces" className="text-slate-500 hover:text-slate-700">
+              <Link to="/admin/traces" className="text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]">
                 链路追踪
               </Link>
-              <span className="text-slate-300">/</span>
-              <span className="text-slate-400">详情</span>
+              <span className="text-[var(--text-muted)]">/</span>
+              <span className="text-[var(--text-tertiary)]">详情</span>
             </div>
             <Button
                 asChild
                 variant="outline"
                 size="sm"
-                className="text-slate-600 hover:text-slate-800"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <Link to="/admin/traces">
                 <ArrowLeft className="mr-1.5 h-4 w-4" />
@@ -582,8 +582,8 @@ export function RagTraceDetailPage() {
             </Button>
           </div>
           <div className="min-h-[300px] flex items-center justify-center">
-            <div className="text-center text-slate-500">
-              <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+            <div className="text-center text-[var(--text-tertiary)]">
+              <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-[var(--text-muted)]" />
               <p>{!traceId ? "缺少 Trace Id" : "暂无数据"}</p>
             </div>
           </div>
@@ -599,14 +599,14 @@ export function RagTraceDetailPage() {
             <div className="flex items-center gap-1.5 text-sm">
               <Link
                   to="/admin/traces"
-                  className="text-slate-500 hover:text-slate-700 transition-colors"
+                  className="text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors"
               >
                 RAG 链路列表
               </Link>
-              <span className="text-slate-300">/</span>
+              <span className="text-[var(--text-muted)]">/</span>
             </div>
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-semibold text-slate-900">
+              <h1 className="text-lg font-semibold text-[var(--text-primary)]">
                 {selectedRun.traceName || "未命名链路"}
               </h1>
               <Badge variant={statusBadgeVariant(selectedRun.status)} className="text-xs">
@@ -621,7 +621,7 @@ export function RagTraceDetailPage() {
                 asChild
                 variant="outline"
                 size="sm"
-                className="text-slate-600 hover:text-slate-800"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <Link to="/admin/traces">
                 <ArrowLeft className="mr-1.5 h-4 w-4" />
@@ -631,7 +631,7 @@ export function RagTraceDetailPage() {
             <Button
                 variant="outline"
                 size="sm"
-                className="text-slate-600 hover:text-slate-800"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 onClick={() => loadDetail(traceId)}
                 disabled={detailLoading}
             >
@@ -642,9 +642,9 @@ export function RagTraceDetailPage() {
         </div>
 
         {/* 元信息 */}
-        <div className="flex items-center gap-4 text-xs text-slate-500">
+        <div className="flex items-center gap-4 text-xs text-[var(--text-tertiary)]">
         <span
-            className="font-mono cursor-pointer hover:text-slate-700 flex items-center gap-1 transition-colors"
+            className="font-mono cursor-pointer hover:text-[var(--text-secondary)] flex items-center gap-1 transition-colors"
             onClick={() => copyToClipboard(traceId, "Trace Id")}
             title="点击复制 Trace Id"
         >
@@ -675,7 +675,7 @@ export function RagTraceDetailPage() {
         )}
 
         {/* 指标条 */}
-        <div className="flex items-center bg-slate-50 rounded-lg border border-slate-200 divide-x divide-slate-200">
+        <div className="flex items-center bg-[var(--bg-secondary)] rounded-lg border border-[var(--border-default)] divide-x divide-[var(--border-default)]">
           <MetricItem
               icon={Clock}
               label="总耗时"
@@ -726,23 +726,23 @@ export function RagTraceDetailPage() {
         <Card>
           <CardHeader className="py-3 px-4">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-slate-700">
+              <CardTitle className="text-sm font-medium text-[var(--text-secondary)]">
                 执行时序
               </CardTitle>
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-[var(--text-tertiary)]">
               窗口 {formatDuration(timeline.totalWindowMs)}
             </span>
             </div>
           </CardHeader>
           <CardContent className="p-0">
             {timeline.nodes.length === 0 ? (
-                <div className="py-16 text-center text-slate-400">
+                <div className="py-16 text-center text-[var(--text-tertiary)]">
                   <Activity className="h-10 w-10 mx-auto mb-3 opacity-50" />
                   <p>暂无节点记录</p>
                 </div>
             ) : (
                 <div>
-                  <div className="grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 py-2 text-xs font-medium text-slate-500 bg-slate-50 border-y border-slate-100">
+                  <div className="grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 py-2 text-xs font-medium text-[var(--text-tertiary)] bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
                     <span>节点</span>
                     <span>类型</span>
                     <span>时间线</span>
@@ -756,7 +756,7 @@ export function RagTraceDetailPage() {
                     <div />
                   </div>
 
-                  <div className="divide-y divide-slate-50">
+                  <div className="divide-y divide-[var(--border-light)]">
                     {timeline.nodes.map((node) => {
                       const nodeDisplayName = prettifyNodeName(node.nodeName || node.methodName || node.nodeId);
                       const nodeStatus = normalizeStatus(node.status);

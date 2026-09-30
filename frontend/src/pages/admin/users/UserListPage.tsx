@@ -210,12 +210,12 @@ export function UserListPage() {
                           <Avatar
                             name={user.username || "用户"}
                             src={user.avatar?.trim() || undefined}
-                            className="h-9 w-9 border-slate-200 bg-indigo-50 text-xs font-semibold text-indigo-600"
+                            className="h-9 w-9 border-[var(--border-default)] bg-indigo-50 text-xs font-semibold text-indigo-600"
                           />
                           <div>
-                            <div className="font-medium text-slate-900">{user.username || "-"}</div>
+                            <div className="font-medium text-[var(--text-primary)]">{user.username || "-"}</div>
                             {isProtected ? (
-                              <div className="text-xs text-slate-400">默认管理员</div>
+                              <div className="text-xs text-[var(--text-tertiary)]">默认管理员</div>
                             ) : null}
                           </div>
                         </div>
@@ -340,7 +340,7 @@ export function UserListPage() {
                     </div>
                     <button
                       type="button"
-                      className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-500 hover:bg-slate-200"
+                      className="rounded-md bg-[var(--bg-tertiary)] px-2 py-1 text-xs text-[var(--text-tertiary)] hover:bg-[var(--bg-hover)]"
                       onClick={() => setForm((prev) => ({ ...prev, avatar: "" }))}
                     >
                       清除
@@ -348,7 +348,7 @@ export function UserListPage() {
                   </>
                 ) : null}
               </div>
-              <p className="text-xs text-slate-400">从预设头像中选择</p>
+              <p className="text-xs text-[var(--text-tertiary)]">从预设头像中选择</p>
             </div>
           </div>
           <DialogFooter>
@@ -373,7 +373,7 @@ export function UserListPage() {
       </Dialog>
 
       {pageData ? (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--text-tertiary)]">
           <span>共 {pageData.total} 条</span>
           <div className="flex items-center gap-2">
             <Button

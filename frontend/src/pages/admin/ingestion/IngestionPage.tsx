@@ -680,7 +680,7 @@ interface PaginationProps {
 function Pagination({ current, pages, total, onPrev, onNext }: PaginationProps) {
   if (total === 0) return null;
   return (
-    <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+    <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--text-tertiary)]">
       <span>共 {total} 条</span>
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={onPrev} disabled={current <= 1}>

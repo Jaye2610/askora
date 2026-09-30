@@ -84,7 +84,7 @@ export function KnowledgeBaseMultiSelect({
             "flex min-h-10 w-full flex-wrap items-center gap-1.5 rounded-md border border-input bg-background px-2.5 py-1.5 text-sm ring-offset-background transition-colors",
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             "data-[state=open]:ring-2 data-[state=open]:ring-ring data-[state=open]:ring-offset-2",
-            disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:border-slate-300"
+            disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:border-[var(--border-focus)]"
           )}
         >
           {selectedItems.length === 0 ? (
@@ -159,7 +159,7 @@ export function KnowledgeBaseMultiSelect({
               </button>
               <button
                 type="button"
-                className="font-medium text-slate-500 transition-colors hover:text-slate-700 disabled:opacity-40"
+                className="font-medium text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)] disabled:opacity-40"
                 disabled={value.length === 0}
                 onClick={clearAll}
               >
@@ -199,7 +199,7 @@ export function KnowledgeBaseMultiSelect({
                   </span>
                 </div>
                 {typeof knowledgeBase.documentCount === "number" ? (
-                  <span className="shrink-0 self-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">
+                  <span className="shrink-0 self-center rounded-full bg-[var(--bg-tertiary)] px-2 py-0.5 text-[11px] text-[var(--text-tertiary)]">
                     {knowledgeBase.documentCount} 文档
                   </span>
                 ) : null}

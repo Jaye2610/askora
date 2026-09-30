@@ -318,7 +318,7 @@ const FILE_TYPE_MAP: Record<string, { icon: typeof FileText; color: string }> = 
   md:          { icon: FileText, color: "text-blue-500" },
   doc:         { icon: FileText, color: "text-blue-600" },
   docx:        { icon: FileText, color: "text-blue-600" },
-  txt:         { icon: FileText, color: "text-slate-500" },
+  txt:         { icon: FileText, color: "text-[var(--text-tertiary)]" },
   xlsx:        { icon: FileSpreadsheet, color: "text-green-600" },
   xls:         { icon: FileSpreadsheet, color: "text-green-600" },
   csv:         { icon: FileSpreadsheet, color: "text-emerald-500" },
@@ -340,7 +340,7 @@ const renderFileTypeIcon = (fileType?: string | null, sourceType?: string | null
   if (sourceType?.toLowerCase() === "url") {
     return <LinkIcon className="h-4 w-4 shrink-0 text-purple-500" />;
   }
-  return <FileText className="h-4 w-4 shrink-0 text-slate-400" />;
+  return <FileText className="h-4 w-4 shrink-0 text-[var(--text-tertiary)]" />;
 };
 
 export function KnowledgeDocumentsPage() {
@@ -837,7 +837,7 @@ export function KnowledgeDocumentsPage() {
                           <div className="flex items-center gap-1.5 min-w-0">
                             <button
                               type="button"
-                              className="block truncate min-w-0 text-left font-medium text-slate-900 transition-colors hover:text-indigo-600 hover:underline underline-offset-4"
+                              className="block truncate min-w-0 text-left font-medium text-[var(--text-primary)] transition-colors hover:text-indigo-600 hover:underline underline-offset-4"
                               title={doc.docName || ""}
                               onClick={() => navigate(`/admin/knowledge/${kbId}/docs/${doc.id}`)}
                             >
@@ -880,7 +880,7 @@ export function KnowledgeDocumentsPage() {
                             onClick={() => handleToggleEnabled(doc)}
                             className={cn(
                               "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                              enabled ? "bg-indigo-600" : "bg-slate-200"
+                              enabled ? "bg-indigo-600" : "bg-[var(--bg-hover)]"
                             )}
                           >
                             <span
@@ -974,7 +974,7 @@ export function KnowledgeDocumentsPage() {
           )}
 
           {pageData ? (
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--text-tertiary)]">
               <span>共 {pageData.total} 条</span>
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm" onClick={() => setCurrent((prev) => Math.max(1, prev - 1))} disabled={pageData.current <= 1}>
@@ -1201,7 +1201,7 @@ export function KnowledgeDocumentsPage() {
                       onClick={handleDetailNoChunkToggle}
                       className={cn(
                         "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                        detailNoChunk ? "bg-indigo-600" : "bg-slate-200"
+                        detailNoChunk ? "bg-indigo-600" : "bg-[var(--bg-hover)]"
                       )}
                     >
                       <span
@@ -1320,26 +1320,26 @@ export function KnowledgeDocumentsPage() {
                   {/* 耗时指标卡片 */}
                   <div className={cn("grid gap-3", isPipelineLog ? "grid-cols-2 md:grid-cols-3" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4")}>
                     {!isPipelineLog && (
-                      <div className="rounded-lg border bg-slate-50/50 p-3">
+                      <div className="rounded-lg border bg-[color-mix(in_srgb,var(--bg-secondary)_50%,transparent)] p-3">
                         <div className="text-xs text-muted-foreground mb-1">文本提取</div>
                         <div className="text-lg font-semibold tabular-nums">{formatDuration(log.extractDuration)}</div>
                       </div>
                     )}
-                    <div className="rounded-lg border bg-slate-50/50 p-3">
+                    <div className="rounded-lg border bg-[color-mix(in_srgb,var(--bg-secondary)_50%,transparent)] p-3">
                       <div className="text-xs text-muted-foreground mb-1">{chunkLabel}</div>
                       <div className="text-lg font-semibold tabular-nums">{formatDuration(log.chunkDuration)}</div>
                     </div>
                     {!isPipelineLog && (
-                      <div className="rounded-lg border bg-slate-50/50 p-3">
+                      <div className="rounded-lg border bg-[color-mix(in_srgb,var(--bg-secondary)_50%,transparent)] p-3">
                         <div className="text-xs text-muted-foreground mb-1">向量化</div>
                         <div className="text-lg font-semibold tabular-nums">{formatDuration(log.embedDuration)}</div>
                       </div>
                     )}
-                    <div className="rounded-lg border bg-slate-50/50 p-3">
+                    <div className="rounded-lg border bg-[color-mix(in_srgb,var(--bg-secondary)_50%,transparent)] p-3">
                       <div className="text-xs text-muted-foreground mb-1">持久化</div>
                       <div className="text-lg font-semibold tabular-nums">{formatDuration(log.persistDuration)}</div>
                     </div>
-                    <div className="rounded-lg border bg-slate-50/50 p-3">
+                    <div className="rounded-lg border bg-[color-mix(in_srgb,var(--bg-secondary)_50%,transparent)] p-3">
                       <div className="text-xs text-muted-foreground mb-1">其他</div>
                       <div className="text-lg font-semibold tabular-nums">{formatDuration(log.otherDuration)}</div>
                     </div>
@@ -1350,11 +1350,11 @@ export function KnowledgeDocumentsPage() {
                   </div>
 
                   {/* 执行时间 */}
-                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <div className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
                     <span>执行时间</span>
-                    <span className="tabular-nums text-slate-700">{formatFullDateTime(log.startTime)}</span>
+                    <span className="tabular-nums text-[var(--text-secondary)]">{formatFullDateTime(log.startTime)}</span>
                     <span>~</span>
-                    <span className="tabular-nums text-slate-700">{log.endTime ? formatFullDateTime(log.endTime) : "进行中"}</span>
+                    <span className="tabular-nums text-[var(--text-secondary)]">{log.endTime ? formatFullDateTime(log.endTime) : "进行中"}</span>
                   </div>
 
                   {/* 错误信息 */}
@@ -1916,7 +1916,7 @@ function UploadDialog({ open, onOpenChange, onSubmit }: UploadDialogProps) {
                       onClick={handleNoChunkToggle}
                       className={cn(
                         "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                        noChunk ? "bg-blue-600" : "bg-slate-200"
+                        noChunk ? "bg-blue-600" : "bg-[var(--bg-hover)]"
                       )}
                     >
                       <span

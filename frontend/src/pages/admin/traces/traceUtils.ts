@@ -102,9 +102,9 @@ export const nodeTypeChipClass = (type?: string | null): string => {
   if (normalized === "INTENT") return "bg-sky-100 text-sky-700";
   if (normalized === "REWRITE") return "bg-teal-100 text-teal-700";
   if (normalized === "RETRIEVE" || normalized === "RAG_NODE") return "bg-blue-100 text-blue-700";
-  if (normalized === "TITLE_GEN") return "bg-stone-100 text-stone-700";
+  if (normalized === "TITLE_GEN") return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
   if (normalized.startsWith("MCP")) return "bg-cyan-100 text-cyan-700";
-  return "bg-slate-100 text-slate-600";
+  return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
 };
 
 const NODE_NAME_DISPLAY: Record<string, string> = {

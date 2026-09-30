@@ -189,7 +189,7 @@ export function DocumentPreview({ docId, fileType, docName }: DocumentPreviewPro
   return (
     <div className="flex-1 overflow-y-auto">
       {head ? (
-        <pre className="mx-6 mt-4 overflow-auto rounded-lg border bg-slate-50 px-4 py-3 font-mono text-xs leading-relaxed text-slate-600">
+        <pre className="mx-6 mt-4 overflow-auto rounded-lg border bg-[var(--bg-secondary)] px-4 py-3 font-mono text-xs leading-relaxed text-[var(--text-secondary)]">
           {head}
         </pre>
       ) : null}

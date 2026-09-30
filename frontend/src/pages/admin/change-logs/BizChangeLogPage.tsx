@@ -58,8 +58,8 @@ const PAGE_SIZE_OPTIONS = [10, 20, 50];
 const ALL_VALUE = "__all__";
 
 const FILTER_SELECT_TRIGGER_CLASS =
-  "h-10 border-slate-200 text-sm focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=open]:border-slate-200 data-[state=open]:ring-0";
-const FILTER_INPUT_CLASS = "h-10 border-slate-200 text-sm focus-visible:border-slate-200 focus-visible:ring-0 focus-visible:ring-offset-0";
+  "h-10 border-[var(--border-default)] text-sm focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=open]:border-[var(--border-default)] data-[state=open]:ring-0";
+const FILTER_INPUT_CLASS = "h-10 border-[var(--border-default)] text-sm focus-visible:border-[var(--border-default)] focus-visible:ring-0 focus-visible:ring-offset-0";
 
 const pad2 = (value: number) => String(value).padStart(2, "0");
 
@@ -160,19 +160,19 @@ const operationBadgeClass = (operationType?: string | null) => {
     case "RUN":
       return "border-[#ffd591] bg-[#fff7e6] text-[#FA8C16]";
     default:
-      return "border-slate-200 bg-slate-50 text-slate-600";
+      return "border-[var(--border-default)] bg-[var(--bg-secondary)] text-[var(--text-secondary)]";
   }
 };
 
 function BizTypeCell({ bizType }: { bizType?: string | null }) {
-  const meta = (bizType && BIZ_TYPE_META[bizType]) || { icon: Boxes, className: "bg-slate-100 text-slate-500" };
+  const meta = (bizType && BIZ_TYPE_META[bizType]) || { icon: Boxes, className: "bg-[var(--bg-tertiary)] text-[var(--text-tertiary)]" };
   const Icon = meta.icon;
   return (
     <div className="flex items-center gap-2.5">
       <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg", meta.className)}>
         <Icon className="h-[18px] w-[18px]" />
       </span>
-      <span className="font-medium text-slate-700">{labelOf(BIZ_TYPE_OPTIONS, bizType)}</span>
+      <span className="font-medium text-[var(--text-secondary)]">{labelOf(BIZ_TYPE_OPTIONS, bizType)}</span>
     </div>
   );
 }
@@ -212,7 +212,7 @@ const isExpandable = (value: unknown): boolean =>
 // 按 JSON 值类型着色的标量渲染
 function JsonScalar({ value }: { value: unknown }) {
   if (value === null || value === undefined) {
-    return <span className="italic text-slate-400">null</span>;
+    return <span className="italic text-[var(--text-tertiary)]">null</span>;
   }
   if (typeof value === "string") {
     return <span className="whitespace-pre-wrap break-all text-emerald-700">{value === "" ? '""' : value}</span>;
@@ -223,7 +223,7 @@ function JsonScalar({ value }: { value: unknown }) {
   if (typeof value === "boolean") {
     return <span className="text-purple-600">{String(value)}</span>;
   }
-  return <span className="text-slate-700">{String(value)}</span>;
+  return <span className="text-[var(--text-secondary)]">{String(value)}</span>;
 }
 
 // 常规 JSON 树渲染，键值分明、嵌套缩进，字段里内嵌的 JSON 字符串也会递归展开
@@ -234,13 +234,13 @@ function JsonView({ data }: { data: unknown }) {
   }
   if (Array.isArray(value)) {
     if (value.length === 0) {
-      return <span className="text-slate-400">[]</span>;
+      return <span className="text-[var(--text-tertiary)]">[]</span>;
     }
     return (
-      <div className="space-y-1.5 border-l border-slate-200 pl-3">
+      <div className="space-y-1.5 border-l border-[var(--border-default)] pl-3">
         {value.map((item, index) => (
           <div key={index} className="flex gap-2">
-            <span className="shrink-0 text-slate-400">{index}</span>
+            <span className="shrink-0 text-[var(--text-tertiary)]">{index}</span>
             <div className="min-w-0 flex-1">
               <JsonView data={item} />
             </div>
@@ -251,7 +251,7 @@ function JsonView({ data }: { data: unknown }) {
   }
   const entries = Object.entries(value as Record<string, unknown>);
   if (entries.length === 0) {
-    return <span className="text-slate-400">{"{}"}</span>;
+    return <span className="text-[var(--text-tertiary)]">{"{}"}</span>;
   }
   return (
     <div className="space-y-1.5">
@@ -259,7 +259,7 @@ function JsonView({ data }: { data: unknown }) {
         const nested = isExpandable(normalizeJsonValue(val));
         return (
           <div key={key} className={nested ? "space-y-1" : "flex gap-2"}>
-            <span className="shrink-0 font-medium text-slate-500">{key}</span>
+            <span className="shrink-0 font-medium text-[var(--text-tertiary)]">{key}</span>
             <div className={nested ? "pl-3" : "min-w-0 flex-1"}>
               <JsonView data={val} />
             </div>
@@ -277,15 +277,15 @@ function ChangeDiffTable({ detail }: { detail: BizChangeLog | null }) {
   }, [detail?.changeDiff]);
 
   if (!detail) {
-    return <div className="py-8 text-center text-sm text-slate-500">请选择一条日志</div>;
+    return <div className="py-8 text-center text-sm text-[var(--text-tertiary)]">请选择一条日志</div>;
   }
 
   if (diffItems.length === 0) {
-    return <div className="py-8 text-center text-sm text-slate-500">没有字段差异</div>;
+    return <div className="py-8 text-center text-sm text-[var(--text-tertiary)]">没有字段差异</div>;
   }
 
   return (
-    <div className="max-h-[440px] overflow-auto rounded-lg border border-slate-200">
+    <div className="max-h-[440px] overflow-auto rounded-lg border border-[var(--border-default)]">
       <Table className="min-w-[760px]">
         <TableHeader>
           <TableRow>
@@ -297,7 +297,7 @@ function ChangeDiffTable({ detail }: { detail: BizChangeLog | null }) {
         <TableBody>
           {diffItems.map((item, index) => (
             <TableRow key={`${item.field || "field"}-${index}`}>
-              <TableCell className="font-mono text-xs text-slate-600">{item.field || "/"}</TableCell>
+              <TableCell className="font-mono text-xs text-[var(--text-secondary)]">{item.field || "/"}</TableCell>
               <TableCell className="max-w-[260px] break-words font-mono text-xs">
                 <JsonView data={item.before} />
               </TableCell>
@@ -333,7 +333,7 @@ function CopyButton({ value, label = "复制" }: { value: string; label?: string
       onClick={handleCopy}
       title={label}
       aria-label={label}
-      className="h-7 gap-1.5 px-2 text-xs text-slate-500 hover:text-slate-800"
+      className="h-7 gap-1.5 px-2 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
     >
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
       {copied ? "已复制" : label}
@@ -358,7 +358,7 @@ function JsonCodeBlock({ value }: { value?: string | null }) {
 
   if (!text) {
     return (
-      <div className="rounded-lg border border-dashed border-slate-200 py-12 text-center text-sm text-slate-400">
+      <div className="rounded-lg border border-dashed border-[var(--border-default)] py-12 text-center text-sm text-[var(--text-tertiary)]">
         暂无快照数据
       </div>
     );
@@ -368,9 +368,9 @@ function JsonCodeBlock({ value }: { value?: string | null }) {
   const byteSize = new Blob([text]).size;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-200 bg-[var(--bg-primary)]">
-      <div className="flex items-center justify-between border-b border-slate-200 px-3 py-1.5">
-        <span className="font-mono text-[11px] font-medium text-slate-400">
+    <div className="overflow-hidden rounded-lg border border-[var(--border-default)] bg-[var(--bg-primary)]">
+      <div className="flex items-center justify-between border-b border-[var(--border-default)] px-3 py-1.5">
+        <span className="font-mono text-[11px] font-medium text-[var(--text-tertiary)]">
           {"{}"} JSON · {lineCount} 行 · {formatBytes(byteSize)}
         </span>
         <CopyButton value={text} />
@@ -412,11 +412,11 @@ function ContextPanel({ detail }: { detail: BizChangeLog | null }) {
     ["User-Agent", detail.userAgent || "-"]
   ];
   return (
-    <div className="grid gap-2 rounded-lg border border-slate-200 p-4 text-sm">
+    <div className="grid gap-2 rounded-lg border border-[var(--border-default)] p-4 text-sm">
       {rows.map(([label, value]) => (
         <div key={label} className="grid grid-cols-[96px_1fr] gap-3">
-          <span className="text-slate-500">{label}</span>
-          <span className="min-w-0 break-words font-medium text-slate-800">{value}</span>
+          <span className="text-[var(--text-tertiary)]">{label}</span>
+          <span className="min-w-0 break-words font-medium text-[var(--text-primary)]">{value}</span>
         </div>
       ))}
     </div>
@@ -505,7 +505,7 @@ export function BizChangeLogPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-[var(--bg-primary)] p-3">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-3">
         <div className="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center">
           <Select
             value={filters.bizType || ALL_VALUE}
@@ -563,21 +563,21 @@ export function BizChangeLogPage() {
             onKeyDown={(event) => event.key === "Enter" && handleSearch()}
             placeholder="操作人"
           />
-          <div className="flex h-10 items-center rounded-md border border-slate-200 bg-[var(--bg-primary)] px-2 transition-colors focus-within:border-slate-300">
+          <div className="flex h-10 items-center rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] px-2 transition-colors focus-within:border-[var(--border-focus)]">
             <input
               type="date"
               value={filters.beginTime}
               max={filters.endTime || undefined}
               onChange={(event) => setFilters((prev) => ({ ...prev, beginTime: event.target.value }))}
-              className="w-[116px] bg-transparent px-1 text-sm text-slate-600 focus:outline-none"
+              className="w-[116px] bg-transparent px-1 text-sm text-[var(--text-secondary)] focus:outline-none"
             />
-            <span className="px-0.5 text-slate-300">~</span>
+            <span className="px-0.5 text-[var(--text-muted)]">~</span>
             <input
               type="date"
               value={filters.endTime}
               min={filters.beginTime || undefined}
               onChange={(event) => setFilters((prev) => ({ ...prev, endTime: event.target.value }))}
-              className="w-[116px] bg-transparent px-1 text-sm text-slate-600 focus:outline-none"
+              className="w-[116px] bg-transparent px-1 text-sm text-[var(--text-secondary)] focus:outline-none"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -585,7 +585,7 @@ export function BizChangeLogPage() {
               <Search className="mr-1.5 h-4 w-4" />
               查询
             </Button>
-            <Button variant="outline" className="h-10 border-slate-200 px-4" onClick={handleReset}>
+            <Button variant="outline" className="h-10 border-[var(--border-default)] px-4" onClick={handleReset}>
               重置
             </Button>
           </div>
@@ -620,34 +620,34 @@ export function BizChangeLogPage() {
               </TableHeader>
               <TableBody>
                 {records.map((item) => (
-                  <TableRow key={item.id} className="group text-[13px] hover:!bg-slate-50">
+                  <TableRow key={item.id} className="group text-[13px] hover:!bg-[var(--bg-secondary)]">
                     <TableCell>
                       <BizTypeCell bizType={item.bizType} />
                     </TableCell>
-                    <TableCell className="font-mono text-xs text-slate-600">{item.bizId}</TableCell>
+                    <TableCell className="font-mono text-xs text-[var(--text-secondary)]">{item.bizId}</TableCell>
                     <TableCell>
                       <Badge variant="outline" className={cn("font-medium", operationBadgeClass(item.operationType))}>
                         {labelOf(OPERATION_OPTIONS, item.operationType)}
                       </Badge>
                     </TableCell>
-                    <TableCell className="max-w-[320px] truncate text-slate-700" title={item.actionDesc || ""}>
+                    <TableCell className="max-w-[320px] truncate text-[var(--text-secondary)]" title={item.actionDesc || ""}>
                       {item.actionDesc || "-"}
                     </TableCell>
                     <TableCell>
-                      <span className="block truncate text-slate-700" title={item.operatorName || item.operatorId || ""}>
+                      <span className="block truncate text-[var(--text-secondary)]" title={item.operatorName || item.operatorId || ""}>
                         {item.operatorName || item.operatorId || "-"}
                       </span>
                     </TableCell>
                     <TableCell>
                       <span className="inline-flex items-center gap-1.5">
                         <span className={cn("h-1.5 w-1.5 rounded-full", item.success ? "bg-[#52C41A]" : "bg-[#F5222D]")} />
-                        <span className="text-slate-700">{item.success ? "成功" : "失败"}</span>
+                        <span className="text-[var(--text-secondary)]">{item.success ? "成功" : "失败"}</span>
                       </span>
                     </TableCell>
                     <TableCell>
                       <RelativeTime value={item.createTime} />
                     </TableCell>
-                    <TableCell className="sticky right-0 z-10 bg-[var(--bg-primary)] shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-slate-50">
+                    <TableCell className="sticky right-0 z-10 bg-[var(--bg-primary)] shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-[var(--bg-secondary)]">
                       <div className="flex items-center gap-2">
                         <Button
                           size="sm"
@@ -680,7 +680,7 @@ export function BizChangeLogPage() {
       </Card>
 
       {pageData && total > 0 ? (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--text-tertiary)]">
           <span>
             共 {total} 条，显示 {rangeStart}-{rangeEnd}
           </span>
@@ -754,7 +754,7 @@ export function BizChangeLogPage() {
                   <span className="min-w-0 break-words">{detail.errorMessage || "操作失败"}</span>
                 </div>
               ) : null}
-              <div className="inline-flex items-center gap-1 rounded-lg bg-slate-100 p-1">
+              <div className="inline-flex items-center gap-1 rounded-lg bg-[var(--bg-tertiary)] p-1">
                 {[
                   { key: "diff", label: "差异" },
                   { key: "before", label: "变更前" },
@@ -767,8 +767,8 @@ export function BizChangeLogPage() {
                     onClick={() => setDetailTab(tab.key as DetailTab)}
                     className={
                       detailTab === tab.key
-                        ? "rounded-md bg-[var(--bg-primary)] px-3 py-1.5 text-sm font-medium text-slate-900 shadow-sm"
-                        : "rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-slate-800"
+                        ? "rounded-md bg-[var(--bg-primary)] px-3 py-1.5 text-sm font-medium text-[var(--text-primary)] shadow-sm"
+                        : "rounded-md px-3 py-1.5 text-sm font-medium text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)]"
                     }
                   >
                     {tab.label}

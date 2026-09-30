@@ -324,7 +324,7 @@ const useHealthStatus = (performance: DashboardPerformance | null, overview: Das
 const DashCard = ({ children, className }: { children: ReactNode; className?: string }) => (
     <div
         className={cn(
-            "rounded-2xl border border-slate-200 bg-[var(--bg-primary)] p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]",
+            "rounded-2xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]",
             className
         )}
     >
@@ -333,14 +333,14 @@ const DashCard = ({ children, className }: { children: ReactNode; className?: st
 );
 
 const CardTitle = ({ children }: { children: ReactNode }) => (
-    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-700">
+    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--text-secondary)]">
       <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[var(--accent-violet)]" aria-hidden="true" />
       {children}
     </h3>
 );
 
 const LoadingBlock = ({ className }: { className?: string }) => (
-    <div className={cn("animate-pulse rounded-lg bg-slate-100", className)} />
+    <div className={cn("animate-pulse rounded-lg bg-[var(--bg-tertiary)]", className)} />
 );
 
 // ============================================================================
@@ -351,7 +351,7 @@ const HEALTH_CONFIG: Record<HealthStatus, { bg: string; text: string; label: str
   healthy: { bg: "bg-emerald-100", text: "text-emerald-700", label: "运行正常" },
   attention: { bg: "bg-amber-100", text: "text-amber-700", label: "需要关注" },
   critical: { bg: "bg-red-100", text: "text-red-700", label: "风险偏高" },
-  unknown: { bg: "bg-slate-100", text: "text-slate-500", label: "暂无数据" }
+  unknown: { bg: "bg-[var(--bg-tertiary)]", text: "text-[var(--text-tertiary)]", label: "暂无数据" }
 };
 
 const DashboardHeader = ({
@@ -371,7 +371,7 @@ const DashboardHeader = ({
       <h1 className="admin-page-title">运营概览</h1>
 
       <div className="flex items-center gap-3">
-        <div className="inline-flex rounded-lg border border-slate-200 bg-[var(--bg-primary)] p-0.5 shadow-sm">
+        <div className="inline-flex rounded-lg border border-[var(--border-default)] bg-[var(--bg-primary)] p-0.5 shadow-sm">
           {WINDOW_OPTIONS.map((opt) => (
               <button
                   key={opt.value}
@@ -381,7 +381,7 @@ const DashboardHeader = ({
                       "rounded-md px-3 py-1.5 text-sm font-medium transition-all",
                       timeWindow === opt.value
                           ? "bg-gradient-to-r from-[#4F46E5] to-[var(--accent-violet)] text-white shadow-[0_1px_4px_rgba(99,102,241,0.4)]"
-                          : "text-slate-500 hover:text-slate-700"
+                          : "text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
                   )}
               >
                 {opt.label}
@@ -389,7 +389,7 @@ const DashboardHeader = ({
           ))}
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-slate-400">
+        <div className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
           <span>{formatLastUpdated(lastUpdated)}</span>
         </div>
@@ -399,7 +399,7 @@ const DashboardHeader = ({
             size="icon"
             onClick={onRefresh}
             disabled={loading}
-            className="h-9 w-9 rounded-lg border-slate-200 bg-[var(--bg-primary)] text-slate-500 hover:text-slate-700"
+            className="h-9 w-9 rounded-lg border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
         >
           <RefreshCw className={cn("h-4 w-4", loading && "animate-spin")} />
         </Button>
@@ -431,11 +431,11 @@ const KPICardItem = ({ value, label, change, icon, iconBg, iconColor }: KPICardP
           : "text-red-500";
 
   return (
-      <div className="rounded-xl border border-slate-200/80 bg-[var(--bg-primary)] p-4">
+      <div className="rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-[var(--bg-primary)] p-4">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-2xl font-bold tracking-tight text-slate-900">{value}</p>
-            <p className="mt-1 text-sm text-slate-500">{label}</p>
+            <p className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">{value}</p>
+            <p className="mt-1 text-sm text-[var(--text-tertiary)]">{label}</p>
           </div>
           <div
               className="flex h-10 w-10 items-center justify-center rounded-xl shadow-sm"
@@ -457,10 +457,10 @@ const KPICardItem = ({ value, label, change, icon, iconBg, iconColor }: KPICardP
               {change!.value > 0 ? "+" : ""}
                   {change!.value.toFixed(1)}%
             </span>
-                <span className="text-slate-400">较上周期</span>
+                <span className="text-[var(--text-tertiary)]">较上周期</span>
               </>
           ) : (
-              <span className="text-slate-400">--</span>
+              <span className="text-[var(--text-tertiary)]">--</span>
           )}
         </div>
       </div>
@@ -695,14 +695,14 @@ const SimpleAreaChart = ({
             }}
         >
           {yTicks.map((tick, i) => (
-              <span key={i} className="pr-1 text-right text-[10px] leading-none text-slate-400">
+              <span key={i} className="pr-1 text-right text-[10px] leading-none text-[var(--text-tertiary)]">
             {formatCompactNumber(tick)}
           </span>
           ))}
         </div>
 
         {/* Y轴标题 */}
-        <div className="absolute left-0 top-0 text-[10px] text-slate-400">{valueLabel}</div>
+        <div className="absolute left-0 top-0 text-[10px] text-[var(--text-tertiary)]">{valueLabel}</div>
 
         {/* 图表区域 */}
         <div
@@ -721,7 +721,7 @@ const SimpleAreaChart = ({
             {yTicks.map((_, i) => (
                 <div
                     key={i}
-                    className="absolute left-0 right-0 border-t border-dashed border-slate-100"
+                    className="absolute left-0 right-0 border-t border-dashed border-[var(--border-light)]"
                     style={{ top: `${(i / (yTicks.length - 1)) * 100}%` }}
                 />
             ))}
@@ -754,7 +754,7 @@ const SimpleAreaChart = ({
               <>
                 {/* 垂直指示线 */}
                 <div
-                    className="pointer-events-none absolute top-0 h-full w-px bg-slate-300"
+                    className="pointer-events-none absolute top-0 h-full w-px bg-[var(--bg-hover)]"
                     style={{ left: tooltip.x }}
                 />
                 {/* 圆点 */}
@@ -795,7 +795,7 @@ const SimpleAreaChart = ({
           {xLabels.map((item, i) => (
               <span
                   key={i}
-                  className="text-[10px] text-slate-400"
+                  className="text-[10px] text-[var(--text-tertiary)]"
                   style={{
                     position: "absolute",
                     left: `${item.position * 100}%`,
@@ -839,14 +839,14 @@ const TrafficOverviewSection = ({
   return (
       <DashCard className={cn("flex flex-col", className)}>
         <div className="mb-3">
-          <p className="text-sm font-semibold text-slate-700">流量概览</p>
+          <p className="text-sm font-semibold text-[var(--text-secondary)]">流量概览</p>
           {showChange}
         </div>
 
         {loading ? (
             <LoadingBlock className="h-full flex-1" />
         ) : chartData.length === 0 ? (
-            <div className="flex flex-1 items-center justify-center text-sm text-slate-400">
+            <div className="flex flex-1 items-center justify-center text-sm text-[var(--text-tertiary)]">
               暂无流量数据
             </div>
         ) : (
@@ -895,7 +895,7 @@ const TrendChartItem = ({
 }) => {
   if (loading) {
     return (
-        <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+        <div className="rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-4">
           <LoadingBlock className="mb-3 h-4 w-24" />
           <LoadingBlock className="h-48 w-full" />
         </div>
@@ -903,12 +903,12 @@ const TrendChartItem = ({
   }
 
   return (
-      <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
-        <div className="mb-1 flex items-center gap-1.5 text-xs font-medium text-slate-500">
+      <div className="rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-4">
+        <div className="mb-1 flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)]">
           <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[var(--accent-violet)]" aria-hidden="true" />
           {title}
         </div>
-        {yAxisLabel && <p className="mb-2 text-[11px] text-slate-400">{yAxisLabel}</p>}
+        {yAxisLabel && <p className="mb-2 text-[11px] text-[var(--text-tertiary)]">{yAxisLabel}</p>}
         <div className="h-48">
           <SimpleLineChart
               series={series}
@@ -1023,8 +1023,8 @@ const MetricRow = ({
   status: MetricTone;
 }) => (
     <div className="flex items-center justify-between py-2.5">
-    <span className="flex items-center gap-2.5 text-sm text-slate-600">
-      <Icon className="h-4 w-4 text-slate-400" />
+    <span className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
+      <Icon className="h-4 w-4 text-[var(--text-tertiary)]" />
       {label}
     </span>
       <span className="text-sm font-semibold tabular-nums" style={{ color: STATUS_COLOR[status] }}>
@@ -1047,10 +1047,10 @@ const QualitySnapshot = ({
   ];
 
   return (
-      <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50/60 p-3.5">
+      <div className="mt-4 rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-xs font-medium text-slate-600">质量快照（柱状）</p>
-          <span className="text-[11px] text-slate-400">{windowLabel}</span>
+          <p className="text-xs font-medium text-[var(--text-secondary)]">质量快照（柱状）</p>
+          <span className="text-[11px] text-[var(--text-tertiary)]">{windowLabel}</span>
         </div>
         <div className="grid grid-cols-3 gap-2.5">
           {items.map((item) => {
@@ -1059,7 +1059,7 @@ const QualitySnapshot = ({
             const barHeight = `${Math.max(normalized, hasValue ? 4 : 0)}%`;
             return (
                 <div key={item.label} className="space-y-1.5">
-                  <div className="flex h-24 items-end rounded-md border border-slate-200 bg-[var(--bg-primary)] p-1.5">
+                  <div className="flex h-24 items-end rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] p-1.5">
                     <div
                         className={cn(
                             "w-full rounded-sm transition-[height] duration-500",
@@ -1073,8 +1073,8 @@ const QualitySnapshot = ({
                   >
                     {formatPercent(item.value)}
                   </div>
-                  <div className="text-center text-[11px] text-slate-500">{item.label}</div>
-                  <div className="text-center text-[10px] text-slate-400">{item.target}</div>
+                  <div className="text-center text-[11px] text-[var(--text-tertiary)]">{item.label}</div>
+                  <div className="text-center text-[10px] text-[var(--text-tertiary)]">{item.target}</div>
                 </div>
             );
           })}
@@ -1101,19 +1101,19 @@ const EfficiencySnapshot = ({
   ];
 
   return (
-      <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50/60 p-3.5">
+      <div className="mt-4 rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5">
         <div className="mb-1.5 flex items-center justify-between">
-          <p className="text-xs font-medium text-slate-600">运营效率</p>
-          <span className="text-[11px] text-slate-400">{windowLabel}</span>
+          <p className="text-xs font-medium text-[var(--text-secondary)]">运营效率</p>
+          <span className="text-[11px] text-[var(--text-tertiary)]">{windowLabel}</span>
         </div>
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-[var(--border-light)]">
           {metrics.map((metric) => {
             const valueText =
                 metric.value === null ? "-" : `${formatRatio(metric.value)} ${metric.unit}`;
             return (
                 <div key={metric.label} className="flex items-center justify-between py-2">
-                  <span className="text-xs text-slate-500">{metric.label}</span>
-                  <span className="text-sm font-semibold tabular-nums text-slate-700">{valueText}</span>
+                  <span className="text-xs text-[var(--text-tertiary)]">{metric.label}</span>
+                  <span className="text-sm font-semibold tabular-nums text-[var(--text-secondary)]">{valueText}</span>
                 </div>
             );
           })}
@@ -1148,7 +1148,7 @@ const AIPerformanceCard = ({
   return (
       <DashCard>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-slate-700">AI 性能</h3>
+          <h3 className="text-sm font-semibold text-[var(--text-secondary)]">AI 性能</h3>
           <span
               className={cn("rounded-full px-2.5 py-1 text-xs font-medium", healthCfg.bg, healthCfg.text)}
           >
@@ -1177,12 +1177,12 @@ const AIPerformanceCard = ({
             <span className="text-2xl font-bold" style={{ color: ringColor }}>
               {formatPercent(successRate)}
             </span>
-              <span className="mt-0.5 text-xs text-slate-400">成功率</span>
+              <span className="mt-0.5 text-xs text-[var(--text-tertiary)]">成功率</span>
             </div>
           </div>
         </div>
 
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-[var(--border-light)]">
           <MetricRow
               icon={Timer}
               label="平均响应"
@@ -1229,7 +1229,7 @@ const InsightCard = ({ item }: { item: InsightCardData }) => {
   const Icon = TYPE_ICON[item.type];
 
   return (
-      <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-3.5 transition-colors hover:border-indigo-200/70 hover:bg-[var(--bg-primary)]">
+      <div className="rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5 transition-colors hover:border-indigo-200/70 hover:bg-[var(--bg-primary)]">
         <div className="mb-2 flex items-center justify-between">
         <span
             className={cn(
@@ -1240,15 +1240,15 @@ const InsightCard = ({ item }: { item: InsightCardData }) => {
           <Icon className="h-3.5 w-3.5" />
           {TYPE_LABEL[item.type]}
         </span>
-          <span className="text-[11px] text-slate-400">{item.timestamp}</span>
+          <span className="text-[11px] text-[var(--text-tertiary)]">{item.timestamp}</span>
         </div>
-        <p className="text-sm font-semibold text-slate-800">{item.title}</p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="text-sm font-semibold text-[var(--text-primary)]">{item.title}</p>
+        <p className="mt-1 text-xs text-[var(--text-tertiary)]">
           {item.metric}: {item.change}
         </p>
-        <p className="mt-0.5 text-xs text-slate-400">归因：{item.context}</p>
+        <p className="mt-0.5 text-xs text-[var(--text-tertiary)]">归因：{item.context}</p>
         {item.action && (
-            <p className="mt-1 text-xs font-medium text-slate-600">建议：{item.action}</p>
+            <p className="mt-1 text-xs font-medium text-[var(--text-secondary)]">建议：{item.action}</p>
         )}
       </div>
   );

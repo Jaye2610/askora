@@ -57,11 +57,11 @@ export function LoginPage() {
               <p className="text-sm text-muted-foreground">企业级智能问答平台</p>
             </div>
           </div>
-          <h1 className="mt-8 font-display text-4xl leading-tight tracking-tight text-gray-900">
+          <h1 className="mt-8 font-display text-4xl leading-tight tracking-tight text-[var(--text-primary)]">
             把问题变成
             <span className="text-gradient">清晰答案</span>
           </h1>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-gray-500">
+          <p className="mt-4 max-w-md text-base leading-relaxed text-[var(--text-tertiary)]">
             面向企业内部知识管理场景，覆盖文档入库、多路检索、智能问答到答案溯源的全链路。
           </p>
           <div className="mt-10 space-y-5">
@@ -73,8 +73,8 @@ export function LoginPage() {
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <p className="font-medium text-gray-800">{f.title}</p>
-                    <p className="text-sm text-gray-500">{f.desc}</p>
+                    <p className="font-medium text-[var(--text-primary)]">{f.title}</p>
+                    <p className="text-sm text-[var(--text-tertiary)]">{f.desc}</p>
                   </div>
                 </div>
               );

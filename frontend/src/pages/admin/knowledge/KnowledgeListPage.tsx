@@ -198,13 +198,13 @@ export function KnowledgeListPage() {
     if (!model) return "-";
     const parts = model.split("-");
     if (parts.length < 2) {
-      return <span className="text-sm text-slate-700">{model}</span>;
+      return <span className="text-sm text-[var(--text-secondary)]">{model}</span>;
     }
     const head = parts.slice(0, -1).join("-");
     const tail = parts[parts.length - 1];
     return (
-      <div className="flex flex-col text-xs text-slate-500">
-        <span className="font-medium text-slate-700">{head}</span>
+      <div className="flex flex-col text-xs text-[var(--text-tertiary)]">
+        <span className="font-medium text-[var(--text-secondary)]">{head}</span>
         <span>{tail}</span>
       </div>
     );
@@ -218,7 +218,7 @@ export function KnowledgeListPage() {
     if (value.includes("group")) {
       return "border-purple-200 bg-purple-50 text-purple-700";
     }
-    return "border-slate-200 bg-slate-100 text-slate-600";
+    return "border-[var(--border-default)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
   };
 
   const handleRename = async () => {
@@ -434,7 +434,7 @@ export function KnowledgeListPage() {
       </Dialog>
 
       {pageData ? (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--text-tertiary)]">
           <span>共 {pageData.total} 条</span>
           <div className="flex items-center gap-2">
             <Button
