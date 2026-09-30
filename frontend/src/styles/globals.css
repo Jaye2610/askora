@@ -304,7 +304,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
 }
 
 .prose pre {
-  @apply bg-gray-50 text-gray-800;
+  @apply bg-[var(--bg-secondary)] text-[var(--text-primary)];
 }
 
 /* 缩小 Markdown 元素之间的间距 */
@@ -353,12 +353,12 @@ html.dark *::-webkit-scrollbar-thumb:hover {
 
 @layer components {
   .admin-layout {
-    @apply bg-[var(--bg-tertiary)] text-slate-900;
+    @apply bg-[var(--bg-tertiary)] text-[var(--text-primary)];
     --ring: 224 76% 48%;
   }
 
   .admin-layout .text-muted-foreground {
-    @apply text-slate-500;
+    @apply text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-main {
@@ -374,7 +374,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-topbar {
-    @apply sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur;
+    @apply sticky top-0 z-20 border-b border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-white/80 backdrop-blur;
   }
 
   .admin-layout .admin-topbar-inner {
@@ -386,31 +386,31 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-topbar-kbd {
-    @apply absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[10px] text-slate-400;
+    @apply absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-[var(--border-default)] bg-white px-2 py-0.5 text-[10px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-topbar-suggest {
-    @apply absolute left-0 right-0 top-full z-30 mt-2 rounded-xl border border-slate-200 bg-white p-1 shadow-lg;
+    @apply absolute left-0 right-0 top-full z-30 mt-2 rounded-xl border border-[var(--border-default)] bg-white p-1 shadow-lg;
   }
 
   .admin-layout .admin-topbar-suggest-section + .admin-topbar-suggest-section {
-    @apply mt-1 border-t border-slate-100 pt-1;
+    @apply mt-1 border-t border-[var(--border-light)] pt-1;
   }
 
   .admin-layout .admin-topbar-suggest-group {
-    @apply px-3 pt-2 pb-1 text-[11px] font-semibold text-slate-400;
+    @apply px-3 pt-2 pb-1 text-[11px] font-semibold text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-topbar-suggest-item {
-    @apply flex w-full flex-col items-start gap-1 rounded-lg px-3 py-2 text-left text-sm transition hover:bg-slate-100;
+    @apply flex w-full flex-col items-start gap-1 rounded-lg px-3 py-2 text-left text-sm transition hover:bg-[var(--bg-tertiary)];
   }
 
   .admin-layout .admin-breadcrumbs {
-    @apply mb-4 flex items-center gap-2 text-xs text-slate-500;
+    @apply mb-4 flex items-center gap-2 text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-breadcrumbs a {
-    @apply text-slate-500 transition-colors hover:text-slate-700;
+    @apply text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)];
   }
 
   .admin-layout .admin-page {
@@ -422,12 +422,12 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-page-title {
-    @apply text-2xl font-semibold text-slate-900;
+    @apply text-2xl font-semibold text-[var(--text-primary)];
   }
 
   /* 24px 中文标题的字面几乎撑满行高，靠 leading 撑出的间距只有 10px，副标题会贴上去 */
   .admin-layout .admin-page-subtitle {
-    @apply mt-1.5 text-sm text-slate-500;
+    @apply mt-1.5 text-sm text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-page-actions {
@@ -435,11 +435,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-link {
-    @apply inline-flex items-center gap-1 text-indigo-600 font-medium underline-offset-4 transition-colors hover:text-indigo-700 hover:underline;
+    @apply inline-flex items-center gap-1 text-[var(--accent-secondary)] font-medium underline-offset-4 transition-colors hover:text-[var(--accent-secondary)] hover:underline;
   }
 
   .admin-layout .admin-link:focus-visible {
-    @apply outline-none ring-2 ring-indigo-200 rounded-sm;
+    @apply outline-none ring-2 ring-[var(--border-accent)] rounded-sm;
   }
 
   .admin-layout .admin-stat-grid {
@@ -447,27 +447,27 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-stat-scope {
-    @apply text-[10px] font-medium text-slate-400;
+    @apply text-[10px] font-medium text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-stat-scope--stamp {
-    @apply rounded-full border border-slate-200/70 bg-white/70 px-2 py-0.5 text-slate-400 backdrop-blur;
+    @apply rounded-full border border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-white/70 px-2 py-0.5 text-[var(--text-tertiary)] backdrop-blur;
   }
 
   .admin-layout .admin-stat-card {
-    @apply relative flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5;
+    @apply relative flex items-center justify-between rounded-xl border border-[var(--border-default)] bg-white p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5;
   }
 
   .admin-layout .admin-stat-icon {
-    @apply flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-indigo-600;
+    @apply flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-light)] text-[var(--accent-secondary)];
   }
 
   .admin-layout .admin-stat-label {
-    @apply text-xs text-slate-500;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-stat-value {
-    @apply text-2xl font-semibold text-slate-900;
+    @apply text-2xl font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .admin-stat-trend {
@@ -531,7 +531,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-sidebar__item--active {
-    @apply bg-indigo-500/20 text-white;
+    @apply bg-[color-mix(in_srgb,var(--accent-primary)_20%,transparent)] text-white;
   }
 
   .admin-layout .admin-sidebar__item--group-active {
@@ -543,7 +543,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-sidebar__item-indicator.is-active {
-    @apply bg-indigo-400;
+    @apply bg-[var(--accent-hover)];
   }
 
   .admin-layout .admin-sidebar__item-indicator.is-group-active {
@@ -560,7 +560,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-sidebar__item--active .admin-sidebar__item-icon {
-    @apply text-indigo-300;
+    @apply text-[var(--accent-hover)];
   }
 
   .admin-layout .admin-sidebar__item--group-active .admin-sidebar__item-icon {
@@ -584,23 +584,23 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-card {
-    @apply rounded-xl border border-slate-200 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.08)];
+    @apply rounded-xl border border-[var(--border-default)] bg-white shadow-[0_1px_3px_rgba(15,23,42,0.08)];
   }
 
   .admin-layout .ui-card-header {
-    @apply border-b border-slate-100 px-6 pt-5 pb-4;
+    @apply border-b border-[var(--border-light)] px-6 pt-5 pb-4;
   }
 
   .admin-layout .ui-card-title {
-    @apply text-base font-semibold text-slate-900;
+    @apply text-base font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .ui-card-description {
-    @apply text-sm text-slate-500;
+    @apply text-sm text-[var(--text-tertiary)];
   }
 
   .admin-layout .ui-table-wrap {
-    @apply rounded-xl border border-slate-200 bg-white overflow-x-auto;
+    @apply rounded-xl border border-[var(--border-default)] bg-white overflow-x-auto;
   }
 
   .admin-layout .ui-card .ui-table-wrap {
@@ -608,7 +608,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-table {
-    @apply text-[13px] text-slate-700 border-collapse;
+    @apply text-[13px] text-[var(--text-secondary)] border-collapse;
   }
 
   .admin-layout .ui-table-header {
@@ -616,15 +616,15 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-table-body tr:nth-child(even) {
-    @apply bg-slate-50/40;
+    @apply bg-[color-mix(in_srgb,var(--bg-secondary)_40%,transparent)];
   }
 
   .admin-layout .ui-table-row {
-    @apply border-b border-slate-100 hover:bg-[var(--bg-secondary)];
+    @apply border-b border-[var(--border-light)] hover:bg-[var(--bg-secondary)];
   }
 
   .admin-layout .ui-table-head {
-    @apply h-14 px-4 text-xs font-semibold text-slate-500;
+    @apply h-14 px-4 text-xs font-semibold text-[var(--text-tertiary)];
   }
 
   .admin-layout .ui-table-cell {
@@ -642,17 +642,17 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-table-caption {
-    @apply text-slate-500;
+    @apply text-[var(--text-tertiary)];
   }
 
   .admin-layout .ui-input,
   .admin-layout .ui-textarea,
   .admin-layout .ui-select-trigger {
-    @apply rounded-lg border-slate-200 bg-white shadow-none;
+    @apply rounded-lg border-[var(--border-default)] bg-white shadow-none;
   }
 
   .admin-layout .ui-select-content {
-    @apply rounded-xl border-slate-200 bg-white text-slate-700 shadow-lg;
+    @apply rounded-xl border-[var(--border-default)] bg-white text-[var(--text-secondary)] shadow-lg;
   }
 
   .admin-layout .ui-select-item {
@@ -664,15 +664,15 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-button[data-variant="default"] {
-    @apply bg-indigo-600 text-white hover:bg-indigo-700;
+    @apply bg-[var(--accent-secondary)] text-white hover:bg-[var(--accent-secondary)];
   }
 
   .admin-layout .ui-button[data-variant="outline"] {
-    @apply border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
+    @apply border-[var(--border-default)] bg-white text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)];
   }
 
   .admin-layout .ui-button[data-variant="ghost"] {
-    @apply text-slate-500 hover:bg-slate-100 hover:text-slate-900;
+    @apply text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)];
   }
 
   .admin-layout .ui-button.admin-primary-gradient {
@@ -684,11 +684,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-badge[data-variant="default"] {
-    @apply border-indigo-200 bg-indigo-50 text-indigo-700;
+    @apply border-[var(--border-accent)] bg-[var(--accent-light)] text-[var(--accent-secondary)];
   }
 
   .admin-layout .ui-badge[data-variant="secondary"] {
-    @apply border-slate-200 bg-slate-100 text-slate-600;
+    @apply border-[var(--border-default)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)];
   }
 
   .admin-layout .ui-badge[data-variant="destructive"] {
@@ -696,7 +696,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-badge[data-variant="outline"] {
-    @apply border-slate-200 text-slate-600;
+    @apply border-[var(--border-default)] text-[var(--text-secondary)];
   }
 
   .admin-layout .ui-dialog-overlay,
@@ -706,7 +706,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
 
   .admin-layout .ui-dialog-content,
   .admin-layout .ui-alert-dialog-content {
-    @apply rounded-2xl border-slate-200 bg-white shadow-xl;
+    @apply rounded-2xl border-[var(--border-default)] bg-white shadow-xl;
   }
 
   .admin-layout .trace-list-page {
@@ -2081,7 +2081,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-card {
-    @apply relative overflow-hidden rounded-xl border border-cyan-100/80 bg-gradient-to-br from-cyan-50 via-white to-indigo-50 shadow-[0_8px_30px_rgba(15,23,42,0.06)];
+    @apply relative overflow-hidden rounded-xl border border-cyan-100/80 bg-gradient-to-br from-cyan-50 via-white to-[var(--accent-light)] shadow-[0_8px_30px_rgba(15,23,42,0.06)];
   }
 
   .admin-layout .trace-hero-card::before {
@@ -2089,7 +2089,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-card::after {
-    @apply pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-indigo-200/35 blur-3xl content-[''];
+    @apply pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[color-mix(in_srgb,var(--border-accent)_35%,transparent)] blur-3xl content-[''];
   }
 
   .admin-layout .trace-hero-content {
@@ -2105,11 +2105,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-title {
-    @apply text-3xl font-semibold text-slate-900;
+    @apply text-3xl font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .trace-hero-subtitle {
-    @apply mt-2 max-w-[760px] text-sm text-slate-600;
+    @apply mt-2 max-w-[760px] text-sm text-[var(--text-secondary)];
   }
 
   .admin-layout .trace-hero-chip-wrap {
@@ -2117,11 +2117,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-chip {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] shadow-sm backdrop-blur;
   }
 
   .admin-layout .trace-filter-card {
-    @apply border-slate-200/80 bg-white/90 shadow-sm;
+    @apply border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white/90 shadow-sm;
   }
 
   .admin-layout .trace-filter-row {
@@ -2152,7 +2152,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-stat-card {
-    @apply flex h-[88px] items-center gap-3 rounded-xl border border-slate-200/80 bg-white/90 px-5 py-4 shadow-sm;
+    @apply flex h-[88px] items-center gap-3 rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white/90 px-5 py-4 shadow-sm;
   }
 
   .admin-layout .trace-stat-icon {
@@ -2164,11 +2164,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-stat-label {
-    @apply text-xs leading-4 text-slate-500;
+    @apply text-xs leading-4 text-[var(--text-tertiary)];
   }
 
   .admin-layout .trace-stat-value {
-    @apply text-lg font-semibold leading-6 tabular-nums text-slate-900;
+    @apply text-lg font-semibold leading-6 tabular-nums text-[var(--text-primary)];
   }
 
   .admin-layout .trace-run-row-active {
@@ -2233,7 +2233,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-run-table .ui-table-row {
-    @apply transition-colors hover:bg-slate-50/80;
+    @apply transition-colors hover:bg-[color-mix(in_srgb,var(--bg-secondary)_80%,transparent)];
   }
 
   .admin-layout .trace-run-trace {
@@ -2369,11 +2369,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-meta-label {
-    @apply text-xs text-slate-500;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .trace-meta-value {
-    @apply mt-0.5 text-sm font-medium text-slate-800;
+    @apply mt-0.5 text-sm font-medium text-[var(--text-primary)];
     display: block;
     max-width: 100%;
     white-space: nowrap;
@@ -2394,11 +2394,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-wrap {
-    @apply rounded-xl border border-slate-200/80 bg-white;
+    @apply rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white;
   }
 
   .admin-layout .trace-waterfall-head {
-    @apply flex items-center justify-between border-b border-slate-100 px-4 py-2 text-xs font-medium text-slate-500;
+    @apply flex items-center justify-between border-b border-[var(--border-light)] px-4 py-2 text-xs font-medium text-[var(--text-tertiary)];
   }
 
   .admin-layout .trace-waterfall-body {
@@ -2406,7 +2406,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-row {
-    @apply grid items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50;
+    @apply grid items-center gap-2 rounded-lg px-3 py-2 hover:bg-[var(--bg-secondary)];
     grid-template-columns: minmax(200px, 260px) minmax(84px, 112px) minmax(0, 1fr) 72px;
   }
 
@@ -2421,11 +2421,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-node-dot {
-    @apply inline-block h-2 w-2 shrink-0 rounded-full bg-slate-300;
+    @apply inline-block h-2 w-2 shrink-0 rounded-full bg-[var(--bg-hover)];
   }
 
   .admin-layout .trace-node-dot.is-success {
-    @apply bg-emerald-500;
+    @apply bg-[var(--success)];
   }
 
   .admin-layout .trace-node-dot.is-running {
@@ -2438,14 +2438,14 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-node-name {
-    @apply text-left text-xs font-medium leading-4 text-slate-700;
+    @apply text-left text-xs font-medium leading-4 text-[var(--text-secondary)];
     white-space: normal;
     overflow: visible;
     word-break: break-word;
   }
 
   .admin-layout .trace-waterfall-node-type {
-    @apply block text-[9px] uppercase tracking-wide leading-3 text-slate-500;
+    @apply block text-[9px] uppercase tracking-wide leading-3 text-[var(--text-tertiary)];
     white-space: normal;
     word-break: break-word;
   }
@@ -2455,11 +2455,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-track {
-    @apply absolute inset-0 rounded-full bg-slate-100;
+    @apply absolute inset-0 rounded-full bg-[var(--bg-tertiary)];
   }
 
   .admin-layout .trace-waterfall-bar {
-    @apply absolute top-0 h-4 rounded-full bg-slate-300 shadow-sm;
+    @apply absolute top-0 h-4 rounded-full bg-[var(--bg-hover)] shadow-sm;
   }
 
   .admin-layout .trace-waterfall-bar.is-success {
@@ -2476,7 +2476,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-duration {
-    @apply text-right text-[11px] font-medium tabular-nums text-slate-600;
+    @apply text-right text-[11px] font-medium tabular-nums text-[var(--text-secondary)];
   }
 
   .admin-layout .trace-waterfall-duration p {
@@ -2556,16 +2556,16 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-card {
-    @apply flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-200;
+    @apply flex flex-col gap-4 rounded-xl border border-[var(--border-default)] bg-white p-5 text-left shadow-sm transition-all duration-200;
     min-height: 196px;
   }
 
   .admin-layout .agent-card:hover {
-    @apply -translate-y-0.5 border-slate-300 shadow-md;
+    @apply -translate-y-0.5 border-[var(--border-focus)] shadow-md;
   }
 
   .admin-layout .agent-card--active {
-    @apply border-indigo-300;
+    @apply border-[var(--border-accent)];
     box-shadow: 0 10px 26px -16px rgba(79, 70, 229, 0.55);
   }
 
@@ -2573,7 +2573,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
      样式不能挂在这个作用域下 */
 
   .admin-layout .agent-card__desc {
-    @apply mt-1 overflow-hidden text-[13px] leading-relaxed text-slate-500;
+    @apply mt-1 overflow-hidden text-[13px] leading-relaxed text-[var(--text-tertiary)];
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -2581,42 +2581,42 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-card__live {
-    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-medium text-indigo-600;
+    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[var(--accent-light)] px-2.5 py-1 text-[11px] font-medium text-[var(--accent-secondary)];
   }
 
   .admin-layout .agent-card__live-dot {
-    @apply h-1.5 w-1.5 rounded-full bg-indigo-500;
+    @apply h-1.5 w-1.5 rounded-full bg-[var(--accent-primary)];
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
   }
 
   /* 两枚胶囊并排靠左，中间不留被 justify-between 撑开的空白 */
   .admin-layout .agent-card__meta {
-    @apply mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3;
+    @apply mt-auto flex flex-wrap items-center gap-2 border-t border-[var(--border-light)] pt-3;
   }
 
   .admin-layout .agent-card__chip {
-    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-slate-200/70 bg-slate-50 px-2 py-1 text-[11px] leading-4 text-slate-500;
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-[var(--bg-secondary)] px-2 py-1 text-[11px] leading-4 text-[var(--text-tertiary)];
   }
 
   /* 已填写但当前架构读不到的槽位数，完整说明在 title 里 */
   .admin-layout .agent-card__pending {
-    @apply cursor-default rounded bg-slate-200 px-1 text-[10px] font-medium leading-4 text-slate-600;
+    @apply cursor-default rounded bg-[var(--bg-hover)] px-1 text-[10px] font-medium leading-4 text-[var(--text-secondary)];
   }
 
   .admin-layout .agent-card--skeleton {
-    @apply animate-pulse border-slate-100 bg-slate-100 shadow-none;
+    @apply animate-pulse border-[var(--border-light)] bg-[var(--bg-tertiary)] shadow-none;
   }
 
   .admin-layout .agent-card--add {
-    @apply items-center justify-center gap-2 border-dashed border-slate-300 bg-white/50 text-center shadow-none;
+    @apply items-center justify-center gap-2 border-dashed border-[var(--border-focus)] bg-white/50 text-center shadow-none;
   }
 
   .admin-layout .agent-card--add:hover {
-    @apply translate-y-0 border-indigo-300 bg-indigo-50/40 shadow-none;
+    @apply translate-y-0 border-[var(--border-accent)] bg-[color-mix(in_srgb,var(--accent-light)_40%,transparent)] shadow-none;
   }
 
   .admin-layout .agent-card__add-icon {
-    @apply flex h-11 w-11 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-slate-400;
+    @apply flex h-11 w-11 items-center justify-center rounded-2xl border border-dashed border-[var(--border-focus)] text-[var(--text-tertiary)];
   }
 
   /* 智能体提示词：左右分栏，整页不滚动 */
@@ -2635,7 +2635,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-rail {
-    @apply flex flex-col gap-4 overflow-y-auto rounded-xl border border-slate-200 bg-white p-3;
+    @apply flex flex-col gap-4 overflow-y-auto rounded-xl border border-[var(--border-default)] bg-white p-3;
   }
 
   /* 窄屏下分栏退化成上下排布，导航必须自己收口，否则要滚过整列才够到编辑器 */
@@ -2650,15 +2650,15 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-rail__group-title {
-    @apply px-2.5 pb-1 text-[11px] font-semibold tracking-wide text-slate-400;
+    @apply px-2.5 pb-1 text-[11px] font-semibold tracking-wide text-[var(--text-tertiary)];
   }
 
   .admin-layout .agent-prompt-rail__item {
-    @apply flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-[13px] text-slate-600 transition-colors hover:bg-slate-100;
+    @apply flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-[13px] text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-tertiary)];
   }
 
   .admin-layout .agent-prompt-rail__item--active {
-    @apply bg-indigo-50 font-medium text-indigo-700 hover:bg-indigo-50;
+    @apply bg-[var(--accent-light)] font-medium text-[var(--accent-secondary)] hover:bg-[var(--accent-light)];
   }
 
   .admin-layout .agent-prompt-rail__flag {
@@ -2666,11 +2666,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-rail__fallback {
-    @apply shrink-0 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-400;
+    @apply shrink-0 rounded-full bg-[var(--bg-tertiary)] px-1.5 py-0.5 text-[10px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .agent-prompt-rail__legend {
-    @apply mt-auto space-y-1.5 border-t border-slate-100 px-2.5 pt-3 text-[11px] text-slate-400;
+    @apply mt-auto space-y-1.5 border-t border-[var(--border-light)] px-2.5 pt-3 text-[11px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .agent-prompt-rail__legend > span {
@@ -2682,27 +2682,27 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-dot--on {
-    @apply bg-emerald-500;
+    @apply bg-[var(--success)];
   }
 
   .admin-layout .agent-prompt-dot--off {
-    @apply bg-slate-300;
+    @apply bg-[var(--bg-hover)];
   }
 
   .admin-layout .agent-prompt-pane {
-    @apply flex min-h-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white;
+    @apply flex min-h-0 flex-col overflow-hidden rounded-xl border border-[var(--border-default)] bg-white;
   }
 
   .admin-layout .agent-prompt-pane__header {
-    @apply flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-4 py-3;
+    @apply flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-[var(--border-light)] px-4 py-3;
   }
 
   .admin-layout .agent-prompt-pane__placeholders {
-    @apply flex shrink-0 flex-wrap items-center gap-2 border-b border-slate-100 bg-slate-50/70 px-4 py-2 text-xs;
+    @apply flex shrink-0 flex-wrap items-center gap-2 border-b border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_70%,transparent)] px-4 py-2 text-xs;
   }
 
   .admin-layout .agent-prompt-placeholder {
-    @apply rounded-md border border-slate-200 bg-white px-1.5 py-0.5 font-mono text-[11px] text-slate-600;
+    @apply rounded-md border border-[var(--border-default)] bg-white px-1.5 py-0.5 font-mono text-[11px] text-[var(--text-secondary)];
   }
 
   .admin-layout .agent-prompt-placeholder--missing {
@@ -2710,7 +2710,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-pane__footer {
-    @apply flex shrink-0 items-center justify-between border-t border-slate-100 px-4 py-2 text-xs text-slate-500;
+    @apply flex shrink-0 items-center justify-between border-t border-[var(--border-light)] px-4 py-2 text-xs text-[var(--text-tertiary)];
   }
 
   @media (min-width: 1100px) {
@@ -2988,15 +2988,15 @@ textarea {
   }
 
   .admin-layout .settings-section-title {
-    @apply text-[15px] font-semibold text-slate-900;
+    @apply text-[15px] font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .settings-section-hint {
-    @apply text-xs text-slate-400;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-card {
-    @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm;
+    @apply rounded-xl border border-[var(--border-default)] bg-white p-5 shadow-sm;
   }
 
   .admin-layout .settings-arch-grid {
@@ -3004,11 +3004,11 @@ textarea {
   }
 
   .admin-layout .settings-arch-card {
-    @apply flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm;
+    @apply flex items-center gap-3 rounded-xl border border-[var(--border-default)] bg-white p-4 shadow-sm;
   }
 
   .admin-layout .settings-arch-card.is-off {
-    @apply border-dashed bg-slate-50/70 shadow-none;
+    @apply border-dashed bg-[color-mix(in_srgb,var(--bg-secondary)_70%,transparent)] shadow-none;
   }
 
   .admin-layout .settings-icon {
@@ -3041,23 +3041,23 @@ textarea {
   }
 
   .admin-layout .settings-icon.is-slate {
-    @apply bg-slate-100 text-slate-400;
+    @apply bg-[var(--bg-tertiary)] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-arch-label {
-    @apply text-xs text-slate-500;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-arch-value {
-    @apply font-mono text-sm font-semibold leading-5 text-slate-900;
+    @apply font-mono text-sm font-semibold leading-5 text-[var(--text-primary)];
   }
 
   .admin-layout .settings-arch-card.is-off .settings-arch-value {
-    @apply text-slate-400;
+    @apply text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-arch-caption {
-    @apply text-[11px] leading-4 text-slate-400;
+    @apply text-[11px] leading-4 text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-pipeline {
@@ -3065,11 +3065,11 @@ textarea {
   }
 
   .admin-layout .settings-subhead {
-    @apply mb-2 flex items-baseline justify-between text-xs font-medium text-slate-500;
+    @apply mb-2 flex items-baseline justify-between text-xs font-medium text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-subhead-hint {
-    @apply font-mono text-[11px] font-normal text-slate-400;
+    @apply font-mono text-[11px] font-normal text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-channel-list {
@@ -3077,27 +3077,27 @@ textarea {
   }
 
   .admin-layout .settings-channel {
-    @apply flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2.5;
+    @apply flex items-center gap-3 rounded-lg border border-[var(--border-default)] bg-white px-3 py-2.5;
   }
 
   .admin-layout .settings-channel.is-off {
-    @apply border-dashed bg-slate-50/70;
+    @apply border-dashed bg-[color-mix(in_srgb,var(--bg-secondary)_70%,transparent)];
   }
 
   .admin-layout .settings-channel-name {
-    @apply text-sm font-medium leading-5 text-slate-900;
+    @apply text-sm font-medium leading-5 text-[var(--text-primary)];
   }
 
   .admin-layout .settings-channel.is-off .settings-channel-name {
-    @apply text-slate-400;
+    @apply text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-channel-meta {
-    @apply font-mono text-[11px] leading-4 text-slate-400;
+    @apply font-mono text-[11px] leading-4 text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-channel-weight {
-    @apply ml-auto shrink-0 rounded-full bg-slate-100 px-2 py-0.5 font-mono text-[11px] text-slate-500;
+    @apply ml-auto shrink-0 rounded-full bg-[var(--bg-tertiary)] px-2 py-0.5 font-mono text-[11px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-funnel {
@@ -3105,47 +3105,47 @@ textarea {
   }
 
   .admin-layout .settings-funnel-stage {
-    @apply min-w-0 flex-1 rounded-xl border border-slate-200 bg-white p-4;
+    @apply min-w-0 flex-1 rounded-xl border border-[var(--border-default)] bg-white p-4;
   }
 
   .admin-layout .settings-funnel-step {
-    @apply text-xs text-slate-500;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-funnel-value {
-    @apply mt-1 font-mono text-2xl font-bold tabular-nums leading-8 text-slate-900;
+    @apply mt-1 font-mono text-2xl font-bold tabular-nums leading-8 text-[var(--text-primary)];
   }
 
   .admin-layout .settings-funnel-unit {
-    @apply ml-1 font-sans text-xs font-normal text-slate-400;
+    @apply ml-1 font-sans text-xs font-normal text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-funnel-track {
-    @apply mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100;
+    @apply mt-2 h-1.5 overflow-hidden rounded-full bg-[var(--bg-tertiary)];
   }
 
   .admin-layout .settings-funnel-bar {
-    @apply h-full rounded-full bg-indigo-500;
+    @apply h-full rounded-full bg-[var(--accent-primary)];
   }
 
   .admin-layout .settings-funnel-stage.is-final .settings-funnel-bar {
-    @apply bg-emerald-500;
+    @apply bg-[var(--success)];
   }
 
   .admin-layout .settings-funnel-key {
-    @apply mt-2 block font-mono text-[11px] text-slate-400;
+    @apply mt-2 block font-mono text-[11px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-funnel-arrow {
-    @apply flex items-center justify-center self-center text-slate-300;
+    @apply flex items-center justify-center self-center text-[var(--text-muted)];
   }
 
   .admin-layout .settings-scope {
-    @apply mt-4 grid gap-3 rounded-lg border border-slate-200/70 bg-slate-50 p-4 sm:grid-cols-3;
+    @apply mt-4 grid gap-3 rounded-lg border border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-[var(--bg-secondary)] p-4 sm:grid-cols-3;
   }
 
   .admin-layout .settings-scope-note {
-    @apply text-[11px] leading-4 text-slate-400 sm:col-span-3;
+    @apply text-[11px] leading-4 text-[var(--text-tertiary)] sm:col-span-3;
   }
 
   .admin-layout .settings-kv {
@@ -3153,15 +3153,15 @@ textarea {
   }
 
   .admin-layout .settings-kv-label {
-    @apply text-xs text-slate-500;
+    @apply text-xs text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-kv-value {
-    @apply break-all text-sm font-medium tabular-nums text-slate-800;
+    @apply break-all text-sm font-medium tabular-nums text-[var(--text-primary)];
   }
 
   .admin-layout .settings-kv-key {
-    @apply font-mono text-[10px] text-slate-300;
+    @apply font-mono text-[10px] text-[var(--text-muted)];
   }
 
   .admin-layout .settings-kv-grid {
@@ -3169,39 +3169,39 @@ textarea {
   }
 
   .admin-layout .settings-card-title {
-    @apply mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900;
+    @apply mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .settings-card-title-hint {
-    @apply ml-auto text-xs font-normal text-slate-400;
+    @apply ml-auto text-xs font-normal text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-feature-row {
-    @apply mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4;
+    @apply mt-4 flex flex-wrap gap-2 border-t border-[var(--border-light)] pt-4;
   }
 
   .admin-layout .settings-feature {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-[var(--border-default)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)];
   }
 
   .admin-layout .settings-feature.is-off {
-    @apply border-dashed bg-slate-50 text-slate-400;
+    @apply border-dashed bg-[var(--bg-secondary)] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-feature-key {
-    @apply font-mono text-[10px] text-slate-400;
+    @apply font-mono text-[10px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-feature.is-off .settings-feature-key {
-    @apply text-slate-300;
+    @apply text-[var(--text-muted)];
   }
 
   .admin-layout .settings-tier {
-    @apply flex flex-col gap-2 rounded-lg border border-slate-200 p-3 md:flex-row md:items-center md:gap-4;
+    @apply flex flex-col gap-2 rounded-lg border border-[var(--border-default)] p-3 md:flex-row md:items-center md:gap-4;
   }
 
   .admin-layout .settings-tier-name {
-    @apply flex w-28 shrink-0 items-center gap-1.5 font-mono text-sm font-semibold text-slate-900;
+    @apply flex w-28 shrink-0 items-center gap-1.5 font-mono text-sm font-semibold text-[var(--text-primary)];
   }
 
   .admin-layout .settings-tier-chain {
@@ -3209,15 +3209,15 @@ textarea {
   }
 
   .admin-layout .settings-tier-timeout {
-    @apply shrink-0 font-mono text-xs text-slate-400 md:ml-auto;
+    @apply shrink-0 font-mono text-xs text-[var(--text-tertiary)] md:ml-auto;
   }
 
   .admin-layout .settings-chip {
-    @apply rounded-md bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-700;
+    @apply rounded-md bg-[var(--bg-tertiary)] px-2 py-0.5 font-mono text-xs text-[var(--text-secondary)];
   }
 
   .admin-layout .settings-chip.is-primary {
-    @apply bg-indigo-50 text-indigo-700;
+    @apply bg-[var(--accent-light)] text-[var(--accent-secondary)];
   }
 
   .admin-layout .settings-tag {
@@ -3229,11 +3229,11 @@ textarea {
   }
 
   .admin-layout .settings-tag.is-off {
-    @apply bg-slate-100 text-slate-400;
+    @apply bg-[var(--bg-tertiary)] text-[var(--text-tertiary)];
   }
 
   .admin-layout .settings-tag.is-indigo {
-    @apply bg-indigo-50 text-indigo-600;
+    @apply bg-[var(--accent-light)] text-[var(--accent-secondary)];
   }
 
   .admin-layout .settings-tag.is-violet {

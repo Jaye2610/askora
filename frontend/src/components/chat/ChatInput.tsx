@@ -96,7 +96,7 @@ export function ChatInput() {
             }}
             aria-label="聊天输入框"
           />
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-b from-white/0 via-[var(--bg-primary)]/40 to-white/90" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-b from-white/0 via-[color-mix(in_srgb,var(--bg-primary)_40%,transparent)] to-white/90" />
         </div>
         <div className="relative mt-2 flex items-center">
           <button

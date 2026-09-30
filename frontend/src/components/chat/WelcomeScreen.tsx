@@ -137,11 +137,11 @@ export function WelcomeScreen() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 right-[-40px] h-72 w-72 rounded-full bg-gradient-radial from-[var(--accent-violet)]/30 via-transparent to-transparent blur-3xl animate-float"
+        className="pointer-events-none absolute -top-32 right-[-40px] h-72 w-72 rounded-full bg-gradient-radial from-[color-mix(in_srgb,var(--accent-violet)_30%,transparent)] via-transparent to-transparent blur-3xl animate-float"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-36 left-[-80px] h-80 w-80 rounded-full bg-gradient-radial from-[var(--accent-violet)]/25 via-transparent to-transparent blur-3xl animate-float"
+        className="pointer-events-none absolute -bottom-36 left-[-80px] h-80 w-80 rounded-full bg-gradient-radial from-[color-mix(in_srgb,var(--accent-violet)_25%,transparent)] via-transparent to-transparent blur-3xl animate-float"
       />
 
       <div className="relative w-full max-w-[860px]">
@@ -202,7 +202,7 @@ export function WelcomeScreen() {
                 }}
                 aria-label="发送消息"
               />
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-b from-white/0 via-[var(--bg-primary)]/40 to-white/90" />
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-b from-white/0 via-[color-mix(in_srgb,var(--bg-primary)_40%,transparent)] to-white/90" />
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-3">
               <button

@@ -60,7 +60,7 @@ export const MessageItem = React.memo(function MessageItem({ message }: MessageI
             <button
               type="button"
               onClick={() => setThinkingExpanded((prev) => !prev)}
-              className="flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-[var(--violet-surface-strong)]/40"
+              className="flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-[color-mix(in_srgb,var(--violet-surface-strong)_40%,transparent)]"
             >
               <div className="flex flex-1 items-center gap-2">
                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--violet-surface-strong)]">
