@@ -29,7 +29,7 @@ export function AdminEmpty({
         className
       )}
     >
-      <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#E6E6EF] bg-gradient-to-br from-[var(--violet-soft)] to-[#EEF2FF] text-[#7C3AED] shadow-sm">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#E6E6EF] bg-gradient-to-br from-[var(--violet-soft)] to-[#EEF2FF] text-[var(--accent-violet)] shadow-sm">
         {icon ?? <Inbox className="h-6 w-6" />}
       </span>
       <p className="mt-4 text-sm font-medium text-slate-700">{title}</p>

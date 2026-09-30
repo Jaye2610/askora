@@ -749,7 +749,7 @@ export function RagTraceDetailPage() {
                     <span className="text-right">耗时</span>
                   </div>
 
-                  <div className="grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 bg-white">
+                  <div className="grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 bg-[var(--bg-primary)]">
                     <div />
                     <div />
                     <TimeScale totalMs={timeline.totalWindowMs} />

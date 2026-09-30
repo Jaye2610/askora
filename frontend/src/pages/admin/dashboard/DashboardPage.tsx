@@ -324,7 +324,7 @@ const useHealthStatus = (performance: DashboardPerformance | null, overview: Das
 const DashCard = ({ children, className }: { children: ReactNode; className?: string }) => (
     <div
         className={cn(
-            "rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]",
+            "rounded-2xl border border-slate-200 bg-[var(--bg-primary)] p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]",
             className
         )}
     >
@@ -334,7 +334,7 @@ const DashCard = ({ children, className }: { children: ReactNode; className?: st
 
 const CardTitle = ({ children }: { children: ReactNode }) => (
     <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-700">
-      <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[#7C3AED]" aria-hidden="true" />
+      <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[var(--accent-violet)]" aria-hidden="true" />
       {children}
     </h3>
 );
@@ -371,7 +371,7 @@ const DashboardHeader = ({
       <h1 className="admin-page-title">运营概览</h1>
 
       <div className="flex items-center gap-3">
-        <div className="inline-flex rounded-lg border border-slate-200 bg-white p-0.5 shadow-sm">
+        <div className="inline-flex rounded-lg border border-slate-200 bg-[var(--bg-primary)] p-0.5 shadow-sm">
           {WINDOW_OPTIONS.map((opt) => (
               <button
                   key={opt.value}
@@ -380,7 +380,7 @@ const DashboardHeader = ({
                   className={cn(
                       "rounded-md px-3 py-1.5 text-sm font-medium transition-all",
                       timeWindow === opt.value
-                          ? "bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white shadow-[0_1px_4px_rgba(99,102,241,0.4)]"
+                          ? "bg-gradient-to-r from-[#4F46E5] to-[var(--accent-violet)] text-white shadow-[0_1px_4px_rgba(99,102,241,0.4)]"
                           : "text-slate-500 hover:text-slate-700"
                   )}
               >
@@ -399,7 +399,7 @@ const DashboardHeader = ({
             size="icon"
             onClick={onRefresh}
             disabled={loading}
-            className="h-9 w-9 rounded-lg border-slate-200 bg-white text-slate-500 hover:text-slate-700"
+            className="h-9 w-9 rounded-lg border-slate-200 bg-[var(--bg-primary)] text-slate-500 hover:text-slate-700"
         >
           <RefreshCw className={cn("h-4 w-4", loading && "animate-spin")} />
         </Button>
@@ -431,7 +431,7 @@ const KPICardItem = ({ value, label, change, icon, iconBg, iconColor }: KPICardP
           : "text-red-500";
 
   return (
-      <div className="rounded-xl border border-slate-200/80 bg-white p-4">
+      <div className="rounded-xl border border-slate-200/80 bg-[var(--bg-primary)] p-4">
         <div className="flex items-start justify-between">
           <div>
             <p className="text-2xl font-bold tracking-tight text-slate-900">{value}</p>
@@ -759,7 +759,7 @@ const SimpleAreaChart = ({
                 />
                 {/* 圆点 */}
                 <div
-                    className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue-500 bg-white shadow-sm"
+                    className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue-500 bg-[var(--bg-primary)] shadow-sm"
                     style={{ left: tooltip.x, top: tooltip.y }}
                 />
                 {/* 标签 */}
@@ -905,7 +905,7 @@ const TrendChartItem = ({
   return (
       <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
         <div className="mb-1 flex items-center gap-1.5 text-xs font-medium text-slate-500">
-          <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[#7C3AED]" aria-hidden="true" />
+          <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[var(--accent-violet)]" aria-hidden="true" />
           {title}
         </div>
         {yAxisLabel && <p className="mb-2 text-[11px] text-slate-400">{yAxisLabel}</p>}
@@ -1059,7 +1059,7 @@ const QualitySnapshot = ({
             const barHeight = `${Math.max(normalized, hasValue ? 4 : 0)}%`;
             return (
                 <div key={item.label} className="space-y-1.5">
-                  <div className="flex h-24 items-end rounded-md border border-slate-200 bg-white p-1.5">
+                  <div className="flex h-24 items-end rounded-md border border-slate-200 bg-[var(--bg-primary)] p-1.5">
                     <div
                         className={cn(
                             "w-full rounded-sm transition-[height] duration-500",
@@ -1229,7 +1229,7 @@ const InsightCard = ({ item }: { item: InsightCardData }) => {
   const Icon = TYPE_ICON[item.type];
 
   return (
-      <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-3.5 transition-colors hover:border-indigo-200/70 hover:bg-white">
+      <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-3.5 transition-colors hover:border-indigo-200/70 hover:bg-[var(--bg-primary)]">
         <div className="mb-2 flex items-center justify-between">
         <span
             className={cn(

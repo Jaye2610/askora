@@ -1637,7 +1637,7 @@ export function KnowledgeGraphPage() {
   const isEmpty = !loading && !errorMsg && view !== null && view.nodes.length === 0;
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-white">
+    <div className="relative h-full w-full overflow-hidden bg-[var(--bg-primary)]">
       {/* G6 画布铺满整个视口；衬一层极淡径向渐变增加空间纵深，画布透明故渐变透出、与网格线叠成柔和台面 */}
       <div
         ref={containerRef}
@@ -1649,7 +1649,7 @@ export function KnowledgeGraphPage() {
 
       {/* 左上角悬浮控件：搜索 + 范围 + 全图 + 显示设置，以及聚焦态与图例 */}
       <div className="absolute left-4 top-4 z-10 flex max-w-[calc(100%-2rem)] flex-col gap-2">
-        <div className="flex items-center gap-1 rounded-2xl border border-slate-200 bg-white/90 p-1.5 shadow-sm backdrop-blur">
+        <div className="flex items-center gap-1 rounded-2xl border border-slate-200 bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] p-1.5 shadow-sm backdrop-blur">
           <div className="relative w-64" onFocus={handleSuggestFocus} onBlur={handleSuggestBlur}>
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
             <Input
@@ -1666,7 +1666,7 @@ export function KnowledgeGraphPage() {
             />
             {suggestOpen && suggestions.length > 0 ? (
               <div
-                className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 shadow-lg"
+                className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-slate-200 bg-[var(--bg-primary)] py-1 shadow-lg"
                 onMouseDown={(event) => event.preventDefault()}
               >
                 {suggestions.map((item) => (
@@ -1702,7 +1702,7 @@ export function KnowledgeGraphPage() {
               <span className="max-w-[7rem] truncate">{scopeLabel}</span>
             </Button>
             {scopeOpen ? (
-              <div className="absolute left-0 top-full z-20 mt-2 w-64 space-y-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg">
+              <div className="absolute left-0 top-full z-20 mt-2 w-64 space-y-3 rounded-2xl border border-slate-200 bg-[var(--bg-primary)] p-3 shadow-lg">
                 <div>
                   <div className="mb-1.5 text-xs font-medium text-slate-500">知识库</div>
                   <div className="max-h-40 space-y-1 overflow-auto">
@@ -1805,7 +1805,7 @@ export function KnowledgeGraphPage() {
               <Settings className="h-4 w-4" />
             </Button>
             {settingsOpen ? (
-              <div className="absolute right-0 top-full z-20 mt-2 w-56 space-y-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg">
+              <div className="absolute right-0 top-full z-20 mt-2 w-56 space-y-3 rounded-2xl border border-slate-200 bg-[var(--bg-primary)] p-3 shadow-lg">
                 <div>
                   <div className="mb-1.5 text-xs font-medium text-slate-500">主题</div>
                   <div className="flex gap-1">
@@ -1960,7 +1960,7 @@ export function KnowledgeGraphPage() {
 
       {/* 右上角统计：含截断提示，替代原琥珀横幅 */}
       {stats ? (
-        <div className="absolute right-4 top-4 z-10 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs text-slate-500 shadow-sm backdrop-blur">
+        <div className="absolute right-4 top-4 z-10 rounded-full border border-slate-200 bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] px-3 py-1 text-xs text-slate-500 shadow-sm backdrop-blur">
           {stats.nodes} 实体 · {stats.edges} 关系
           {view?.truncated ? <span className="text-amber-600"> · 已截断</span> : null}
         </div>
@@ -1968,13 +1968,13 @@ export function KnowledgeGraphPage() {
 
       {/* 底部聚焦提示：点击节点后出现，指引退出方式 */}
       {focusName ? (
-        <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs text-slate-500 shadow-sm backdrop-blur">
+        <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full border border-slate-200 bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] px-3 py-1 text-xs text-slate-500 shadow-sm backdrop-blur">
           聚焦 <span className="font-medium text-slate-700">{focusName}</span> · Esc 或点击空白退出
         </div>
       ) : null}
 
       {/* 右下角缩放控制：叠在缩略图上方，手动放大 / 缩小 / 重置比例 */}
-      <div className="absolute bottom-40 right-4 z-10 flex w-9 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white/90 shadow-sm backdrop-blur">
+      <div className="absolute bottom-40 right-4 z-10 flex w-9 flex-col overflow-hidden rounded-xl border border-slate-200 bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] shadow-sm backdrop-blur">
         <button
           type="button"
           onClick={handleZoomIn}
@@ -2002,7 +2002,7 @@ export function KnowledgeGraphPage() {
       </div>
 
       {loading ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/60">
+        <div className="absolute inset-0 flex items-center justify-center bg-[color-mix(in_srgb,var(--bg-primary)_60%,transparent)]">
           <Loader2 className="h-6 w-6 animate-spin text-indigo-500" />
         </div>
       ) : null}

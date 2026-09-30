@@ -156,7 +156,7 @@ const operationBadgeClass = (operationType?: string | null) => {
     case "DELETE":
       return "border-[#ffa39e] bg-[#fff1f0] text-[#F5222D]";
     case "DISABLE":
-      return "border-[#d9d9d9] bg-[#fafafa] text-[#8c8c8c]";
+      return "border-[#d9d9d9] bg-[var(--bg-secondary)] text-[#8c8c8c]";
     case "RUN":
       return "border-[#ffd591] bg-[#fff7e6] text-[#FA8C16]";
     default:
@@ -368,7 +368,7 @@ function JsonCodeBlock({ value }: { value?: string | null }) {
   const byteSize = new Blob([text]).size;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <div className="overflow-hidden rounded-lg border border-slate-200 bg-[var(--bg-primary)]">
       <div className="flex items-center justify-between border-b border-slate-200 px-3 py-1.5">
         <span className="font-mono text-[11px] font-medium text-slate-400">
           {"{}"} JSON · {lineCount} 行 · {formatBytes(byteSize)}
@@ -505,7 +505,7 @@ export function BizChangeLogPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white p-3">
+      <div className="rounded-xl border border-slate-200 bg-[var(--bg-primary)] p-3">
         <div className="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center">
           <Select
             value={filters.bizType || ALL_VALUE}
@@ -563,7 +563,7 @@ export function BizChangeLogPage() {
             onKeyDown={(event) => event.key === "Enter" && handleSearch()}
             placeholder="操作人"
           />
-          <div className="flex h-10 items-center rounded-md border border-slate-200 bg-white px-2 transition-colors focus-within:border-slate-300">
+          <div className="flex h-10 items-center rounded-md border border-slate-200 bg-[var(--bg-primary)] px-2 transition-colors focus-within:border-slate-300">
             <input
               type="date"
               value={filters.beginTime}
@@ -647,7 +647,7 @@ export function BizChangeLogPage() {
                     <TableCell>
                       <RelativeTime value={item.createTime} />
                     </TableCell>
-                    <TableCell className="sticky right-0 z-10 bg-white shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-slate-50">
+                    <TableCell className="sticky right-0 z-10 bg-[var(--bg-primary)] shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-slate-50">
                       <div className="flex items-center gap-2">
                         <Button
                           size="sm"
@@ -767,7 +767,7 @@ export function BizChangeLogPage() {
                     onClick={() => setDetailTab(tab.key as DetailTab)}
                     className={
                       detailTab === tab.key
-                        ? "rounded-md bg-white px-3 py-1.5 text-sm font-medium text-slate-900 shadow-sm"
+                        ? "rounded-md bg-[var(--bg-primary)] px-3 py-1.5 text-sm font-medium text-slate-900 shadow-sm"
                         : "rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-slate-800"
                     }
                   >

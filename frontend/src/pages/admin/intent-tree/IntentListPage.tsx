@@ -375,7 +375,7 @@ export function IntentListPage() {
       </div>
 
       <div className="space-y-3">
-        <div className="rounded-xl border border-slate-200 bg-white p-3">
+        <div className="rounded-xl border border-slate-200 bg-[var(--bg-primary)] p-3">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <div className="relative w-full lg:min-w-[280px] lg:max-w-[420px] lg:flex-1">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -700,7 +700,7 @@ export function IntentListPage() {
                         variant={row.enabled === 0 ? "secondary" : "default"}
                         className={cn(
                           row.enabled === 0
-                            ? "border-[#d9d9d9] bg-[#fafafa] text-[#8c8c8c] font-semibold"
+                            ? "border-[#d9d9d9] bg-[var(--bg-secondary)] text-[#8c8c8c] font-semibold"
                             : "border-[#b7eb8f] bg-[#f6ffed] text-[#52C41A] font-semibold"
                         )}
                       >
@@ -708,7 +708,7 @@ export function IntentListPage() {
                       </Badge>
                     </TableCell>
                     <TableCell
-                      className="sticky right-0 z-10 bg-white shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-slate-50"
+                      className="sticky right-0 z-10 bg-[var(--bg-primary)] shadow-[-1px_0_0_rgba(226,232,240,1)] group-hover:bg-slate-50"
                     >
                       <div className="flex items-center gap-2">
                         <Button

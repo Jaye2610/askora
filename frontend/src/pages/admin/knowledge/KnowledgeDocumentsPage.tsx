@@ -1261,8 +1261,8 @@ export function KnowledgeDocumentsPage() {
         <DialogContent hideClose className={
           // 正文区用纯白：pdf 画布、docx 页面本身就是白的，弹窗底色带灰会在正文四周描出一圈内嵌外框
           previewTarget?.fileType === "pdf" || isDocxType(previewTarget?.fileType) || isSpreadsheetType(previewTarget?.fileType) || isImageType(previewTarget?.fileType)
-            ? "flex h-[92vh] flex-col overflow-hidden bg-white sm:max-w-[1100px] p-0"
-            : "flex max-h-[90vh] flex-col overflow-hidden bg-white sm:max-w-[900px] p-0"
+            ? "flex h-[92vh] flex-col overflow-hidden bg-[var(--bg-primary)] sm:max-w-[1100px] p-0"
+            : "flex max-h-[90vh] flex-col overflow-hidden bg-[var(--bg-primary)] sm:max-w-[900px] p-0"
         } onOpenAutoFocus={(e) => e.preventDefault()} onCloseAutoFocus={(e) => { e.preventDefault(); requestAnimationFrame(() => (document.activeElement as HTMLElement)?.blur()); }}>
           <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-card px-6 py-3">
             <span className="text-sm font-medium text-muted-foreground truncate">{previewTarget?.docName || "预览"}</span>
@@ -1391,12 +1391,12 @@ export function KnowledgeDocumentsPage() {
               <span className="tabular-nums font-medium">
                 已选 {selectedIds.size} 项
               </span>
-              <div className="mx-1 h-5 w-px bg-white/20" />
+              <div className="mx-1 h-5 w-px bg-[color-mix(in_srgb,var(--bg-primary)_20%,transparent)]" />
               <button
                 type="button"
                 onClick={handleBatchChunk}
                 disabled={batchOperating}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white/80 transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-white disabled:opacity-50"
               >
                 <PlayCircle className="h-4 w-4" />
                 批量分块
@@ -1405,16 +1405,16 @@ export function KnowledgeDocumentsPage() {
                 type="button"
                 onClick={() => setBatchDeleteOpen(true)}
                 disabled={batchOperating}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-red-400 transition-colors hover:bg-white/10 hover:text-red-300 disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-red-400 transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-red-300 disabled:opacity-50"
               >
                 <Trash2 className="h-4 w-4" />
                 删除
               </button>
-              <div className="mx-1 h-5 w-px bg-white/20" />
+              <div className="mx-1 h-5 w-px bg-[color-mix(in_srgb,var(--bg-primary)_20%,transparent)]" />
               <button
                 type="button"
                 onClick={() => setSelectedIds(new Set())}
-                className="rounded-lg p-1.5 text-white/50 transition-colors hover:bg-white/10 hover:text-white/80"
+                className="rounded-lg p-1.5 text-white/50 transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-white/80"
               >
                 <X className="h-4 w-4" />
               </button>

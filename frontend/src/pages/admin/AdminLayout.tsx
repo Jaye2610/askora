@@ -707,7 +707,7 @@ export function AdminLayout() {
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 text-sm text-slate-600 shadow-sm"
+                    className="flex items-center gap-2 rounded-full border border-slate-200 bg-[var(--bg-primary)] px-2 py-1.5 text-sm text-slate-600 shadow-sm"
                     aria-label="用户菜单"
                   >
                     <AskoraLogo size={32} className="!rounded-full" />
