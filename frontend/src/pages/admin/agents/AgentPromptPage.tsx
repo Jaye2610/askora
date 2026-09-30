@@ -299,7 +299,7 @@ export function AgentPromptPage() {
                     </code>
                   ))}
                   {missingPlaceholders.length > 0 ? (
-                    <span className="text-rose-500">缺失的占位符会导致保存被拒绝</span>
+                    <span className="text-[var(--danger)]">缺失的占位符会导致保存被拒绝</span>
                   ) : null}
                 </div>
               ) : null}

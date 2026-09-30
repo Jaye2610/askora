@@ -94,7 +94,7 @@ export const clamp = (value: number, min: number, max: number): number => {
 export const nodeTypeChipClass = (type?: string | null): string => {
   const normalized = (type || "").trim().toUpperCase();
   if (normalized === "ROOT") return "bg-indigo-100 text-indigo-700";
-  if (normalized === "USER_TTFT") return "bg-rose-100 text-rose-700";
+  if (normalized === "USER_TTFT") return "bg-[var(--danger-soft-hover)] text-[var(--danger-text-strong)]";
   if (normalized === "LLM_TTFT") return "bg-emerald-100 text-emerald-700";
   if (normalized === "LLM_PROVIDER") return "bg-orange-100 text-orange-700";
   if (normalized === "LLM_ROUTING") return "bg-amber-100 text-amber-700";

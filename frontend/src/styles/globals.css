@@ -93,6 +93,18 @@
   --info-bright: #a5f3fc;    /* cyan-200    */
   --info-text: #0e7490;      /* cyan-700    */
 
+  /* ===== 新设计系统 - 危险操作 =====
+     与 --error-* 分开：--error-* 是"出错了"的状态色（正红 red 族），
+     --danger-* 是"会毁掉东西的按钮"（玫瑰红 rose 族，如退出登录/删除）。
+     两者色相不同，合并会让"报错提示"与"危险按钮"在视觉上无法分辨。 */
+  --danger-soft: #fff1f2;         /* rose-50  */
+  --danger-soft-hover: #ffe4e6;   /* rose-100 */
+  --danger-border: #fecdd3;       /* rose-200 */
+  --danger: #f43f5e;              /* rose-500 */
+  --danger-text: #e11d48;         /* rose-600 */
+  --danger-text-strong: #be123c;  /* rose-700 */
+  --danger-text-deep: #9f1239;    /* rose-800 */
+
   /* ===== 新设计系统 - 圆角 ===== */
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -225,6 +237,15 @@
   --info-border: #155e75;
   --info-bright: #22d3ee;
   --info-text: #22d3ee;
+
+  /* 危险操作：与状态色同一方向（衬底转深、文字转亮） */
+  --danger-soft: #2b1019;
+  --danger-soft-hover: #3d1622;
+  --danger-border: #7f1d3a;
+  --danger: #fb7185;
+  --danger-text: #fb7185;
+  --danger-text-strong: #fda4af;
+  --danger-text-deep: #fecdd3;
 
   --border-default: #26324a;
   --border-light: #1b2536;
@@ -2744,7 +2765,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-placeholder--missing {
-    @apply border-rose-200 bg-rose-50 text-rose-600;
+    @apply border-[var(--danger-border)] bg-[var(--danger-soft)] text-[var(--danger-text)];
   }
 
   .admin-layout .agent-prompt-pane__footer {

@@ -484,7 +484,7 @@ export function IntentListPage() {
               </Button>
               <Button
                 variant="outline"
-                className="h-10 gap-1.5 border-rose-200 bg-rose-50 px-3 text-sm font-medium text-rose-700 hover:bg-rose-100 hover:text-rose-800"
+                className="h-10 gap-1.5 border-[var(--danger-border)] bg-[var(--danger-soft)] px-3 text-sm font-medium text-[var(--danger-text-strong)] hover:bg-[var(--danger-soft-hover)] hover:text-[var(--danger-text-deep)]"
                 onClick={handleResetFilters}
               >
                 <X className="h-4 w-4" />

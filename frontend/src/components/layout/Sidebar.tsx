@@ -426,7 +426,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <KeyRound className="mr-2 h-4 w-4" />
                 修改密码
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => logout()} className="text-rose-600 focus:text-rose-600">
+              <DropdownMenuItem onClick={() => logout()} className="text-[var(--danger-text)] focus:text-[var(--danger-text)]">
                 <LogOut className="mr-2 h-4 w-4" />
                 退出登录
               </DropdownMenuItem>

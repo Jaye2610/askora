@@ -107,7 +107,7 @@ export const MessageItem = React.memo(function MessageItem({ message }: MessageI
             />
           ) : null}
           {message.status === "error" ? (
-            <p className="text-xs text-rose-500">生成已中断。</p>
+            <p className="text-xs text-[var(--danger)]">生成已中断。</p>
           ) : null}
           {showFeedback || hasSources || canRecommend ? (
             <div className="flex items-center gap-2">
