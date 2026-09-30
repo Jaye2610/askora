@@ -93,13 +93,13 @@ export function KnowledgeBaseMultiSelect({
             selectedItems.map(({ collectionName, knowledgeBase }) => (
               <span
                 key={collectionName}
-                className="inline-flex max-w-[16rem] items-center gap-1 rounded-md border border-indigo-100 bg-indigo-50 py-0.5 pl-2 pr-1 text-xs font-medium text-indigo-700"
+                className="inline-flex max-w-[16rem] items-center gap-1 rounded-md border border-[var(--border-accent)] bg-[var(--accent-light)] py-0.5 pl-2 pr-1 text-xs font-medium text-[var(--accent-secondary)]"
               >
                 <span className="truncate">{knowledgeBase?.name || collectionName}</span>
                 <button
                   type="button"
                   tabIndex={-1}
-                  className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm text-indigo-400 transition-colors hover:bg-indigo-100 hover:text-indigo-700"
+                  className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm text-[var(--accent-hover)] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent-secondary)]"
                   aria-label={`移除 ${knowledgeBase?.name || collectionName}`}
                   onPointerDown={(event) => {
                     // 阻止触发器展开，仅执行移除
@@ -151,7 +151,7 @@ export function KnowledgeBaseMultiSelect({
             <div className="flex items-center gap-3">
               <button
                 type="button"
-                className="font-medium text-indigo-600 transition-colors hover:text-indigo-700 disabled:opacity-40"
+                className="font-medium text-[var(--accent-secondary)] transition-colors hover:text-[var(--accent-secondary)] disabled:opacity-40"
                 disabled={value.length === knowledgeBases.length}
                 onClick={selectAll}
               >
@@ -188,7 +188,7 @@ export function KnowledgeBaseMultiSelect({
                   toggle(knowledgeBase.collectionName, checked === true)
                 }
                 onSelect={(event) => event.preventDefault()}
-                className="items-start gap-3 py-2 pl-8 pr-2 data-[state=checked]:bg-indigo-50/60"
+                className="items-start gap-3 py-2 pl-8 pr-2 data-[state=checked]:bg-[color-mix(in_srgb,var(--accent-light)_60%,transparent)]"
               >
                 <div className="flex min-w-0 flex-1 flex-col">
                   <span className="truncate text-sm font-medium text-foreground">

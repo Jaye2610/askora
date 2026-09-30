@@ -69,7 +69,7 @@ export function LoginPage() {
               const Icon = f.icon;
               return (
                 <div key={f.title} className="flex items-start gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/10 to-violet-500/10 text-violet-600">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/10 to-violet-500/10 text-[var(--accent-violet)]">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>

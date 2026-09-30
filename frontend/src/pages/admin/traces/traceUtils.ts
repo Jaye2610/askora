@@ -93,15 +93,15 @@ export const clamp = (value: number, min: number, max: number): number => {
 
 export const nodeTypeChipClass = (type?: string | null): string => {
   const normalized = (type || "").trim().toUpperCase();
-  if (normalized === "ROOT") return "bg-indigo-100 text-indigo-700";
+  if (normalized === "ROOT") return "bg-[var(--accent-light)] text-[var(--accent-secondary)]";
   if (normalized === "USER_TTFT") return "bg-[var(--danger-soft-hover)] text-[var(--danger-text-strong)]";
   if (normalized === "LLM_TTFT") return "bg-[var(--success-soft-strong)] text-[var(--success-text-strong)]";
   if (normalized === "LLM_PROVIDER") return "bg-orange-100 text-orange-700";
   if (normalized === "LLM_ROUTING") return "bg-[var(--warning-soft-strong)] text-[var(--warning-text-strong)]";
-  if (normalized === "GUIDANCE") return "bg-violet-100 text-violet-700";
+  if (normalized === "GUIDANCE") return "bg-[var(--violet-surface)] text-[var(--violet-text)]";
   if (normalized === "INTENT") return "bg-sky-100 text-sky-700";
   if (normalized === "REWRITE") return "bg-teal-100 text-teal-700";
-  if (normalized === "RETRIEVE" || normalized === "RAG_NODE") return "bg-blue-100 text-blue-700";
+  if (normalized === "RETRIEVE" || normalized === "RAG_NODE") return "bg-[var(--accent-light)] text-blue-700";
   if (normalized === "TITLE_GEN") return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
   if (normalized.startsWith("MCP")) return "bg-[var(--info-border)] text-[var(--info-text)]";
   return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";

@@ -91,7 +91,7 @@ function MetricItem({
     success: "text-[var(--success-text)]",
     error: "text-[var(--error-text)]",
     warning: "text-[var(--warning-text)]",
-    primary: "text-blue-600"
+    primary: "text-[var(--accent-secondary)]"
   };
 
   return (
@@ -156,9 +156,9 @@ function WaterfallRow({
           className={cn(
               "grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 py-2.5 transition-colors group",
               clickable && "cursor-pointer hover:bg-[color-mix(in_srgb,var(--bg-secondary)_80%,transparent)]",
-              isRoot && "bg-indigo-50/40 border-b border-indigo-100",
+              isRoot && "bg-[color-mix(in_srgb,var(--accent-light)_40%,transparent)] border-b border-[var(--border-accent)]",
               isTopSlowest && !isSelected && !isRoot && "bg-[color-mix(in_srgb,var(--warning-soft)_40%,transparent)]",
-              isSelected && "bg-blue-50/60 ring-1 ring-inset ring-blue-200"
+              isSelected && "bg-blue-50/60 ring-1 ring-inset ring-[var(--border-accent)]"
           )}
       >
         <div className="flex items-center gap-1.5 min-w-0">
@@ -187,7 +187,7 @@ function WaterfallRow({
           <span
               className={cn(
                   "truncate",
-                  isRoot ? "text-sm font-semibold text-indigo-900" : "text-sm text-[var(--text-secondary)]"
+                  isRoot ? "text-sm font-semibold text-[var(--accent-secondary)]" : "text-sm text-[var(--text-secondary)]"
               )}
               title={nodeDisplayName}
           >
@@ -332,7 +332,7 @@ function DetailField({
   const highlightClass = highlight === "error"
       ? "text-[var(--error-text)] font-medium"
       : highlight === "primary"
-          ? "text-blue-600 font-medium"
+          ? "text-[var(--accent-secondary)] font-medium"
           : "text-[var(--text-secondary)]";
   return (
       <div className="flex items-center gap-2 min-w-0">
@@ -342,7 +342,7 @@ function DetailField({
                 "truncate",
                 mono && "font-mono",
                 highlightClass,
-                copyable && "cursor-pointer hover:text-blue-600 transition-colors"
+                copyable && "cursor-pointer hover:text-[var(--accent-secondary)] transition-colors"
             )}
             title={value}
             onClick={copyable ? () => copyToClipboard(value, label) : undefined}

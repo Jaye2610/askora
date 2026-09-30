@@ -210,7 +210,7 @@ export function UserListPage() {
                           <Avatar
                             name={user.username || "用户"}
                             src={user.avatar?.trim() || undefined}
-                            className="h-9 w-9 border-[var(--border-default)] bg-indigo-50 text-xs font-semibold text-indigo-600"
+                            className="h-9 w-9 border-[var(--border-default)] bg-[var(--accent-light)] text-xs font-semibold text-[var(--accent-secondary)]"
                           />
                           <div>
                             <div className="font-medium text-[var(--text-primary)]">{user.username || "-"}</div>
@@ -325,7 +325,7 @@ export function UserListPage() {
                     onClick={() => setForm((prev) => ({ ...prev, avatar: url }))}
                     className={`h-10 w-10 overflow-hidden rounded-full transition-all ${
                       form.avatar === url
-                        ? "ring-2 ring-indigo-500 ring-offset-2"
+                        ? "ring-2 ring-[var(--accent-primary)] ring-offset-2"
                         : "opacity-70 hover:opacity-100"
                     }`}
                     aria-label={`选择头像 ${index + 1}`}
@@ -335,7 +335,7 @@ export function UserListPage() {
                 ))}
                 {form.avatar && !AVATAR_PRESETS.includes(form.avatar) ? (
                   <>
-                    <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-indigo-500 ring-offset-2">
+                    <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-[var(--accent-primary)] ring-offset-2">
                       <img src={form.avatar} alt="" className="h-full w-full" />
                     </div>
                     <button

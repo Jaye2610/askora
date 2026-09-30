@@ -314,10 +314,10 @@ const hasParseProfileChoice = (schema: IngestionSpecSchema | null, ext?: string 
 
 const FILE_TYPE_MAP: Record<string, { icon: typeof FileText; color: string }> = {
   pdf:         { icon: FileText, color: "text-[var(--error)]" },
-  markdown:    { icon: FileText, color: "text-blue-500" },
-  md:          { icon: FileText, color: "text-blue-500" },
-  doc:         { icon: FileText, color: "text-blue-600" },
-  docx:        { icon: FileText, color: "text-blue-600" },
+  markdown:    { icon: FileText, color: "text-[var(--accent-primary)]" },
+  md:          { icon: FileText, color: "text-[var(--accent-primary)]" },
+  doc:         { icon: FileText, color: "text-[var(--accent-secondary)]" },
+  docx:        { icon: FileText, color: "text-[var(--accent-secondary)]" },
   txt:         { icon: FileText, color: "text-[var(--text-tertiary)]" },
   xlsx:        { icon: FileSpreadsheet, color: "text-green-600" },
   xls:         { icon: FileSpreadsheet, color: "text-green-600" },
@@ -837,7 +837,7 @@ export function KnowledgeDocumentsPage() {
                           <div className="flex items-center gap-1.5 min-w-0">
                             <button
                               type="button"
-                              className="block truncate min-w-0 text-left font-medium text-[var(--text-primary)] transition-colors hover:text-indigo-600 hover:underline underline-offset-4"
+                              className="block truncate min-w-0 text-left font-medium text-[var(--text-primary)] transition-colors hover:text-[var(--accent-secondary)] hover:underline underline-offset-4"
                               title={doc.docName || ""}
                               onClick={() => navigate(`/admin/knowledge/${kbId}/docs/${doc.id}`)}
                             >
@@ -880,7 +880,7 @@ export function KnowledgeDocumentsPage() {
                             onClick={() => handleToggleEnabled(doc)}
                             className={cn(
                               "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                              enabled ? "bg-indigo-600" : "bg-[var(--bg-hover)]"
+                              enabled ? "bg-[var(--accent-secondary)]" : "bg-[var(--bg-hover)]"
                             )}
                           >
                             <span
@@ -1201,7 +1201,7 @@ export function KnowledgeDocumentsPage() {
                       onClick={handleDetailNoChunkToggle}
                       className={cn(
                         "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                        detailNoChunk ? "bg-indigo-600" : "bg-[var(--bg-hover)]"
+                        detailNoChunk ? "bg-[var(--accent-secondary)]" : "bg-[var(--bg-hover)]"
                       )}
                     >
                       <span
@@ -1344,8 +1344,8 @@ export function KnowledgeDocumentsPage() {
                       <div className="text-lg font-semibold tabular-nums">{formatDuration(log.otherDuration)}</div>
                     </div>
                     <div className="rounded-lg border bg-blue-50 p-3">
-                      <div className="text-xs text-blue-600 mb-1">总耗时</div>
-                      <div className="text-lg font-bold tabular-nums text-blue-600">{formatDuration(log.totalDuration)}</div>
+                      <div className="text-xs text-[var(--accent-secondary)] mb-1">总耗时</div>
+                      <div className="text-lg font-bold tabular-nums text-[var(--accent-secondary)]">{formatDuration(log.totalDuration)}</div>
                     </div>
                   </div>
 
@@ -1916,7 +1916,7 @@ function UploadDialog({ open, onOpenChange, onSubmit }: UploadDialogProps) {
                       onClick={handleNoChunkToggle}
                       className={cn(
                         "relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
-                        noChunk ? "bg-blue-600" : "bg-[var(--bg-hover)]"
+                        noChunk ? "bg-[var(--accent-secondary)]" : "bg-[var(--bg-hover)]"
                       )}
                     >
                       <span

@@ -1712,7 +1712,7 @@ export function KnowledgeGraphPage() {
                       className={cn(
                         "block w-full truncate rounded-lg border px-2.5 py-1 text-left text-sm transition",
                         !activeKb
-                          ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                          ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                           : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                       )}
                     >
@@ -1726,7 +1726,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "block w-full truncate rounded-lg border px-2.5 py-1 text-left text-sm transition",
                           activeKb?.id === kb.id
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1748,7 +1748,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "block w-full truncate rounded-lg border px-2.5 py-1 text-left text-sm transition",
                           !activeDoc
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1762,7 +1762,7 @@ export function KnowledgeGraphPage() {
                           className={cn(
                             "block w-full truncate rounded-lg border px-2.5 py-1 text-left text-sm transition",
                             activeDoc?.id === doc.id
-                              ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                              ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                               : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                           )}
                         >
@@ -1824,7 +1824,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           vizThemeState === opt.key
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1849,7 +1849,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           edgeCurvedState === opt.curved
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1874,7 +1874,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           edgeArrowState === opt.arrow
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1897,7 +1897,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           layoutType === opt.key
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1917,7 +1917,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           depth === value
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1937,7 +1937,7 @@ export function KnowledgeGraphPage() {
                         className={cn(
                           "flex-1 rounded-lg border py-1 text-sm transition",
                           limit === value
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-600"
+                            ? "border-[var(--accent-primary)] bg-[var(--accent-light)] text-[var(--accent-secondary)]"
                             : "border-[var(--border-default)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
                         )}
                       >
@@ -1952,7 +1952,7 @@ export function KnowledgeGraphPage() {
         </div>
 
         {activeEntity ? (
-          <span className="w-fit rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs text-indigo-600 shadow-sm">
+          <span className="w-fit rounded-full bg-[var(--accent-light)] px-2.5 py-0.5 text-xs text-[var(--accent-secondary)] shadow-sm">
             聚焦：{activeEntity}
           </span>
         ) : null}
@@ -2003,7 +2003,7 @@ export function KnowledgeGraphPage() {
 
       {loading ? (
         <div className="absolute inset-0 flex items-center justify-center bg-[color-mix(in_srgb,var(--bg-primary)_60%,transparent)]">
-          <Loader2 className="h-6 w-6 animate-spin text-indigo-500" />
+          <Loader2 className="h-6 w-6 animate-spin text-[var(--accent-primary)]" />
         </div>
       ) : null}
 

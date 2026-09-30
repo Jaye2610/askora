@@ -330,7 +330,7 @@ export function AgentProfilePage() {
                     onClick={() => setForm((prev) => ({ ...prev, avatar: preset.key }))}
                     className={cn(
                       "inline-flex rounded-xl border-2 border-transparent p-0.5 transition-transform hover:scale-105",
-                      form.avatar === preset.key && "border-indigo-500"
+                      form.avatar === preset.key && "border-[var(--accent-primary)]"
                     )}
                   >
                     <AgentAvatar

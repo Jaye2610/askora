@@ -759,7 +759,7 @@ const SimpleAreaChart = ({
                 />
                 {/* 圆点 */}
                 <div
-                    className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue-500 bg-[var(--bg-primary)] shadow-sm"
+                    className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--bg-primary)] shadow-sm"
                     style={{ left: tooltip.x, top: tooltip.y }}
                 />
                 {/* 标签 */}
@@ -772,7 +772,7 @@ const SimpleAreaChart = ({
                 >
                   <div className="font-medium">{tooltip.label}</div>
                   <div className="flex items-center gap-1">
-                    <span className="h-2 w-2 rounded-sm bg-blue-400" />
+                    <span className="h-2 w-2 rounded-sm bg-[var(--accent-hover)]" />
                     <span>
                   {valueLabel}: {tooltip.value}
                 </span>
@@ -1221,15 +1221,15 @@ const TYPE_ICON: Record<InsightCardData["type"], typeof Info> = {
 
 const TYPE_STYLE: Record<InsightCardData["type"], string> = {
   anomaly: "bg-[var(--error-soft)] text-[var(--error-text)]",
-  trend: "bg-indigo-50 text-indigo-600",
-  recommendation: "bg-violet-50 text-violet-600"
+  trend: "bg-[var(--accent-light)] text-[var(--accent-secondary)]",
+  recommendation: "bg-[var(--violet-soft)] text-[var(--accent-violet)]"
 };
 
 const InsightCard = ({ item }: { item: InsightCardData }) => {
   const Icon = TYPE_ICON[item.type];
 
   return (
-      <div className="rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5 transition-colors hover:border-indigo-200/70 hover:bg-[var(--bg-primary)]">
+      <div className="rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5 transition-colors hover:border-[color-mix(in_srgb,var(--border-accent)_70%,transparent)] hover:bg-[var(--bg-primary)]">
         <div className="mb-2 flex items-center justify-between">
         <span
             className={cn(

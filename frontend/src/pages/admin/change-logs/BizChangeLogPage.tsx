@@ -218,7 +218,7 @@ function JsonScalar({ value }: { value: unknown }) {
     return <span className="whitespace-pre-wrap break-all text-[var(--success-text-strong)]">{value === "" ? '""' : value}</span>;
   }
   if (typeof value === "number") {
-    return <span className="text-blue-600">{value}</span>;
+    return <span className="text-[var(--accent-secondary)]">{value}</span>;
   }
   if (typeof value === "boolean") {
     return <span className="text-purple-600">{String(value)}</span>;
@@ -737,7 +737,7 @@ export function BizChangeLogPage() {
         <DialogContent className="max-w-[980px] max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-indigo-500" />
+              <ShieldCheck className="h-5 w-5 text-[var(--accent-primary)]" />
               审计详情
             </DialogTitle>
             <DialogDescription>
