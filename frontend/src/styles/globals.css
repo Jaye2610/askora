@@ -220,6 +220,14 @@
   /* 品牌强调色在暗底上仍然成立，只调「浅色衬底」那一枚 */
   --accent-light: #1e3a8a;
 
+  /* 强调色前景：这三个既当填充也当文字用（text-indigo-600 / text-violet-600
+     在 C-3 都映射到了它们）。原值 #2563eb / #3b82f6 / #7c3aed 压在近黑底上
+     对比不足，暗色下整体提亮一到两档。 */
+  --accent-primary: #60a5fa;   /* blue-400  */
+  --accent-secondary: #93c5fd; /* blue-300  */
+  --accent-violet: #a78bfa;    /* violet-400 */
+  --accent-hover: #bfdbfe;     /* blue-200  */
+
   /* 紫色辅助：暗底上衬底转暗、文字转亮（色阶方向反转） */
   --violet-soft: #171233;
   --violet-surface: #1f1842;
@@ -453,7 +461,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-topbar {
-    @apply sticky top-0 z-20 border-b border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-white/80 backdrop-blur;
+    @apply sticky top-0 z-20 border-b border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-[color-mix(in_srgb,var(--bg-primary)_80%,transparent)] backdrop-blur;
   }
 
   .admin-layout .admin-topbar-inner {
@@ -465,11 +473,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-topbar-kbd {
-    @apply absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-[var(--border-default)] bg-white px-2 py-0.5 text-[10px] text-[var(--text-tertiary)];
+    @apply absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] px-2 py-0.5 text-[10px] text-[var(--text-tertiary)];
   }
 
   .admin-layout .admin-topbar-suggest {
-    @apply absolute left-0 right-0 top-full z-30 mt-2 rounded-xl border border-[var(--border-default)] bg-white p-1 shadow-lg;
+    @apply absolute left-0 right-0 top-full z-30 mt-2 rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-1 shadow-lg;
   }
 
   .admin-layout .admin-topbar-suggest-section + .admin-topbar-suggest-section {
@@ -530,11 +538,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .admin-stat-scope--stamp {
-    @apply rounded-full border border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-white/70 px-2 py-0.5 text-[var(--text-tertiary)] backdrop-blur;
+    @apply rounded-full border border-[color-mix(in_srgb,var(--border-default)_70%,transparent)] bg-[color-mix(in_srgb,var(--bg-primary)_70%,transparent)] px-2 py-0.5 text-[var(--text-tertiary)] backdrop-blur;
   }
 
   .admin-layout .admin-stat-card {
-    @apply relative flex items-center justify-between rounded-xl border border-[var(--border-default)] bg-white p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5;
+    @apply relative flex items-center justify-between rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5;
   }
 
   .admin-layout .admin-stat-icon {
@@ -663,7 +671,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-card {
-    @apply rounded-xl border border-[var(--border-default)] bg-white shadow-[0_1px_3px_rgba(15,23,42,0.08)];
+    @apply rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] shadow-[0_1px_3px_rgba(15,23,42,0.08)];
   }
 
   .admin-layout .ui-card-header {
@@ -679,7 +687,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-table-wrap {
-    @apply rounded-xl border border-[var(--border-default)] bg-white overflow-x-auto;
+    @apply rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] overflow-x-auto;
   }
 
   .admin-layout .ui-card .ui-table-wrap {
@@ -727,11 +735,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   .admin-layout .ui-input,
   .admin-layout .ui-textarea,
   .admin-layout .ui-select-trigger {
-    @apply rounded-lg border-[var(--border-default)] bg-white shadow-none;
+    @apply rounded-lg border-[var(--border-default)] bg-[var(--bg-primary)] shadow-none;
   }
 
   .admin-layout .ui-select-content {
-    @apply rounded-xl border-[var(--border-default)] bg-white text-[var(--text-secondary)] shadow-lg;
+    @apply rounded-xl border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-secondary)] shadow-lg;
   }
 
   .admin-layout .ui-select-item {
@@ -747,7 +755,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .ui-button[data-variant="outline"] {
-    @apply border-[var(--border-default)] bg-white text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)];
+    @apply border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)];
   }
 
   .admin-layout .ui-button[data-variant="ghost"] {
@@ -785,7 +793,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
 
   .admin-layout .ui-dialog-content,
   .admin-layout .ui-alert-dialog-content {
-    @apply rounded-2xl border-[var(--border-default)] bg-white shadow-xl;
+    @apply rounded-2xl border-[var(--border-default)] bg-[var(--bg-primary)] shadow-xl;
   }
 
   .admin-layout .trace-list-page {
@@ -2196,11 +2204,11 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-hero-chip {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] shadow-sm backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/70 bg-[color-mix(in_srgb,var(--bg-primary)_80%,transparent)] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] shadow-sm backdrop-blur;
   }
 
   .admin-layout .trace-filter-card {
-    @apply border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white/90 shadow-sm;
+    @apply border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] shadow-sm;
   }
 
   .admin-layout .trace-filter-row {
@@ -2231,7 +2239,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-stat-card {
-    @apply flex h-[88px] items-center gap-3 rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white/90 px-5 py-4 shadow-sm;
+    @apply flex h-[88px] items-center gap-3 rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] px-5 py-4 shadow-sm;
   }
 
   .admin-layout .trace-stat-icon {
@@ -2473,7 +2481,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .trace-waterfall-wrap {
-    @apply rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-white;
+    @apply rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-[var(--bg-primary)];
   }
 
   .admin-layout .trace-waterfall-head {
@@ -2635,7 +2643,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-card {
-    @apply flex flex-col gap-4 rounded-xl border border-[var(--border-default)] bg-white p-5 text-left shadow-sm transition-all duration-200;
+    @apply flex flex-col gap-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-5 text-left shadow-sm transition-all duration-200;
     min-height: 196px;
   }
 
@@ -2687,7 +2695,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-card--add {
-    @apply items-center justify-center gap-2 border-dashed border-[var(--border-focus)] bg-white/50 text-center shadow-none;
+    @apply items-center justify-center gap-2 border-dashed border-[var(--border-focus)] bg-[color-mix(in_srgb,var(--bg-primary)_50%,transparent)] text-center shadow-none;
   }
 
   .admin-layout .agent-card--add:hover {
@@ -2714,7 +2722,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-rail {
-    @apply flex flex-col gap-4 overflow-y-auto rounded-xl border border-[var(--border-default)] bg-white p-3;
+    @apply flex flex-col gap-4 overflow-y-auto rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-3;
   }
 
   /* 窄屏下分栏退化成上下排布，导航必须自己收口，否则要滚过整列才够到编辑器 */
@@ -2769,7 +2777,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-pane {
-    @apply flex min-h-0 flex-col overflow-hidden rounded-xl border border-[var(--border-default)] bg-white;
+    @apply flex min-h-0 flex-col overflow-hidden rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)];
   }
 
   .admin-layout .agent-prompt-pane__header {
@@ -2781,7 +2789,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
   }
 
   .admin-layout .agent-prompt-placeholder {
-    @apply rounded-md border border-[var(--border-default)] bg-white px-1.5 py-0.5 font-mono text-[11px] text-[var(--text-secondary)];
+    @apply rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] px-1.5 py-0.5 font-mono text-[11px] text-[var(--text-secondary)];
   }
 
   .admin-layout .agent-prompt-placeholder--missing {
@@ -2827,7 +2835,7 @@ html.dark *::-webkit-scrollbar-thumb:hover {
 }
 
 .chat-surface {
-  @apply bg-white/80 backdrop-blur-xl border border-border/60 shadow-soft;
+  @apply bg-[color-mix(in_srgb,var(--bg-primary)_80%,transparent)] backdrop-blur-xl border border-border/60 shadow-soft;
 }
 
 textarea {
@@ -3075,7 +3083,7 @@ textarea {
   }
 
   .admin-layout .settings-card {
-    @apply rounded-xl border border-[var(--border-default)] bg-white p-5 shadow-sm;
+    @apply rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-5 shadow-sm;
   }
 
   .admin-layout .settings-arch-grid {
@@ -3083,7 +3091,7 @@ textarea {
   }
 
   .admin-layout .settings-arch-card {
-    @apply flex items-center gap-3 rounded-xl border border-[var(--border-default)] bg-white p-4 shadow-sm;
+    @apply flex items-center gap-3 rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-4 shadow-sm;
   }
 
   .admin-layout .settings-arch-card.is-off {
@@ -3156,7 +3164,7 @@ textarea {
   }
 
   .admin-layout .settings-channel {
-    @apply flex items-center gap-3 rounded-lg border border-[var(--border-default)] bg-white px-3 py-2.5;
+    @apply flex items-center gap-3 rounded-lg border border-[var(--border-default)] bg-[var(--bg-primary)] px-3 py-2.5;
   }
 
   .admin-layout .settings-channel.is-off {
@@ -3184,7 +3192,7 @@ textarea {
   }
 
   .admin-layout .settings-funnel-stage {
-    @apply min-w-0 flex-1 rounded-xl border border-[var(--border-default)] bg-white p-4;
+    @apply min-w-0 flex-1 rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-4;
   }
 
   .admin-layout .settings-funnel-step {
@@ -3260,7 +3268,7 @@ textarea {
   }
 
   .admin-layout .settings-feature {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-[var(--border-default)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)];
+    @apply inline-flex items-center gap-1.5 rounded-full border border-[var(--border-default)] bg-[var(--bg-primary)] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)];
   }
 
   .admin-layout .settings-feature.is-off {
@@ -3318,4 +3326,73 @@ textarea {
   .admin-layout .settings-tag.is-violet {
     @apply bg-[var(--violet-soft)] text-[var(--accent-violet)];
   }
+}
+
+/* ===== 暗色适配：trace / kpi 作用域令牌 =====
+   --trace-* 挂在 .admin-layout .trace-list-page（0,2,0），
+   --kpi-*   挂在 .admin-layout .trace-list-kpi-pill 及其三个色系变体（0,2,0）。
+   这两套只有浅色值，而 .dark 块里从未覆盖过它们 —— 这就是暗色下 admin
+   仍出现白卡片 / 浅紫图标块的根因。
+   放在文件末尾 + 加 .dark 前缀，同时保证特异性和顺序。 */
+.dark .admin-layout .trace-list-page {
+  --trace-text-primary: #e8eaf0;
+  --trace-text-secondary: #b6bccb;
+  --trace-text-weak: #8b93a7;
+  --trace-border: #26324a;
+  --trace-border-strong: #33405c;
+  --trace-bg-surface: #0f172a;
+  --trace-bg-muted: #0b1220;
+  --trace-bg-subtle: #16203a;
+  --trace-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --trace-kpi-chip-bg: #16203a;
+  --trace-kpi-chip-border: #26324a;
+  --trace-kpi-icon-bg: #1b2842;
+  --trace-kpi-icon-border: #26324a;
+  --trace-kpi-icon-color: #b6bccb;
+}
+
+/* KPI 胶囊：基座（中性） */
+.dark .admin-layout .trace-list-kpi-pill {
+  --kpi-accent: #8b93a7;
+  --kpi-bg-start: #0f172a;
+  --kpi-bg-end: #16203a;
+  --kpi-border: #26324a;
+  --kpi-icon-bg: #1b2842;
+  --kpi-icon-border: #26324a;
+  --kpi-icon-color: #b6bccb;
+  --kpi-label-color: #8b93a7;
+  --kpi-value-color: #e8eaf0;
+}
+
+/* KPI 胶囊：蓝（runs） */
+.dark .admin-layout .trace-list-kpi-pill--runs {
+  --kpi-accent: #60a5fa;
+  --kpi-bg-end: #12203a;
+  --kpi-border: #1e3a8a;
+  --kpi-icon-bg: #1a2b4d;
+  --kpi-icon-border: #1e3a8a;
+  --kpi-icon-color: #93c5fd;
+  --kpi-label-color: #60a5fa;
+}
+
+/* KPI 胶囊：琥珀（p95） */
+.dark .admin-layout .trace-list-kpi-pill--p95 {
+  --kpi-accent: #fbbf24;
+  --kpi-bg-end: #2b1f08;
+  --kpi-border: #78350f;
+  --kpi-icon-bg: #3a2a0a;
+  --kpi-icon-border: #78350f;
+  --kpi-icon-color: #fcd34d;
+  --kpi-label-color: #fbbf24;
+}
+
+/* KPI 胶囊：翡翠（successrate） */
+.dark .admin-layout .trace-list-kpi-pill--successrate {
+  --kpi-accent: #34d399;
+  --kpi-bg-end: #0b2a20;
+  --kpi-border: #14532d;
+  --kpi-icon-bg: #123528;
+  --kpi-icon-border: #14532d;
+  --kpi-icon-color: #6ee7b7;
+  --kpi-label-color: #34d399;
 }
