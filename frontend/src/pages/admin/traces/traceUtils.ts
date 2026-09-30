@@ -103,7 +103,7 @@ export const nodeTypeChipClass = (type?: string | null): string => {
   if (normalized === "REWRITE") return "bg-teal-100 text-teal-700";
   if (normalized === "RETRIEVE" || normalized === "RAG_NODE") return "bg-blue-100 text-blue-700";
   if (normalized === "TITLE_GEN") return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
-  if (normalized.startsWith("MCP")) return "bg-cyan-100 text-cyan-700";
+  if (normalized.startsWith("MCP")) return "bg-[var(--info-border)] text-[var(--info-text)]";
   return "bg-[var(--bg-tertiary)] text-[var(--text-secondary)]";
 };
 

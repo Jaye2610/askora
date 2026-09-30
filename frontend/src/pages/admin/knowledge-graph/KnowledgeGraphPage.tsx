@@ -1962,7 +1962,7 @@ export function KnowledgeGraphPage() {
       {stats ? (
         <div className="absolute right-4 top-4 z-10 rounded-full border border-[var(--border-default)] bg-[color-mix(in_srgb,var(--bg-primary)_90%,transparent)] px-3 py-1 text-xs text-[var(--text-tertiary)] shadow-sm backdrop-blur">
           {stats.nodes} 实体 · {stats.edges} 关系
-          {view?.truncated ? <span className="text-amber-600"> · 已截断</span> : null}
+          {view?.truncated ? <span className="text-[var(--warning-text)]"> · 已截断</span> : null}
         </div>
       ) : null}
 

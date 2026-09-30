@@ -319,7 +319,7 @@ export function AgentPromptPage() {
 
               <footer className="agent-prompt-pane__footer">
                 <span>{stats}</span>
-                <span className={cn(dirty ? "text-amber-600" : "text-[var(--text-tertiary)]")}>
+                <span className={cn(dirty ? "text-[var(--warning-text)]" : "text-[var(--text-tertiary)]")}>
                   {dirty ? "有未保存的改动" : "已与服务端一致"}
                 </span>
               </footer>

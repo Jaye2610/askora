@@ -185,9 +185,9 @@ const parseIngestionSpec = (raw?: string | null): Record<string, unknown> => {
 const statusDotClass = (status?: string | null) => {
   if (!status) return "bg-muted-foreground/40";
   const normalized = status.toLowerCase();
-  if (normalized === "success") return "bg-emerald-500";
-  if (normalized === "failed") return "bg-red-500";
-  if (normalized === "running") return "bg-amber-500";
+  if (normalized === "success") return "bg-[var(--success)]";
+  if (normalized === "failed") return "bg-[var(--error)]";
+  if (normalized === "running") return "bg-[var(--warning)]";
   if (normalized === "pending") return "bg-slate-400";
   return "bg-muted-foreground/40";
 };
@@ -313,7 +313,7 @@ const hasParseProfileChoice = (schema: IngestionSpecSchema | null, ext?: string 
   !!ext && (schema?.parseProfileExtensions ?? []).includes(ext.toLowerCase());
 
 const FILE_TYPE_MAP: Record<string, { icon: typeof FileText; color: string }> = {
-  pdf:         { icon: FileText, color: "text-red-500" },
+  pdf:         { icon: FileText, color: "text-[var(--error)]" },
   markdown:    { icon: FileText, color: "text-blue-500" },
   md:          { icon: FileText, color: "text-blue-500" },
   doc:         { icon: FileText, color: "text-blue-600" },
@@ -321,14 +321,14 @@ const FILE_TYPE_MAP: Record<string, { icon: typeof FileText; color: string }> = 
   txt:         { icon: FileText, color: "text-[var(--text-tertiary)]" },
   xlsx:        { icon: FileSpreadsheet, color: "text-green-600" },
   xls:         { icon: FileSpreadsheet, color: "text-green-600" },
-  csv:         { icon: FileSpreadsheet, color: "text-emerald-500" },
-  image:       { icon: FileImage, color: "text-emerald-500" },
-  png:         { icon: FileImage, color: "text-emerald-500" },
-  jpg:         { icon: FileImage, color: "text-emerald-500" },
-  jpeg:        { icon: FileImage, color: "text-emerald-500" },
-  gif:         { icon: FileImage, color: "text-emerald-500" },
-  webp:        { icon: FileImage, color: "text-emerald-500" },
-  svg:         { icon: FileImage, color: "text-emerald-500" },
+  csv:         { icon: FileSpreadsheet, color: "text-[var(--success)]" },
+  image:       { icon: FileImage, color: "text-[var(--success)]" },
+  png:         { icon: FileImage, color: "text-[var(--success)]" },
+  jpg:         { icon: FileImage, color: "text-[var(--success)]" },
+  jpeg:        { icon: FileImage, color: "text-[var(--success)]" },
+  gif:         { icon: FileImage, color: "text-[var(--success)]" },
+  webp:        { icon: FileImage, color: "text-[var(--success)]" },
+  svg:         { icon: FileImage, color: "text-[var(--success)]" },
 };
 
 const renderFileTypeIcon = (fileType?: string | null, sourceType?: string | null) => {
@@ -845,7 +845,7 @@ export function KnowledgeDocumentsPage() {
                             </button>
                             {doc.chunksEdited ? (
                               <span
-                                className="shrink-0 rounded-full bg-amber-50 px-1.5 py-px text-[10px] font-medium text-amber-700 ring-1 ring-amber-200"
+                                className="shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-px text-[10px] font-medium text-amber-700 ring-1 ring-[var(--warning-border)]"
                                 title="该文档存在被手工编辑过的分块，重新分块会丢失"
                               >
                                 已编辑
@@ -1059,9 +1059,9 @@ export function KnowledgeDocumentsPage() {
                 {chunkTarget?.chunkCount ? (
                   <>
                     <div>文档 [{chunkTarget?.docName}] 已有 {chunkTarget.chunkCount} 个分块记录。</div>
-                    <div className="font-medium text-amber-600">重新分块会清空原有 Chunk 记录及向量数据。</div>
+                    <div className="font-medium text-[var(--warning-text)]">重新分块会清空原有 Chunk 记录及向量数据。</div>
                     {chunkTarget?.chunksEdited ? (
-                      <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                      <div className="rounded-md border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-red-700">
                         <span className="font-semibold">注意：</span>
                         该文档存在被手工编辑过的分块，重新分块会从源文件重新生成，
                         <span className="font-semibold">所有手动修改将丢失且无法恢复</span>。
@@ -1302,9 +1302,9 @@ export function KnowledgeDocumentsPage() {
                     <div className="flex items-center gap-3">
                       <span className={cn(
                         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
-                        log.status === "success" ? "bg-emerald-50 text-emerald-700" :
-                        log.status === "failed" ? "bg-red-50 text-red-700" :
-                        "bg-amber-50 text-amber-700"
+                        log.status === "success" ? "bg-[var(--success-soft)] text-emerald-700" :
+                        log.status === "failed" ? "bg-[var(--error-soft)] text-red-700" :
+                        "bg-[var(--warning-soft)] text-amber-700"
                       )}>
                         {formatLogStatus(log.status)}
                       </span>
@@ -1359,7 +1359,7 @@ export function KnowledgeDocumentsPage() {
 
                   {/* 错误信息 */}
                   {log.errorMessage && (
-                    <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
+                    <div className="rounded-lg bg-[var(--error-soft)] p-3 text-sm text-[var(--error-text)]">
                       <div className="font-medium mb-1">错误信息</div>
                       <div className="text-xs">{log.errorMessage}</div>
                     </div>
@@ -1387,7 +1387,7 @@ export function KnowledgeDocumentsPage() {
         <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center">
           <div className="animate-fade-up rounded-2xl bg-slate-900 px-5 py-3 text-sm text-white shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
             <div className="flex items-center gap-3">
-              <Check className="h-4 w-4 text-emerald-400" />
+              <Check className="h-4 w-4 text-[var(--success-bright)]" />
               <span className="tabular-nums font-medium">
                 已选 {selectedIds.size} 项
               </span>
@@ -1405,7 +1405,7 @@ export function KnowledgeDocumentsPage() {
                 type="button"
                 onClick={() => setBatchDeleteOpen(true)}
                 disabled={batchOperating}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-red-400 transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-red-300 disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[var(--error-bright)] transition-colors hover:bg-[color-mix(in_srgb,var(--bg-primary)_10%,transparent)] hover:text-red-300 disabled:opacity-50"
               >
                 <Trash2 className="h-4 w-4" />
                 删除

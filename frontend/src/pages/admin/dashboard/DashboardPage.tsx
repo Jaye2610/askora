@@ -390,7 +390,7 @@ const DashboardHeader = ({
         </div>
 
         <div className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
           <span>{formatLastUpdated(lastUpdated)}</span>
         </div>
 
@@ -427,8 +427,8 @@ const KPICardItem = ({ value, label, change, icon, iconBg, iconColor }: KPICardP
 
   const changeColor =
       showChange && ((isUp && changePositive) || (!isUp && !changePositive))
-          ? "text-emerald-600"
-          : "text-red-500";
+          ? "text-[var(--success-text)]"
+          : "text-[var(--error)]";
 
   return (
       <div className="rounded-xl border border-[color-mix(in_srgb,var(--border-default)_80%,transparent)] bg-[var(--bg-primary)] p-4">
@@ -1001,8 +1001,8 @@ const STATUS_COLOR: Record<MetricTone, string> = {
 };
 
 const QUALITY_SNAPSHOT_META = [
-  { label: "错误率", toneClass: "bg-red-500", valueClass: "text-red-600", target: "阈值 ≤5%" },
-  { label: "无知识率", toneClass: "bg-amber-500", valueClass: "text-amber-600", target: "阈值 ≤20%" },
+  { label: "错误率", toneClass: "bg-[var(--error)]", valueClass: "text-[var(--error-text)]", target: "阈值 ≤5%" },
+  { label: "无知识率", toneClass: "bg-[var(--warning)]", valueClass: "text-[var(--warning-text)]", target: "阈值 ≤20%" },
   {
     label: "慢响应率（>20s）",
     toneClass: "bg-sky-500",
@@ -1220,7 +1220,7 @@ const TYPE_ICON: Record<InsightCardData["type"], typeof Info> = {
 };
 
 const TYPE_STYLE: Record<InsightCardData["type"], string> = {
-  anomaly: "bg-red-50 text-red-600",
+  anomaly: "bg-[var(--error-soft)] text-[var(--error-text)]",
   trend: "bg-indigo-50 text-indigo-600",
   recommendation: "bg-violet-50 text-violet-600"
 };

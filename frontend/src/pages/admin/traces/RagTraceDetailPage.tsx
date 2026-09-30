@@ -62,9 +62,9 @@ const copyToClipboard = (text: string, label: string) => {
 type StatusType = "success" | "failed" | "running" | "default";
 
 const STATUS_COLORS: Record<StatusType, { dot: string; bar: string }> = {
-  success: { dot: "bg-emerald-500", bar: "bg-emerald-400" },
-  failed: { dot: "bg-red-500", bar: "bg-red-400" },
-  running: { dot: "bg-amber-500", bar: "bg-amber-400" },
+  success: { dot: "bg-[var(--success)]", bar: "bg-[var(--success-bright)]" },
+  failed: { dot: "bg-[var(--error)]", bar: "bg-[var(--error-bright)]" },
+  running: { dot: "bg-[var(--warning)]", bar: "bg-[var(--warning-bright)]" },
   default: { dot: "bg-[var(--bg-hover)]", bar: "bg-[var(--bg-hover)]" }
 };
 
@@ -88,9 +88,9 @@ function MetricItem({
 }) {
   const styles = {
     default: "text-[var(--text-secondary)]",
-    success: "text-emerald-600",
-    error: "text-red-600",
-    warning: "text-amber-600",
+    success: "text-[var(--success-text)]",
+    error: "text-[var(--error-text)]",
+    warning: "text-[var(--warning-text)]",
     primary: "text-blue-600"
   };
 
@@ -157,7 +157,7 @@ function WaterfallRow({
               "grid grid-cols-[minmax(180px,1fr)_120px_2fr_100px] gap-4 px-4 py-2.5 transition-colors group",
               clickable && "cursor-pointer hover:bg-[color-mix(in_srgb,var(--bg-secondary)_80%,transparent)]",
               isRoot && "bg-indigo-50/40 border-b border-indigo-100",
-              isTopSlowest && !isSelected && !isRoot && "bg-amber-50/40",
+              isTopSlowest && !isSelected && !isRoot && "bg-[color-mix(in_srgb,var(--warning-soft)_40%,transparent)]",
               isSelected && "bg-blue-50/60 ring-1 ring-inset ring-blue-200"
           )}
       >
@@ -194,7 +194,7 @@ function WaterfallRow({
             {nodeDisplayName}
           </span>
           {isTopSlowest && !isRoot && (
-              <Zap className="h-3 w-3 text-amber-500 shrink-0" />
+              <Zap className="h-3 w-3 text-[var(--warning)] shrink-0" />
           )}
         </div>
 
@@ -295,8 +295,8 @@ function NodeDetailCard({
             {node.methodName && <DetailField label="方法" value={node.methodName} mono />}
           </div>
           {node.errorMessage && (
-              <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-                <AlertTriangle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2 p-3 bg-[var(--error-soft)] border border-[var(--error-border)] rounded-lg">
+                <AlertTriangle className="h-4 w-4 text-[var(--error)] shrink-0 mt-0.5" />
                 <div className="text-xs">
                   <p className="font-medium text-red-800 mb-1">错误信息</p>
                   <p className="text-red-700 whitespace-pre-wrap break-all">{node.errorMessage}</p>
@@ -330,7 +330,7 @@ function DetailField({
   highlight?: "primary" | "error";
 }) {
   const highlightClass = highlight === "error"
-      ? "text-red-600 font-medium"
+      ? "text-[var(--error-text)] font-medium"
       : highlight === "primary"
           ? "text-blue-600 font-medium"
           : "text-[var(--text-secondary)]";
@@ -665,11 +665,11 @@ export function RagTraceDetailPage() {
 
         {/* 错误提示 */}
         {selectedRun.errorMessage && (
-            <div className="flex items-start gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
-              <AlertTriangle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-3 bg-[var(--error-soft)] border border-[var(--error-border)] rounded-lg">
+              <AlertTriangle className="h-4 w-4 text-[var(--error)] shrink-0 mt-0.5" />
               <div className="text-sm">
                 <span className="font-medium text-red-800">执行出错：</span>
-                <span className="text-red-600 ml-1">{selectedRun.errorMessage}</span>
+                <span className="text-[var(--error-text)] ml-1">{selectedRun.errorMessage}</span>
               </div>
             </div>
         )}

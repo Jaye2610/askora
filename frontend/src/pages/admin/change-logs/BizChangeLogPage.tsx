@@ -335,7 +335,7 @@ function CopyButton({ value, label = "复制" }: { value: string; label?: string
       aria-label={label}
       className="h-7 gap-1.5 px-2 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
     >
-      {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+      {copied ? <Check className="h-3.5 w-3.5 text-[var(--success-text)]" /> : <Copy className="h-3.5 w-3.5" />}
       {copied ? "已复制" : label}
     </Button>
   );
@@ -749,7 +749,7 @@ export function BizChangeLogPage() {
           ) : (
             <div className="space-y-4">
               {detail && detail.success === false ? (
-                <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                <div className="flex items-start gap-2 rounded-lg border border-[var(--error-border)] bg-[var(--error-soft)] px-3 py-2 text-sm text-red-700">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
                   <span className="min-w-0 break-words">{detail.errorMessage || "操作失败"}</span>
                 </div>

@@ -176,7 +176,7 @@ function ChannelRow({
       </div>
       <span className="settings-channel-weight">权重 {channel.weight.toFixed(1)}</span>
       {channel.enabled && backendMissing ? (
-        <span className="settings-tag shrink-0 bg-amber-50 text-amber-600">后端未接入</span>
+        <span className="settings-tag shrink-0 bg-[var(--warning-soft)] text-[var(--warning-text)]">后端未接入</span>
       ) : (
         <StateTag on={channel.enabled} />
       )}
@@ -229,7 +229,7 @@ function FunnelArrow() {
 function FeaturePill({ label, keyName, on }: { label: string; keyName: string; on: boolean }) {
   return (
     <span className={cn("settings-feature", !on && "is-off")}>
-      {on ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Minus className="h-3.5 w-3.5" />}
+      {on ? <Check className="h-3.5 w-3.5 text-[var(--success)]" /> : <Minus className="h-3.5 w-3.5" />}
       {label}
       <code className="settings-feature-key">{keyName}</code>
     </span>
