@@ -1,0 +1,23 @@
+{
+  "name": "Askora AI 智能体",
+  "short_name": "Askora",
+  "description": "企业级检索增强智能问答平台：文档入库、多路检索、智能问答到答案溯源的全链路。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/askora-avatar.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/askora-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

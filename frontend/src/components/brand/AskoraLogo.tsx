@@ -12,8 +12,18 @@ import { cn } from "@/lib/utils";
  * 字形用纯 path 描边，不涉及任何字体 —— 早先 favicon 用
  * `<text font-family="Arial">?` 时跨平台渲染不一致，根源就是字体依赖。
  */
+/**
+ * 字形几何。
+ *
+ * 软化处理：纯 `L` 连成的 A 顶点是尖角，而 `stroke-linejoin: round`
+ * 只能磨掉约 strokeWidth/2（≈1px）的外角，改不了尖角本身。
+ * 所以这里三处都换成曲线：
+ *   - 双腿用三次贝塞尔做微凸外弧（不再笔直）
+ *   - 顶点用二次曲线做圆肩（不再是尖角）
+ *   - 横杠略带弧度，与腿的弧度呼应
+ */
 export const ASKORA_MARK_D =
-  "M8.4 17.4 L12 6.6 L15.6 17.4 M9.8 13.3 L14.2 13.3";
+  "M8.4 17.6 C9.8 13.4 10.9 9.7 11.5 7.7 Q12 6.3 12.5 7.7 C13.1 9.7 14.2 13.4 15.6 17.6 M9.8 13.2 Q12 12.4 14.2 13.2";
 export const ASKORA_MARK_STROKE = 2.1;
 
 export type AskoraLogoVariant = "mark" | "plain" | "wordmark";

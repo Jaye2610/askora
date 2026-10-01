@@ -15,5 +15,5 @@
     </linearGradient>
   </defs>
   <rect width="24" height="24" rx="6" fill="url(#askora)"/>
-  <path d="M8.4 17.4 L12 6.6 L15.6 17.4 M9.8 13.3 L14.2 13.3" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M8.4 17.6 C9.8 13.4 10.9 9.7 11.5 7.7 Q12 6.3 12.5 7.7 C13.1 9.7 14.2 13.4 15.6 17.6 M9.8 13.2 Q12 12.4 14.2 13.2" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
