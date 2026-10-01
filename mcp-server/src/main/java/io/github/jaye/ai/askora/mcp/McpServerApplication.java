@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package io.github.jaye.mcp;
+package io.github.jaye.ai.askora.mcp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
