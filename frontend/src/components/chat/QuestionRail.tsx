@@ -67,7 +67,7 @@ export function QuestionRail({ items, activeId, onSelect }: QuestionRailProps) {
                   {expanded ? (
                     <span
                       className={cn(
-                        "flex-1 truncate text-left text-[13px] transition-colors",
+                        "flex-1 truncate text-left text-[var(--text-sm)] transition-colors",
                         isActive
                           ? "font-medium text-[var(--accent-violet)]"
                           : "text-[#666666]"

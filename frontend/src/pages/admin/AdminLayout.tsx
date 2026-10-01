@@ -552,7 +552,7 @@ export function AdminLayout() {
                                 key={child.label}
                                 to={`${child.path}${child.search || ""}`}
                                 className={cn(
-                                  "admin-sidebar__item text-[13px]",
+                                  "admin-sidebar__item text-[var(--text-sm)]",
                                   isActive && "admin-sidebar__item--active"
                                 )}
                               >

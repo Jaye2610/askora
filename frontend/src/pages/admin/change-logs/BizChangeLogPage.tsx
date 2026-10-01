@@ -620,7 +620,7 @@ export function BizChangeLogPage() {
               </TableHeader>
               <TableBody>
                 {records.map((item) => (
-                  <TableRow key={item.id} className="group text-[13px] hover:!bg-[var(--bg-secondary)]">
+                  <TableRow key={item.id} className="group text-[var(--text-sm)] hover:!bg-[var(--bg-secondary)]">
                     <TableCell>
                       <BizTypeCell bizType={item.bizType} />
                     </TableCell>

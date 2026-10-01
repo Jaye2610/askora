@@ -241,20 +241,20 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 className="flex h-full flex-col items-center justify-center text-[var(--text-tertiary)]"
               >
                 <MessageSquare className="h-16 w-16" />
-                <p className="mt-2 text-[14px]">暂无对话记录</p>
+                <p className="mt-2 text-[var(--text-base)]">暂无对话记录</p>
               </div>
             ) : (
               <div>
                 {groupedSessions.map((group, index) => (
                   <div key={group.label} className={cn("flex flex-col", index === 0 ? "mt-0" : "mt-4")}>
-                    <p className="mb-1.5 pl-3 text-[12px] font-normal leading-[18px] text-[var(--text-tertiary)]">
+                    <p className="mb-1.5 pl-3 text-[var(--text-xs)] font-normal leading-[18px] text-[var(--text-tertiary)]">
                       {group.label}
                     </p>
                     {group.items.map((session) => (
                       <div
                         key={session.id}
                         className={cn(
-                          "group my-[1px] flex min-h-[40px] cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 text-[14px] leading-[22px] transition-colors duration-200",
+                          "group my-[1px] flex min-h-[40px] cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 text-[var(--text-base)] leading-[22px] transition-colors duration-200",
                           currentSessionId === session.id
                             ? "bg-[var(--violet-surface)] text-[var(--violet-text)]"
                             : "text-[#333333] hover:bg-[var(--bg-tertiary)]"
@@ -297,7 +297,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                             onBlur={() => {
                               commitRename().catch(() => null);
                             }}
-                            className="h-6 flex-1 rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] px-2 text-[14px] leading-[22px] text-[#333333] focus:border-[var(--accent-violet)] focus:outline-none"
+                            className="h-6 flex-1 rounded-md border border-[var(--border-default)] bg-[var(--bg-primary)] px-2 text-[var(--text-base)] leading-[22px] text-[#333333] focus:border-[var(--accent-violet)] focus:outline-none"
                           />
                         ) : (
                           <span className="min-w-0 flex-1 truncate font-normal">
@@ -329,7 +329,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 event.stopPropagation();
                                 startRename(session.id, session.title || "新对话");
                               }}
-                              className="px-4 py-2 text-[14px] text-[#333333] focus:bg-[var(--bg-tertiary)] focus:text-[#333333] data-[highlighted]:bg-[var(--bg-tertiary)] data-[highlighted]:text-[#333333]"
+                              className="px-4 py-2 text-[var(--text-base)] text-[#333333] focus:bg-[var(--bg-tertiary)] focus:text-[#333333] data-[highlighted]:bg-[var(--bg-tertiary)] data-[highlighted]:text-[#333333]"
                             >
                               <Pencil className="mr-2 h-4 w-4" />
                               重命名
@@ -342,7 +342,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                                   title: session.title || "新对话"
                                 });
                               }}
-                              className="px-4 py-2 text-[14px] text-[#FF4D4F] focus:bg-[var(--bg-tertiary)] focus:text-[#FF4D4F] data-[highlighted]:bg-[var(--bg-tertiary)] data-[highlighted]:text-[#FF4D4F]"
+                              className="px-4 py-2 text-[var(--text-base)] text-[#FF4D4F] focus:bg-[var(--bg-tertiary)] focus:text-[#FF4D4F] data-[highlighted]:bg-[var(--bg-tertiary)] data-[highlighted]:text-[#FF4D4F]"
                             >
                               <Trash2 className="mr-2 h-4 w-4" />
                               删除

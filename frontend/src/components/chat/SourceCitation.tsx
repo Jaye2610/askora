@@ -86,7 +86,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
           >
             <div className="flex items-center gap-2">
               <SourceIcon source={source} className="h-4 w-4 shrink-0" />
-              <span className="min-w-0 flex-1 truncate text-[12px] text-[#8A8F94] dark:text-[#A1A1AA]">
+              <span className="min-w-0 flex-1 truncate text-[var(--text-xs)] text-[#8A8F94] dark:text-[#A1A1AA]">
                 {sourceSite(source)}
               </span>
               <span className="flex h-[17px] min-w-[17px] shrink-0 items-center justify-center rounded-full bg-[#F2F2F3] px-1 text-[10px] font-medium text-[#8A8F94] dark:bg-[#3F3F46] dark:text-[#D4D4D8]">
@@ -95,7 +95,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
               <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[#C6C6CA] transition-colors group-hover:text-[#8A8F94] dark:text-[#5C5C63] dark:group-hover:text-[#A1A1AA]" />
             </div>
 
-            <p className="mt-2.5 line-clamp-2 text-[13.5px] font-semibold leading-[1.5]">
+            <p className="mt-2.5 line-clamp-2 text-[var(--text-base)] font-semibold leading-[1.5]">
               {title}
             </p>
             {detail ? (
@@ -105,7 +105,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
             ) : null}
 
             {excerpt ? (
-              <p className="mt-3 line-clamp-4 border-t border-[#F1F1F2] pt-3 text-[12.5px] leading-[1.75] text-[#73777D] dark:border-[#3A3A3E] dark:text-[#C4C4CB]">
+              <p className="mt-3 line-clamp-4 border-t border-[#F1F1F2] pt-3 text-[var(--text-sm)] leading-[1.75] text-[#73777D] dark:border-[#3A3A3E] dark:text-[#C4C4CB]">
                 {excerpt}
               </p>
             ) : null}

@@ -49,7 +49,7 @@ export function SourcesPanel() {
     >
       <div className="flex h-full w-[380px] flex-col bg-[var(--bg-primary)]">
         <div className="flex items-center justify-between border-b border-[var(--border-light)] px-5 py-4">
-          <span className="text-[15px] font-semibold text-[var(--text-primary)]">参考来源 ({shownSources.length})</span>
+          <span className="text-[var(--text-lg)] font-semibold text-[var(--text-primary)]">参考来源 ({shownSources.length})</span>
           <button
             type="button"
             onClick={closeSourcesPanel}

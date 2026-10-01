@@ -74,7 +74,7 @@ export function ChatInput() {
             value={value}
             onChange={(event) => setValue(event.target.value)}
             placeholder={deepThinkingEnabled ? "输入需要深度分析的问题..." : "输入你的问题..."}
-            className="max-h-40 min-h-[44px] w-full resize-none border-0 bg-transparent px-2 pt-2 pb-2 pr-2 text-[15px] text-[#333333] shadow-none placeholder:text-[var(--text-tertiary)] focus-visible:ring-0"
+            className="max-h-40 min-h-[44px] w-full resize-none border-0 bg-transparent px-2 pt-2 pb-2 pr-2 text-[var(--text-lg)] text-[#333333] shadow-none placeholder:text-[var(--text-tertiary)] focus-visible:ring-0"
             rows={1}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}

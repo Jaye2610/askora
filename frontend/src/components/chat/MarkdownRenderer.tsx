@@ -199,7 +199,7 @@ export function MarkdownRenderer({ content, messageId, sources }: MarkdownRender
             return (
               <code
                 className={cn(
-                  "mx-0.5 rounded px-1.5 py-0.5 text-[13px] font-mono bg-[#f6f8fa] text-[#24292f]",
+                  "mx-0.5 rounded px-1.5 py-0.5 text-[var(--text-sm)] font-mono bg-[#f6f8fa] text-[#24292f]",
                   "dark:bg-[#161b22] dark:text-[#c9d1d9]",
                   className
                 )}

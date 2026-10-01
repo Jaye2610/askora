@@ -212,7 +212,7 @@ export function AgentProfilePage() {
                     <AgentAvatar avatar={agent.avatar} seed={agent.id} />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <h2 className="truncate text-[15px] font-semibold text-[var(--text-primary)]">
+                        <h2 className="truncate text-[var(--text-lg)] font-semibold text-[var(--text-primary)]">
                           {agent.name}
                         </h2>
                         {agent.builtin ? (
