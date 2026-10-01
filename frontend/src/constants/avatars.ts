@@ -1,6 +1,6 @@
 // 头像的唯一出口。
 //
-// 真正的生成逻辑在 pixelAvatars.ts（字符网格 → data-URI）。
+// 真正的生成逻辑在 animalAvatars.ts（扁平矢量插画，几何图元拼接）。
 // 这里只做两件事：转出预设、以及**把不可信的外链挡掉**。
 //
 // 为什么需要 resolveAvatar：
@@ -17,10 +17,10 @@ import {
   CLOTHING,
   CLOTHING_LIST,
   SPECIES_LIST,
-  pixelAvatar,
+  animalAvatar,
   type ClothingName,
   type SpeciesName
-} from "@/constants/pixelAvatars";
+} from "@/constants/animalAvatars";
 
 export {
   AVATAR_PRESETS,
@@ -28,7 +28,7 @@ export {
   CLOTHING,
   CLOTHING_LIST,
   SPECIES_LIST,
-  pixelAvatar
+  animalAvatar
 };
 export type { ClothingName, SpeciesName };
 
