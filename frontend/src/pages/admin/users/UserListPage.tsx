@@ -16,7 +16,7 @@ import type { PageResult, UserItem, UserCreatePayload, UserUpdatePayload } from 
 import { createUser, deleteUser, getUsersPage, updateUser } from "@/services/userService";
 import { getErrorMessage } from "@/utils/error";
 import { RelativeTime } from "@/components/RelativeTime";
-import { AVATAR_PRESETS } from "@/constants/avatars";
+import { AVATAR_PRESETS, isPresetAvatar, resolveAvatar } from "@/constants/avatars";
 
 const PAGE_SIZE = 10;
 
@@ -209,7 +209,7 @@ export function UserListPage() {
                         <div className="flex items-center gap-3">
                           <Avatar
                             name={user.username || "用户"}
-                            src={user.avatar?.trim() || undefined}
+                            src={resolveAvatar(user.avatar)}
                             className="h-9 w-9 border-[var(--border-default)] bg-[var(--accent-light)] text-xs font-semibold text-[var(--accent-secondary)]"
                           />
                           <div>
@@ -333,7 +333,7 @@ export function UserListPage() {
                     <img src={url} alt="" className="h-full w-full" />
                   </button>
                 ))}
-                {form.avatar && !AVATAR_PRESETS.includes(form.avatar) ? (
+                {form.avatar && !isPresetAvatar(form.avatar) ? (
                   <>
                     <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-[var(--accent-primary)] ring-offset-2">
                       <img src={form.avatar} alt="" className="h-full w-full" />
