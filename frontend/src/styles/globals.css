@@ -49,6 +49,14 @@
   --accent-hover: #60a5fa;
   --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
 
+  /* ===== 品牌标识 =====
+     标识不能写死颜色：同一个 SVG 要同时活在浅底和暗底上。
+     形状靠 currentColor 或 --brand-mark，色块靠 --brand-from/-to，
+     暗色下把渐变整体提亮两档，否则饱和的 500 级在近黑底上会发闷。 */
+  --brand-from: #3b82f6; /* blue-500   */
+  --brand-to: #7c3aed;   /* violet-600 */
+  --brand-mark: #ffffff; /* 色块上的图形颜色 */
+
   /* ===== 新设计系统 - 紫色辅助 =====
      用途：需要与蓝色品牌强调色区分开的场景（“深度思考”面板、推荐问题、智能体标识）。
      之所以单独成组而不是复用 --accent-*：那是蓝色系，混用会让两种语义在颜色上无法分辨。 */
@@ -228,6 +236,11 @@
   --accent-secondary: #93c5fd; /* blue-300  */
   --accent-violet: #a78bfa;    /* violet-400 */
   --accent-hover: #bfdbfe;     /* blue-200  */
+
+  /* 品牌标识：渐变提亮一档，图形保持白色（白压彩色块是最稳的对比） */
+  --brand-from: #4f7ef7; /* 蓝-500 与 401 之间，暗底上略亮于浅色版 */
+  --brand-to: #9061f9;   /* 紫-500 与 600 之间 */
+  --brand-mark: #ffffff;
 
   /* 紫色辅助：暗底上衬底转暗、文字转亮（色阶方向反转） */
   --violet-soft: #171233;

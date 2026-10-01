@@ -3,19 +3,20 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Askora 品牌标识的唯一矢量来源。
+ * Askora 品牌标识的唯一定义处。
  *
- * <p>问号光标用纯 path 绘制，不依赖任何字体 —— 这是 favicon 早先用
- * `<text font-family="Arial">?` 时跨平台渲染不一致的根因。
+ * 设计约束：同一个标识要同时活在浅底和暗底上，所以**不写死任何颜色** ——
+ * 形状靠 currentColor / --brand-mark，色块靠 --brand-from / --brand-to
+ * （这两个在 .dark 里各有一套值）。
+ *
+ * 字形用纯 path 描边，不涉及任何字体 —— 早先 favicon 用
+ * `<text font-family="Arial">?` 时跨平台渲染不一致，根源就是字体依赖。
  */
-export const ASKORA_MARK_STEM =
-  "M9.6 9.2a2.6 2.6 0 1 1 3.2 2.55c-0.9 0.3-0.8 1.1-0.8 1.85";
-export const ASKORA_MARK_DOT = { cx: 12, cy: 16.6, r: 1.15 } as const;
-export const ASKORA_MARK_RING = { cx: 12, cy: 12, r: 8.4 } as const;
-export const ASKORA_BRAND_FROM = "#3B82F6";
-export const ASKORA_BRAND_TO = "#7C3AED";
+export const ASKORA_MARK_D =
+  "M8.4 17.4 L12 6.6 L15.6 17.4 M9.8 13.3 L14.2 13.3";
+export const ASKORA_MARK_STROKE = 2.1;
 
-export type AskoraLogoVariant = "mark" | "mark-with-ring" | "wordmark";
+export type AskoraLogoVariant = "mark" | "plain" | "wordmark";
 
 interface AskoraLogoProps {
   /** 徽标边长（px）。wordmark 时同时决定文字大小。 */
@@ -26,20 +27,16 @@ interface AskoraLogoProps {
   title?: string;
 }
 
-/** 圆环 + 问号光标，颜色跟随 currentColor。 */
-function MarkGlyph({ className }: { className?: string }) {
+function MarkGlyph({ className, color }: { className?: string; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <circle
-        cx={ASKORA_MARK_RING.cx}
-        cy={ASKORA_MARK_RING.cy}
-        r={ASKORA_MARK_RING.r}
-        stroke="currentColor"
-        strokeWidth="1.4"
-        opacity="0.45"
+      <path
+        d={ASKORA_MARK_D}
+        stroke={color ?? "currentColor"}
+        strokeWidth={ASKORA_MARK_STROKE}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d={ASKORA_MARK_STEM} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <circle cx={ASKORA_MARK_DOT.cx} cy={ASKORA_MARK_DOT.cy} r={ASKORA_MARK_DOT.r} fill="currentColor" />
     </svg>
   );
 }
@@ -48,27 +45,40 @@ export function AskoraLogo({ size = 40, variant = "mark", className, title }: As
   const gradientId = React.useId();
   const a11y = title ? { role: "img" as const } : { "aria-hidden": true as const };
 
+  // plain：不带色块，字形跟随 currentColor。用于彩色底 / 单色印刷场景
+  if (variant === "plain") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" width={size} height={size} className={className} {...a11y}>
+        {title ? <title>{title}</title> : null}
+        <path
+          d={ASKORA_MARK_D}
+          stroke="currentColor"
+          strokeWidth={ASKORA_MARK_STROKE}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
   const tile = (
     <span
-      className={cn(
-        "flex shrink-0 items-center justify-center rounded-xl text-white",
-        className
-      )}
+      className={cn("flex shrink-0 items-center justify-center rounded-xl", className)}
       style={{
         width: size,
         height: size,
-        backgroundImage: `linear-gradient(135deg, ${ASKORA_BRAND_FROM} 0%, ${ASKORA_BRAND_TO} 100%)`
+        backgroundImage: `linear-gradient(135deg, var(--brand-from) 0%, var(--brand-to) 100%)`
       }}
     >
       <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%" {...a11y}>
         {title ? <title>{title}</title> : null}
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor={ASKORA_BRAND_FROM} />
-            <stop offset="1" stopColor={ASKORA_BRAND_TO} />
+            <stop offset="0" stopColor="var(--brand-from)" />
+            <stop offset="1" stopColor="var(--brand-to)" />
           </linearGradient>
         </defs>
-        <MarkGlyph className="h-full w-full" />
+        <MarkGlyph className="h-full w-full" color="var(--brand-mark)" />
       </svg>
     </span>
   );
@@ -98,15 +108,7 @@ export function AskoraLogo({ size = 40, variant = "mark", className, title }: As
   );
 }
 
-/**
- * 供 data-URI / 静态 SVG 复用的内联标记，保证与 <AskoraLogo> 同源。
- * 深色底上使用白色描边。
- */
-export function askoraMarkSvgBody(color = "#fff"): string {
-  return (
-    `<circle cx="${ASKORA_MARK_RING.cx}" cy="${ASKORA_MARK_RING.cy}" r="${ASKORA_MARK_RING.r}" ` +
-    `stroke="${color}" stroke-width="1.4" opacity="0.45" fill="none"/>` +
-    `<path d="${ASKORA_MARK_STEM}" stroke="${color}" stroke-width="1.7" stroke-linecap="round" fill="none"/>` +
-    `<circle cx="${ASKORA_MARK_DOT.cx}" cy="${ASKORA_MARK_DOT.cy}" r="${ASKORA_MARK_DOT.r}" fill="${color}"/>`
-  );
+/** 供静态 SVG / data-URI 复用，保证与组件同源。 */
+export function askoraMarkSvgBody(color = "#fff", stroke = ASKORA_MARK_STROKE): string {
+  return `<path d="${ASKORA_MARK_D}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
 }
