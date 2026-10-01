@@ -46,6 +46,12 @@ interface SpeciesSpec {
   eyePatch?: string;
   /** 面部斑纹（熊猫的耳朵用） */
   earFill?: string;
+  /** 腮红。不填则不加 —— 机器人不该有腮红 */
+  blush?: string;
+  /** 胡须（只有猫有，其它物种加了会变猫） */
+  whiskers?: boolean;
+  /** 耳内绒毛线（猫 / 狐） */
+  earTuft?: boolean;
 }
 
 const SPECIES: Record<string, SpeciesSpec> = {
@@ -63,7 +69,10 @@ const SPECIES: Record<string, SpeciesSpec> = {
     inner: "#f0a860",
     muzzle: "#fdf3e3",
     nose: "#c2703a",
-    ear: "pointed"
+    ear: "pointed",
+    blush: "#f7b08e",
+    whiskers: true,
+    earTuft: true
   },
   rabbit: {
     label: "兔",
@@ -71,7 +80,8 @@ const SPECIES: Record<string, SpeciesSpec> = {
     inner: "#f4b6c2",
     muzzle: "#ffffff",
     nose: "#e58fa2",
-    ear: "long"
+    ear: "long",
+    blush: "#f6bfc9"
   },
   bear: {
     label: "熊",
@@ -79,7 +89,8 @@ const SPECIES: Record<string, SpeciesSpec> = {
     inner: "#e8c9a0",
     muzzle: "#f0dcc4",
     nose: "#5c3a20",
-    ear: "round"
+    ear: "round",
+    blush: "#e0a878"
   },
   fox: {
     label: "狐",
@@ -87,7 +98,9 @@ const SPECIES: Record<string, SpeciesSpec> = {
     inner: "#fbd9c0",
     muzzle: "#fdeee2",
     nose: "#8f4a1c",
-    ear: "wide"
+    ear: "wide",
+    blush: "#f7a87c",
+    earTuft: true
   },
   panda: {
     label: "熊猫",
@@ -97,7 +110,8 @@ const SPECIES: Record<string, SpeciesSpec> = {
     nose: "#1e293b",
     ear: "round",
     earFill: "#334155",
-    eyePatch: "#334155"
+    eyePatch: "#334155",
+    blush: "#e6d3d6"
   }
 };
 
@@ -112,13 +126,13 @@ function ears(kind: EarKind, sp: SpeciesSpec): string {
   const fill = sp.earFill ?? sp.fur;
   const innerFill = sp.inner;
   switch (kind) {
-    // 尖耳：两枚三角形，内嵌一枚更小的
+    // 尖耳：叶形 —— 用二次贝塞尔把三角的尖角磨圆，不再是一刀切
     case "pointed":
       return `
-        <path d="M15.2 14.6 L12.4 4.6 L23 10.4 Z" fill="${fill}"/>
-        <path d="M32.8 14.6 L35.6 4.6 L25 10.4 Z" fill="${fill}"/>
-        <path d="M16.6 13.4 L14.7 7.3 L21 10.9 Z" fill="${innerFill}"/>
-        <path d="M31.4 13.4 L33.3 7.3 L27 10.9 Z" fill="${innerFill}"/>`;
+        <path d="M16.0 15.6 Q11.4 9.4 12.6 4.4 Q17.8 7.6 22.4 11.2 Z" fill="${fill}"/>
+        <path d="M32.0 15.6 Q36.6 9.4 35.4 4.4 Q30.2 7.6 25.6 11.2 Z" fill="${fill}"/>
+        <path d="M16.4 14.2 Q13.6 9.8 14.2 6.6 Q17.8 8.8 20.6 11.2 Z" fill="${innerFill}"/>
+        <path d="M31.6 14.2 Q34.4 9.8 33.8 6.6 Q30.2 8.8 27.4 11.2 Z" fill="${innerFill}"/>`;
     // 长耳：竖起的椭圆，略微外倾
     case "long":
       return `
@@ -133,13 +147,13 @@ function ears(kind: EarKind, sp: SpeciesSpec): string {
         <circle cx="32.4" cy="13.4" r="5" fill="${fill}"/>
         <circle cx="15.6" cy="13.6" r="2.4" fill="${innerFill}"/>
         <circle cx="32.4" cy="13.6" r="2.4" fill="${innerFill}"/>`;
-    // 宽三角耳：横向铺开，尖角朝外上方
+    // 宽耳：狐 —— 保留“宽”的物种特征，但尖端改圆肩，不再扎人
     case "wide":
       return `
-        <path d="M13.4 16.4 L8.6 6.2 L23.4 11.6 Z" fill="${fill}"/>
-        <path d="M34.6 16.4 L39.4 6.2 L24.6 11.6 Z" fill="${fill}"/>
-        <path d="M15.6 15.2 L12.4 8.7 L21.6 12.3 Z" fill="${innerFill}"/>
-        <path d="M32.4 15.2 L35.6 8.7 L26.4 12.3 Z" fill="${innerFill}"/>`;
+        <path d="M14.2 17.2 Q8.6 11.2 9.4 5.2 Q15.8 8.0 23.0 12.2 Z" fill="${fill}"/>
+        <path d="M33.8 17.2 Q39.4 11.2 38.6 5.2 Q32.2 8.0 25.0 12.2 Z" fill="${fill}"/>
+        <path d="M15.4 15.8 Q11.6 11.6 12.2 7.6 Q16.8 9.6 21.6 12.6 Z" fill="${innerFill}"/>
+        <path d="M32.6 15.8 Q36.4 11.6 35.8 7.6 Q31.2 9.6 26.4 12.6 Z" fill="${innerFill}"/>`;
     // 扁平耳：机器人与人类等无耳造型，换成天线 / 侧方接收器
     default:
       return `
@@ -176,6 +190,42 @@ function face(sp: SpeciesSpec): string {
   return parts.join("\n        ");
 }
 
+/** 细节层：砂红 / 胡须 / 耳内绒毛 / 前爪。压在面部之上 */
+function details(sp: SpeciesSpec): string {
+  const parts: string[] = [];
+  // 砂红（机器人不填 -> 不加）
+  if (sp.blush) {
+    parts.push(`<ellipse cx="16.0" cy="26.8" rx="3.1" ry="1.8" fill="${sp.blush}" opacity="0.5"/>`);
+    parts.push(`<ellipse cx="32.0" cy="26.8" rx="3.1" ry="1.8" fill="${sp.blush}" opacity="0.5"/>`);
+  }
+  // 胡须：只有猫有。其它物种加上会长得像猫
+  if (sp.whiskers) {
+    parts.push(
+      `<path d="M12.8 26.4 Q9.2 25.4 6.6 25.8 M13.0 28.2 Q9.4 28.2 6.8 29.2" ` +
+        `stroke="${sp.inner}" stroke-width="0.55" fill="none" stroke-linecap="round" opacity="0.75"/>`
+    );
+    parts.push(
+      `<path d="M35.2 26.4 Q38.8 25.4 41.4 25.8 M35.0 28.2 Q38.6 28.2 41.2 29.2" ` +
+        `stroke="${sp.inner}" stroke-width="0.55" fill="none" stroke-linecap="round" opacity="0.75"/>`
+    );
+  }
+  // 耳内绒毛线（猫 / 狐）
+  if (sp.earTuft) {
+    parts.push(
+      `<path d="M15.2 12.6 Q13.4 8.6 13.8 6.4 M17.2 12.8 Q16.0 9.2 16.4 7.0" ` +
+        `stroke="${sp.inner}" stroke-width="0.5" fill="none" stroke-linecap="round" opacity="0.7"/>`
+    );
+    parts.push(
+      `<path d="M32.8 12.6 Q34.6 8.6 34.2 6.4 M30.8 12.8 Q32.0 9.2 31.6 7.0" ` +
+        `stroke="${sp.inner}" stroke-width="0.5" fill="none" stroke-linecap="round" opacity="0.7"/>`
+    );
+  }
+  // 前爪（踩在衣服下摆上，溢出画布底部）
+  parts.push(`<ellipse cx="17.6" cy="45.6" rx="3.5" ry="2.3" fill="${sp.fur}"/>`);
+  parts.push(`<ellipse cx="30.4" cy="45.6" rx="3.5" ry="2.3" fill="${sp.fur}"/>`);
+  return parts.join("\n        ");
+}
+
 function darken(hex: string, ratio = 0.82): string {
   const n = parseInt(hex.slice(1), 16);
   const ch = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => Math.max(0, Math.round(v * ratio)));
@@ -196,6 +246,7 @@ export function animalAvatar(species: SpeciesName, clothing: ClothingName): stri
     <rect x="${BODY.x}" y="${BODY.y}" width="${BODY.w}" height="${BODY.h}" rx="${BODY.rx}" fill="${cloth}"/>
     <rect x="${BODY.x + 4}" y="${BODY.y}" width="${BODY.w - 8}" height="4.5" rx="2.25" fill="${darken(cloth)}"/>
     ${face(sp)}
+    ${details(sp)}
   </g>
 </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg.replace(/\s+/g, " ").trim())}`;
