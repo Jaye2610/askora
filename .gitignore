@@ -46,7 +46,9 @@ resources/docker/graphrag/.env
 
 ### Tmp Out ###
 .output/
-docs/temp
+# 文档只留本地，不进仓库。
+# 前导斜杠是必须的：写成 docs/ 会连 resources/docs/（知识库样例数据）一起匹配。
+/docs/
 
 ### Tooling ###
 .workbuddy/
