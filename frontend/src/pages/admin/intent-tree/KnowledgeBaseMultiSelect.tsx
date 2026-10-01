@@ -199,7 +199,7 @@ export function KnowledgeBaseMultiSelect({
                   </span>
                 </div>
                 {typeof knowledgeBase.documentCount === "number" ? (
-                  <span className="shrink-0 self-center rounded-full bg-[var(--bg-tertiary)] px-2 py-0.5 text-[11px] text-[var(--text-tertiary)]">
+                  <span className="shrink-0 self-center rounded-full bg-[var(--bg-tertiary)] px-2 py-0.5 text-[var(--text-2xs)] text-[var(--text-tertiary)]">
                     {knowledgeBase.documentCount} 文档
                   </span>
                 ) : null}

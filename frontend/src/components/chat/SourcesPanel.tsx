@@ -71,7 +71,7 @@ export function SourcesPanel() {
                   className="w-full rounded-xl p-3 text-left transition-all hover:bg-[var(--bg-primary)] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                 >
                   <div className="flex items-start gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#EDEDED] text-[11px] font-medium text-[#666666]">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#EDEDED] text-[var(--text-2xs)] font-medium text-[#666666]">
                       {source.index ?? idx + 1}
                     </span>
                     <div className="min-w-0 flex-1">

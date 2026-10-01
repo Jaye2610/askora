@@ -114,7 +114,7 @@ function TimeScale({ totalMs }: { totalMs: number }) {
                 style={{ left: `${percent}%`, transform: "translateX(-50%)" }}
             >
               <div className="w-px h-2 bg-[var(--bg-hover)]" />
-              <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">
+              <span className="text-[var(--text-2xs)] text-[var(--text-tertiary)] mt-0.5">
             {formatDuration((totalMs * percent) / 100)}
           </span>
             </div>
@@ -236,7 +236,7 @@ function WaterfallRow({
           <p className="text-sm font-medium text-[var(--text-secondary)]">
             {formatDuration(node.resolvedDurationMs)}
           </p>
-          <p className="text-[10px] text-[var(--text-tertiary)]">
+          <p className="text-[var(--text-2xs)] text-[var(--text-tertiary)]">
             @{formatDuration(node.offsetMs)}
           </p>
         </div>

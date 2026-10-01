@@ -370,7 +370,7 @@ function JsonCodeBlock({ value }: { value?: string | null }) {
   return (
     <div className="overflow-hidden rounded-lg border border-[var(--border-default)] bg-[var(--bg-primary)]">
       <div className="flex items-center justify-between border-b border-[var(--border-default)] px-3 py-1.5">
-        <span className="font-mono text-[11px] font-medium text-[var(--text-tertiary)]">
+        <span className="font-mono text-[var(--text-2xs)] font-medium text-[var(--text-tertiary)]">
           {"{}"} JSON · {lineCount} 行 · {formatBytes(byteSize)}
         </span>
         <CopyButton value={text} />

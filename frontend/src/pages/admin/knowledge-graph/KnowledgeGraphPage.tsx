@@ -1986,7 +1986,7 @@ export function KnowledgeGraphPage() {
         <button
           type="button"
           onClick={handleZoomReset}
-          className="w-full border-y border-[var(--border-default)] py-1 text-center text-[10px] tabular-nums text-[var(--text-tertiary)] transition hover:bg-[var(--bg-tertiary)]"
+          className="w-full border-y border-[var(--border-default)] py-1 text-center text-[var(--text-2xs)] tabular-nums text-[var(--text-tertiary)] transition hover:bg-[var(--bg-tertiary)]"
           title="重置为 100%"
         >
           {zoomPct}%

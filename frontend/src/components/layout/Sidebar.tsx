@@ -212,8 +212,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="py-3 space-y-4">
           <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-primary)] p-3 shadow-[0_12px_26px_rgba(15,23,42,0.06)]">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-semibold text-[var(--text-tertiary)]">搜索对话</span>
-              <span className="text-[10px] text-[var(--violet-line)]">Ctrl / Cmd + K</span>
+              <span className="text-[var(--text-2xs)] font-semibold text-[var(--text-tertiary)]">搜索对话</span>
+              <span className="text-[var(--text-2xs)] text-[var(--violet-line)]">Ctrl / Cmd + K</span>
             </div>
             <div className="mt-2">
               <div className="relative">

@@ -213,7 +213,7 @@ export function MarkdownRenderer({ content, messageId, sources }: MarkdownRender
           return (
             <div className="my-3 overflow-hidden rounded-md border border-[#d0d7de] bg-[#f6f8fa] dark:border-[#30363d] dark:bg-[#161b22]">
               <div className="flex items-center justify-between border-b border-[#d0d7de] bg-[#f6f8fa] px-3 py-1.5 dark:border-[#30363d] dark:bg-[#161b22]">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#57606a] dark:text-[#8b949e]">
+                <span className="font-mono text-[var(--text-2xs)] font-semibold uppercase tracking-wider text-[#57606a] dark:text-[#8b949e]">
                   {language}
                 </span>
                 <CopyButton value={value} />

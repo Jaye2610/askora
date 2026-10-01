@@ -43,7 +43,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
         // align-middle 让胶囊中线咬住正文（flex 容器默认拿盒子底边当基线 会整体悬高）
         // 再抬 2px 补上西文 x-height 中线与汉字中线的差
         "relative -top-[2px] ml-[1px] mr-[1px] inline-flex h-[17px] min-w-[17px] items-center justify-center align-middle",
-        "rounded-full bg-[#F0F0F1] px-[5px] font-sans text-[10px] font-medium leading-none text-[#8A8F94]",
+        "rounded-full bg-[#F0F0F1] px-[5px] font-sans text-[var(--text-2xs)] font-medium leading-none text-[#8A8F94]",
         "outline-none transition-colors duration-150 dark:bg-[#2A2A2C] dark:text-[#A1A1AA]",
         interactive &&
           "cursor-pointer hover:bg-[#E4E4E6] hover:text-[#52525B] focus-visible:ring-2 focus-visible:ring-[#D4D4D8] focus-visible:ring-offset-1 dark:hover:bg-[#3F3F46] dark:hover:text-[#E4E4E7]",
@@ -89,7 +89,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
               <span className="min-w-0 flex-1 truncate text-[var(--text-xs)] text-[#8A8F94] dark:text-[#A1A1AA]">
                 {sourceSite(source)}
               </span>
-              <span className="flex h-[17px] min-w-[17px] shrink-0 items-center justify-center rounded-full bg-[#F2F2F3] px-1 text-[10px] font-medium text-[#8A8F94] dark:bg-[#3F3F46] dark:text-[#D4D4D8]">
+              <span className="flex h-[17px] min-w-[17px] shrink-0 items-center justify-center rounded-full bg-[#F2F2F3] px-1 text-[var(--text-2xs)] font-medium text-[#8A8F94] dark:bg-[#3F3F46] dark:text-[#D4D4D8]">
                 {index}
               </span>
               <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[#C6C6CA] transition-colors group-hover:text-[#8A8F94] dark:text-[#5C5C63] dark:group-hover:text-[#A1A1AA]" />
@@ -99,7 +99,7 @@ export function SourceCitation({ index, messageId, source }: SourceCitationProps
               {title}
             </p>
             {detail ? (
-              <p className="mt-1 truncate text-[11px] text-[#A8ADB3] dark:text-[#8F8F98]">
+              <p className="mt-1 truncate text-[var(--text-2xs)] text-[#A8ADB3] dark:text-[#8F8F98]">
                 {detail}
               </p>
             ) : null}

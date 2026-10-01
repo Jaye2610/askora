@@ -845,7 +845,7 @@ export function KnowledgeDocumentsPage() {
                             </button>
                             {doc.chunksEdited ? (
                               <span
-                                className="shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-px text-[10px] font-medium text-[var(--warning-text-strong)] ring-1 ring-[var(--warning-border)]"
+                                className="shrink-0 rounded-full bg-[var(--warning-soft)] px-1.5 py-px text-[var(--text-2xs)] font-medium text-[var(--warning-text-strong)] ring-1 ring-[var(--warning-border)]"
                                 title="该文档存在被手工编辑过的分块，重新分块会丢失"
                               >
                                 已编辑

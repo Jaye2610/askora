@@ -216,7 +216,7 @@ export function AgentProfilePage() {
                           {agent.name}
                         </h2>
                         {agent.builtin ? (
-                          <Badge variant="secondary" className="shrink-0 text-[11px] font-normal">
+                          <Badge variant="secondary" className="shrink-0 text-[var(--text-2xs)] font-normal">
                             内置
                           </Badge>
                         ) : null}
@@ -246,7 +246,7 @@ export function AgentProfilePage() {
                     <span className="agent-card__chip">
                       {/* 时钟图标已经说明这是时间，再写「更新 · 」白占 32px，跨年时间戳会把胶囊挤换行 */}
                       <Clock className="h-3 w-3 shrink-0 text-[var(--text-tertiary)]" />
-                      <RelativeTime value={agent.updateTime} className="text-[11px]" />
+                      <RelativeTime value={agent.updateTime} className="text-[var(--text-2xs)]" />
                     </span>
                   </div>
 

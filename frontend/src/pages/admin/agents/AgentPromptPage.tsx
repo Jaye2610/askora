@@ -245,14 +245,14 @@ export function AgentPromptPage() {
                 <div className="flex min-w-0 flex-wrap items-center gap-2">
                   <h2 className="text-sm font-semibold text-[var(--text-primary)]">{activeSlot.displayName}</h2>
                   {activeSlot.effective ? (
-                    <Badge className="text-[11px] font-normal">当前生效</Badge>
+                    <Badge className="text-[var(--text-2xs)] font-normal">当前生效</Badge>
                   ) : (
-                    <Badge variant="secondary" className="text-[11px] font-normal">
+                    <Badge variant="secondary" className="text-[var(--text-2xs)] font-normal">
                       当前不生效{activeSlot.inactiveReason ? `·${activeSlot.inactiveReason}` : ""}
                     </Badge>
                   )}
                   {draft.trim() ? null : (
-                    <Badge variant="outline" className="text-[11px] font-normal">
+                    <Badge variant="outline" className="text-[var(--text-2xs)] font-normal">
                       沿用{defaultName}
                     </Badge>
                   )}

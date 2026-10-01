@@ -695,14 +695,14 @@ const SimpleAreaChart = ({
             }}
         >
           {yTicks.map((tick, i) => (
-              <span key={i} className="pr-1 text-right text-[10px] leading-none text-[var(--text-tertiary)]">
+              <span key={i} className="pr-1 text-right text-[var(--text-2xs)] leading-none text-[var(--text-tertiary)]">
             {formatCompactNumber(tick)}
           </span>
           ))}
         </div>
 
         {/* Y轴标题 */}
-        <div className="absolute left-0 top-0 text-[10px] text-[var(--text-tertiary)]">{valueLabel}</div>
+        <div className="absolute left-0 top-0 text-[var(--text-2xs)] text-[var(--text-tertiary)]">{valueLabel}</div>
 
         {/* 图表区域 */}
         <div
@@ -795,7 +795,7 @@ const SimpleAreaChart = ({
           {xLabels.map((item, i) => (
               <span
                   key={i}
-                  className="text-[10px] text-[var(--text-tertiary)]"
+                  className="text-[var(--text-2xs)] text-[var(--text-tertiary)]"
                   style={{
                     position: "absolute",
                     left: `${item.position * 100}%`,
@@ -908,7 +908,7 @@ const TrendChartItem = ({
           <span className="h-3.5 w-1 rounded-full bg-gradient-to-b from-[#6366F1] to-[var(--accent-violet)]" aria-hidden="true" />
           {title}
         </div>
-        {yAxisLabel && <p className="mb-2 text-[11px] text-[var(--text-tertiary)]">{yAxisLabel}</p>}
+        {yAxisLabel && <p className="mb-2 text-[var(--text-2xs)] text-[var(--text-tertiary)]">{yAxisLabel}</p>}
         <div className="h-48">
           <SimpleLineChart
               series={series}
@@ -1050,7 +1050,7 @@ const QualitySnapshot = ({
       <div className="mt-4 rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-xs font-medium text-[var(--text-secondary)]">质量快照（柱状）</p>
-          <span className="text-[11px] text-[var(--text-tertiary)]">{windowLabel}</span>
+          <span className="text-[var(--text-2xs)] text-[var(--text-tertiary)]">{windowLabel}</span>
         </div>
         <div className="grid grid-cols-3 gap-2.5">
           {items.map((item) => {
@@ -1073,8 +1073,8 @@ const QualitySnapshot = ({
                   >
                     {formatPercent(item.value)}
                   </div>
-                  <div className="text-center text-[11px] text-[var(--text-tertiary)]">{item.label}</div>
-                  <div className="text-center text-[10px] text-[var(--text-tertiary)]">{item.target}</div>
+                  <div className="text-center text-[var(--text-2xs)] text-[var(--text-tertiary)]">{item.label}</div>
+                  <div className="text-center text-[var(--text-2xs)] text-[var(--text-tertiary)]">{item.target}</div>
                 </div>
             );
           })}
@@ -1104,7 +1104,7 @@ const EfficiencySnapshot = ({
       <div className="mt-4 rounded-xl border border-[var(--border-light)] bg-[color-mix(in_srgb,var(--bg-secondary)_60%,transparent)] p-3.5">
         <div className="mb-1.5 flex items-center justify-between">
           <p className="text-xs font-medium text-[var(--text-secondary)]">运营效率</p>
-          <span className="text-[11px] text-[var(--text-tertiary)]">{windowLabel}</span>
+          <span className="text-[var(--text-2xs)] text-[var(--text-tertiary)]">{windowLabel}</span>
         </div>
         <div className="divide-y divide-[var(--border-light)]">
           {metrics.map((metric) => {
@@ -1240,7 +1240,7 @@ const InsightCard = ({ item }: { item: InsightCardData }) => {
           <Icon className="h-3.5 w-3.5" />
           {TYPE_LABEL[item.type]}
         </span>
-          <span className="text-[11px] text-[var(--text-tertiary)]">{item.timestamp}</span>
+          <span className="text-[var(--text-2xs)] text-[var(--text-tertiary)]">{item.timestamp}</span>
         </div>
         <p className="text-sm font-semibold text-[var(--text-primary)]">{item.title}</p>
         <p className="mt-1 text-xs text-[var(--text-tertiary)]">
