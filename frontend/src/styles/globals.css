@@ -3342,6 +3342,17 @@ textarea {
   }
 }
 
+/* 像素头像：必须用最近邻缩放。
+   放在 @media 之外 —— 放在里面只会对该断点生效，会造成"某些宽度下糊"这种难查的问题。
+   像素画在非整数倍缩放（容器 36px / 40px ÷ 16 像素 = 2.25× / 2.5×）下，
+   浏览器默认的平滑插值会把每个像素磨成渐变，整张图就糊了。
+   pixelated 强制最近邻，任意倍率都保持棱角。
+   这个应用里 data:image/svg+xml 的图只有像素头像，故按 src 前缀匹配，
+   不必给每个渲染点都挂 class。 */
+img[src^="data:image/svg+xml"] {
+  image-rendering: pixelated;
+}
+
 /* ===== 暗色适配：trace / kpi 作用域令牌 =====
    --trace-* 挂在 .admin-layout .trace-list-page（0,2,0），
    --kpi-*   挂在 .admin-layout .trace-list-kpi-pill 及其三个色系变体（0,2,0）。
